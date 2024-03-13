@@ -62,7 +62,7 @@ format:
       source: "{{ var source }}"
       toggle: true
       caption: "Code"
-    highlight-style: monokai
+    highlight-style: github
     date-format: long
     engine: knitr
     execute:
