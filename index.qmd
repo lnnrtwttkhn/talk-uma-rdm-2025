@@ -1,0 +1,104 @@
+---
+title: "{{< var title >}}"
+subtitle: |
+  {{< var subtitle >}}
+  
+  [{{< fa display >}} Slides]({{< var website >}}) |
+  [{{< fa brands github >}} Source]({{< var source >}})
+  
+  {{< var license-badge >}}
+  {{< var doi-badge >}}
+date: today
+---
+
+## About
+
+:::: {.columns}
+::: {.column width="35%"}
+
+![](images/photo-wittkuhn-uhh.jpg)
+
+#### Dr. Lennart Wittkuhn
+
+{{< fa envelope >}} [{{< var email >}}]({{< var mailto >}})<br>
+{{< fa home-user >}} [{{< var homepage >}}]({{< var homepage >}})<br>
+{{< fa brands mastodon >}} [Mastodon]({{< var mastodon >}})
+{{< fa brands github >}} [GitHub]({{< var github >}})
+{{< fa brands linkedin >}} [LinkedIn]({{< var linkedin >}})
+:::
+
+::: {.column width="65%"}
+
+::: {.fragment}
+
+### About me
+
+{{< fa user-tie >}} I am a **Postdoctoral Research Data Scientist** in Cognitive Neuroscience at the [Institute of Psychology](https://www.psy.uni-hamburg.de/en.html) at the [University of Hamburg](https://www.psy.uni-hamburg.de/en/arbeitsbereiche/lern-und-veraenderungsmechanismen.html) (PI: Nicolas Schuck)
+
+{{< fa graduation-cap >}} **BSc Psychology** & **MSc Cognitive Neuroscience** (TU Dresden), **PhD Cognitive Neuroscience** (Max Planck Institute for Human Development)
+
+{{< fa brain >}} I study **the role of fast neural memory reactivation** in the human brain, applying **machine learning** and **computational modeling** to **fMRI** data
+
+{{< fa code >}} I am passionate about **computational reproducibility**, **research data management**, **open science** and tools that improve the scientific workflow
+
+{{< fa info-circle >}} Find out more about my work on [my website]({{< var homepage >}}), [Google Scholar]({{< var scholar >}}) and [ORCiD]({{< var orcid-link >}})
+
+:::
+
+::: {.fragment}
+
+### About this presentation
+
+{{< fa display >}} **Slides:** [{{< var website >}}]({{< var website >}})
+
+{{< fa brands github >}} **Source:** [{{< var source >}}]({{< var source >}})
+
+{{< fa laptop-code >}} **Software:** Reproducible slides built with [Quarto](https://quarto.org/) and deployed to [GitHub Pages](https://pages.github.com/) using [GitHub Actions](https://github.com/features/actions) for continuous integration & deployment
+
+{{< fa file-contract >}} **License:** {{< var license-long >}}
+
+{{< fa comments >}} **Contact:** Feedback or suggestions via [email]({{< var mailto >}}) or [GitHub issues]({{< var issues >}}). Thank you!
+
+
+:::
+:::
+::::
+
+## Thank you!
+
+:::: {.columns}
+::: {.column width="35%"}
+
+![](images/photo-wittkuhn-uhh.jpg)
+
+#### Dr. Lennart Wittkuhn
+
+{{< fa envelope >}} [{{< var email >}}]({{< var mailto >}})<br>
+{{< fa home-user >}} [{{< var homepage >}}]({{< var homepage >}})<br>
+{{< fa brands mastodon >}} [Mastodon]({{< var mastodon >}})
+{{< fa brands github >}} [GitHub]({{< var github >}})
+{{< fa brands linkedin >}} [LinkedIn]({{< var linkedin >}})
+
+:::
+::: {.column width="65%"}
+
+::: {layout-ncol=2}
+![](images/uhh-logo.svg){width=50%}
+
+![](images/mpib-logo.png){width=70%}
+:::
+
+{{< fa image >}} **Images:** [Scriberia with The Turing Way community](https://doi.org/10.5281/zenodo.3332807) (License: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/))
+
+{{< fa display >}} **Slides:** [{{< var website >}}]({{< var website >}})
+
+{{< fa brands github >}} **Source:** [{{< var source >}}]({{< var source >}})
+
+{{< fa laptop-code >}} **Software:** Reproducible slides built with [Quarto](https://quarto.org/) and deployed to [GitHub Pages](https://pages.github.com/) using [GitHub Actions](https://github.com/features/actions) for continuous integration & deployment
+
+{{< fa file-contract >}} **License:** {{< var license-long >}}
+
+{{< fa comments >}} **Contact:** Feedback or suggestions via [email]({{< var mailto >}}) or [GitHub issues]({{< var issues >}}). Thank you!
+
+:::
+::::
