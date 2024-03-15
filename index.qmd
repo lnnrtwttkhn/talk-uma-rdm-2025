@@ -9,6 +9,9 @@ subtitle: |
   {{< var license-badge >}}
   {{< var doi-badge >}}
 date: today
+engine: knitr
+execute:
+  eval: false
 ---
 
 ## About
