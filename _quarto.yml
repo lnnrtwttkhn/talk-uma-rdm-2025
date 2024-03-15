@@ -51,11 +51,10 @@ format:
     menu: true
     chalkboard: true
     mutliplex: false
-    code-fold: show
-    code-summary: "Show the code"
+    code-fold: false
     code-overflow: wrap
-    code-line-numbers: false
-    code-copy: true
+    code-line-numbers: true
+    code-copy: false
     code-link: false
     code-annotations: true
     code-tools:
