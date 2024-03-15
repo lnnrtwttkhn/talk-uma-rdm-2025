@@ -358,6 +358,131 @@ We know **exactly**:
 
 # Science is exploratory, multi-stepped and iterative
 
+## Reusing past work is hard
+
+![[Turing Way!](https://www.datalad.org/)](images/phd-comic-scratch.gif){fig-align="center" width=70%}
+
+> Your number 1 collaborator if yourself from 6 months ago and they don't answer emails.
+
+> "Shit, which version of which script produced these outputs from which version of what data?"
+
+> "Shit, why buttons did I click and in which order did I use all those tools?"
+
+
+## datalad-run
+
+::::: {.fragment}
+:::: {.columns}
+::: {.column width="50%"}
+**datalad run** wraps around anything expressed in a command line call and saves the dataset modifications resulting from the execution.
+:::
+::: {.column width="50%"}
+![](images/datalad-run-basic.svg){fig-align="center" width="80%"}
+:::
+::::
+:::::
+
+::::: {.fragment}
+:::: {.columns}
+::: {.column width="50%"}
+**datalad rerun** repeats captured executions. 
+If the outcomes differ, it saves a new state of them.
+:::
+::: {.column width="50%"}
+![](images/datalad-rerun.svg){fig-align="center" width="80%"}
+:::
+::::
+:::::
+
+::::: {.fragment}
+:::: {.columns}
+::: {.column width="50%"}
+**datalad containers-run** executes command line calls inside a tracked software container and saves the dataset modifications resulting from the execution.
+:::
+::: {.column width="50%"}
+![[DataLad Handbook](https://handbook.datalad.org/en/latest/basics/basics-run.html)](images/datalad-containers-run-basic.svg){fig-align="center" width="80%"}
+:::
+::::
+:::::
+
+## Example: "Let me just quickly copy those files ..."
+
+### Without datalad run
+
+::::: {.columns}
+:::: {.column width="50%"}
+::: {.fragment}
+Researcher writes some Python code to copy files:
+```python
+for sourcefile, dest in zip(glob(path_source), glob(path_dest)):
+  destination = path.join(dest, Path(sourcefile).name)
+  shutil.move(sourcefile, destination)
+```
+::: {.fragment}
+`glob` does not sort! :scream:
+:::
+:::
+::::
+:::: {.column width="25%"}
+::: {.fragment}
+```{bash}
+#| code-line-numbers: "1,3,5,7,9"
+source/
+├── sub-01
+│   └── sub-01-events.tsv
+├── sub-02
+│   └── sub-02-events.tsv
+├── sub-03
+│   └── sub-03-events.tsv
+├── sub-04
+│   └── sub-04-events.tsv
+[...]
+```
+:::
+::::
+:::: {.column width="25%"}
+::: {.fragment}
+```{bash}
+#| code-line-numbers: "1,3,5,7,9"
+destination/
+├── sub-01
+│   └── sub-03-events.tsv
+├── sub-02
+│   └── sub-01-events.tsv
+├── sub-03
+│   └── sub-04-events.tsv
+├── sub-04
+│   └── sub-02-events.tsv
+[...]
+```
+:::
+::::
+:::::
+
+Researcher shares `analysis` with collaborators.
+
+
+### With datalad run
+
+::::: {.columns}
+:::: {.column width="50%"}
+::: {.fragment}
+Researcher uses `datalad-run` to copy files:
+```{bash}
+$ datalad run -m "Copy event files" \
+"for sub in eventfiles;
+    do mv ${sub}/events.tsv analysis/${sub}/events.tsv;
+done"
+```
+:::
+::::
+:::: {.column width="45%"}
+::: {.fragment}
+bla
+:::
+::::
+:::::
+
 # Science is collaborative & distributed
 
 ## Summary
