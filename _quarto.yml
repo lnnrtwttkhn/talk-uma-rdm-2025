@@ -62,6 +62,7 @@ format:
       toggle: true
       caption: "Code"
     highlight-style: github
+    auto-stretch: false
     date-format: long
     engine: knitr
     execute:
