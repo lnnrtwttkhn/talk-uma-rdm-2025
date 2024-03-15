@@ -8,6 +8,8 @@
 
 Source code for slides for the 6th RDM-Workshop 2024 on Research Data Management in the Max Planck Society.
 
+<https://rdm.mpdl.mpg.de/mpdl-services/workshops/fdm-workshop-2024/vortraege/>
+
 ## License
 
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
