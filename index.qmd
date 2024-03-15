@@ -181,6 +181,178 @@ datalad save -m "save large dataset"
 
 # Science is build from modular units
 
+## Science is build from modular units
+
+::::: {.columns}
+:::: {.column width="50%"}
+::: {.fragment}
+### Research as a sequence
+![from the [Datalad Handbook](https://handbook.datalad.org/en/latest/intro/executive_summary.html) (License: [CC BY-SA 4.0](https://handbook.datalad.org/en/latest/licenses.html))](images/datalad-submodule-setup.svg){fig-align="center" width=104%}
+:::
+::: {.fragment}
+- Everything is in one big project folder
+- In which modules should we put each step?
+- Prior works (algorithm development, empirical data, etc.) are combined to produce novel results with to goal of a publication
+- Aggregation across time and contributors
+- Aiming for (but often failing) to be reproducible
+:::
+::::
+:::: {.column width="50%"}
+::: {.fragment}
+### Research as a cycle
+![[Turing Way!](https://www.datalad.org/)](images/turing-way-research-cycle.svg){fig-align="center" width=80%}
+:::
+::: {.fragment}
+#### What we need
+- Git can struggle with 1M+ files or 100k+ commits
+- Develop scientific outputs as modular but linked units
+- Independently update and develop data sources
+- Manage access to public / private datasets
+:::
+::::
+:::::
+
+::: {.notes}
+- Project-specific which data to put where
+:::
+
+## Dataset nesting
+
+- seamless nesting of modular datasets in hierarchical super-/sub-dataset relationships
+- based in Git submodules, but mono-repo feeling thanks to recursive operations
+- overcomes scaling issues with large amounts of files (Example: Human Connectome Project)
+- modularizes research components for transparency, reuse and access management
+
+![from the [Datalad Handbook](https://handbook.datalad.org/en/latest/basics/101-106-nesting.html) (License: [CC BY-SA 4.0](https://handbook.datalad.org/en/latest/licenses.html))](images/datalad-linkage-subds.svg){fig-align="center" width=104%}
+
+## Example
+
+![from the [Datalad Handbook](https://handbook.datalad.org/en/latest/basics/101-106-nesting.html) (License: [CC BY-SA 4.0](https://handbook.datalad.org/en/latest/licenses.html))](images/datalad-linkage-subds.svg){width="40%"}
+
+:::: {.columns}
+::: {.column width="55%"}
+::: {.fragment}
+First, let's create a new data analysis dataset:
+```{bash}
+#| code-line-numbers: "1"
+datalad create -c yoda myanalysis
+[INFO   ] Creating a new annex repo at /tmp/myanalysis
+[INFO   ] Scanning for unlocked files (this may take some time)
+[INFO   ] Running procedure cfg_yoda
+[INFO   ] == Command start (output follows) =====
+[INFO   ] == Command exit (modification check follows) =====
+create(ok): /tmp/myanalysis (dataset)
+```
+:::
+:::
+::: {.column width="45%"}
+::: {.fragment}
+`-c yoda` initializes useful structure:
+```{bash}
+tree
+.
+├── CHANGELOG.md
+├── README.md
+└── code
+    └── README.md
+2 directories, 3 files
+```
+:::
+:::
+::::
+
+:::: {.columns}
+::: {.column width="55%"}
+::: {.fragment}
+We install analysis input data as a subdataset to the dataset:
+```{bash}
+#| code-line-numbers: "1"
+datalad clone -d . https://github.com/datalad-handbook/iris_data.git input/
+[INFO   ] Remote origin not usable by git-annex; setting annex-ignore
+install(ok): input (dataset)
+add(ok): input (dataset)
+add(ok): .gitmodules (file)
+save(ok): . (dataset)
+action summary:
+  add (ok: 2)
+  install (ok: 1)
+  save (ok: 1)
+```
+:::
+:::
+::: {.column width="45%"}
+::: {.fragment}
+`input` is a regular folder inside `myanalysis`
+```{bash}
+#| code-line-numbers: "7,8"
+tree
+.
+├── CHANGELOG.md
+├── README.md
+├── code
+│   └── README.md
+└── input
+    └── iris.csv
+3 directories, 4 files
+```
+:::
+:::
+::::
+
+## Modular units with clear provenance
+
+:::: {.columns}
+::: {.column width="55%"}
+::: {.fragment}
+```{bash}
+#| code-line-numbers: "8-12,19"
+git diff HEAD~1
+diff --git a/.gitmodules b/.gitmodules
+new file mode 100644
+index 0000000..fc69c84
+--- /dev/null
++++ b/.gitmodules
+@@ -0,0 +1,5 @@
++[submodule "input"]
++       path = input
++       url = https://github.com/datalad-handbook/iris_data.git
++       datalad-id = 5800e71c-09f9-11ea-98f1-e86a64c8054c
++       datalad-url = https://github.com/datalad-handbook/iris_data.git
+diff --git a/input b/input
+new file mode 160000
+index 0000000..b9eb768
+--- /dev/null
++++ b/input
+@@ -0,0 +1 @@
++Subproject commit b9eb768c145e4a253d619d2c8285e540869d2021
+```
+:::
+:::
+::: {.column width="45%"}
+::: {.fragment}
+![from the [Datalad Handbook](https://handbook.datalad.org/en/latest/basics/101-106-nesting.html) (License: [CC BY-SA 4.0](https://handbook.datalad.org/en/latest/licenses.html))](images/datalad-linkage.svg){fig-align="center" width=100%}
+:::
+:::
+::::
+
+:::: {.columns}
+::: {.column width="55%"}
+::: {.fragment}
+We know **exactly**:
+
+1. where the subdataset comes from
+1. which version of the subdataset is installed
+
+- We can update each subdataset independently
+:::
+:::
+::: {.column width="45%"}
+::: {.fragment}
+![[Turing Way!](https://www.datalad.org/)](images/turing-way-provenance.svg){fig-align="center" width=100%}
+:::
+:::
+::::
+
 # Science is exploratory, multi-stepped and iterative
 
 # Science is collaborative & distributed
