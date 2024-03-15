@@ -485,6 +485,56 @@ bla
 
 # Science is collaborative & distributed
 
+## Interoperability
+
+::::: {.columns}
+:::: {.column width="50%"}
+![](images/datalad-startingpoint.svg){fig-align="center" width="100%"}
+::::
+:::: {.column width="50%"}
+
+Scientific workflows can be idiosyncratic across institutions / departments / labs / any two scientists
+
+![](images/datalad-services-only.png){fig-align="center" width="100%"}
+::::
+:::::
+
+![](images/datalad-publishing-network.svg){fig-align="center" width="100%"}
+
+## Share data like code
+
+![](images/datalad-collaboration.svg){fig-align="center" width="100%"}
+
+## Interoperability
+
+DataLad is built to maximize interoperability and streamline routines across hosting and storage technology
+
+![](images/datalad-services-connected.png){fig-align="center" width="50%"}
+
+## Special cases
+
+::::: {.columns}
+:::: {.column width="50%"}
+#### With annex support
+![](images/datalad-publishing-network-publish-gin.svg){fig-align="center" width="100%"}
+::::
+:::: {.column width="50%"}
+#### Special remotes with repositories
+
+![](images/datalad-publishing-network-publish-osf.svg){fig-align="center" width="100%"}
+::::
+:::::
+
+## Have access to more data than you have disk-space
+
+Cloned datasets are lean. "Meta data" (file names, availability) are present, but no file content:
+
+files' contents can be retrieved on demand:
+
+Drop file content that is not needed:
+
+When files are dropped, only "meta data" stays behind, and they can be re-obtained on demand.
+
 ## Summary
 
 ### Scientific building blocks are not static: Version Control all the things
