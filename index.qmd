@@ -117,6 +117,13 @@ execute:
 - standard tool in the software industry
 - 100 million [GitHub](https://github.com/) users ^[(Source: [Wikipedia](https://en.wikipedia.org/wiki/GitHub))]
 :::
+
+::: {.fragment}
+Sadly, Git does not handle large files well.
+
+![](images/git-snapshot.png){fig-align="center" width=100%}
+:::
+
 :::
 
 ::: {.column width="50%"}
