@@ -1339,16 +1339,89 @@ datalad push --to gin
 - DataLad plays perfectly with GIN, since both use git + git-annex (details [here](https://handbook.datalad.org/en/latest/basics/101-139-gin.html))
 :::
 
-###
+## Many siblings
 
+```{bash}
+datalad siblings               
+.: here(+) [git]
+.: dataverse-storage(+) [dataverse]
+.: owncloud-gwdg-storage(+) [git]
+.: gin(+) [https://gin.g-node.org/lnnrtwttkhn/neuro-data (git)]
+.: gin-src(+) [https://gin.g-node.org/lnnrtwttkhn/neuro-data (git)]
+.: keeper(+) [rclone]
+.: dataverse(-) [datalad-annex::?type=external&externaltype=dataverse&encryption=none&exporttree=no&url=https%3A//edmond.mpg.de/&doi=doi:10.17617/3.KUKEKI (git)]
+.: owncloud-gwdg(-) [datalad-annex::?type=webdav&encryption=none&exporttree=yes&url=https%3A//owncloud.gwdg.de/remote.php/nonshib-webdav/neuro-data (git)]
+```
 
-## Summary
+# Summary
 
-### Scientific building blocks are not static: Version Control all the things
+## Summary and discussion
 
-### Science is modular: Nesting
+::::: {.columns}
+:::: {.column width="50%"}
+::: {.fragment}
+### Science is complex
 
-### Towards science as open-source knowledge development
+- Scientific building blocks are not static: We need version control
+- Science is modular: We need to link modular datasets
+- Science is collaborative and distributed: We want to share our work and integrate flexibly with diverse infrastructure
+
+:::
+::::
+:::: {.column width="50%"}
+::: {.fragment}
+### Technical solutions are already available!
+
+- Code and data *management* using **Git** and **DataLad** (free, open-source command-line tools)
+- Code and data *sharing* via flexible repository hosting services (**GitLab, GitHub, GIN**, etc.)
+- Code and data *storage* on various infrastructure (**GIN**, **OSF**, **S3**, **Keeper**, **Dataverse**, and many more!)
+- Project-related communication (ideas, problems, discussions) via **issue boards** on GitLab / GitHub etc.
+- Transparent contributions to code and data via **merge requests** on GitLab (i.e., pull requests on GitHub)
+- *Reproducible procedures using e.g., Make or datalad run commands*
+- *Reproducible computational environments using software containers (e.g., Docker)*
+:::
+::::
+:::::
+
+:::: {.fragment}
+::: {style="font-size: 110%; text-align: center"}
+:sparkles: Towards science as distributed, open-source ~~software~~ *knowledge* development :sparkles: (cf. McElreath, 2020)
+:::
+::::
+
+::: {.notes}
+- Viele der Praktiken, die im open-source software development längst Standard sind, sind oft mit wenigen Modifikationen auf die Forschungsarbeit übertragbar
+- Die technischen Lösungen und Praktiken im Umgang mit Code und Daten sind heute vorhanden!
+- Sie sind kostenlos, open-source und etabliert und bieten Lösungen für viele der Probleme, die uns im Umgang mit Code und Daten in der Wissenschaft beschäftigen
+- Wichtig zu betonen, da wir Entscheidungen treffen, auf welche Tools wir uns fokusieren
+- Wir können heute damit beginnen und müssen nicht darauf warten, dass eine neue Platform erst jahrelang entwickelt werden muss.
+- Forschung strebt letztendlich danach, "distributed, open-source knowledge development zu betreiben", wie es Richard McElreath (Direktor am Max-Planck-Institut für Evolutionäre Anthropologie) treffend beschrieben hat
+:::
+
+## Overview of learning resources
+
+### Learn Git
+
+- ["Pro Git"](https://git-scm.com/book/en/v2) by Scott Chacon & Ben Straub
+- ["Happy Git and GitHub for the useR"](https://happygitwithr.com/) by Jenny Bryan, the STAT 545 TAs & Jim Hester
+- ["Version Control"](https://the-turing-way.netlify.app/reproducible-research/vcs.html) by The Turing Way
+- ["Version Control with Git"](https://swcarpentry.github.io/git-novice/) by The Software Carpentries
+- ["Version control"](http://neuroimaging-data-science.org/content/002-datasci-toolbox/002-git.html) (chapter 3 of "Neuroimaging and Data Science") by Ariel Rokem & Tal Yarkoni
+
+### Learn DataLad
+
+- ["Datalad Handbook"](http://handbook.datalad.org/en/latest/) by the DataLad team / Wagner et al., 2022, *Zenodo*
+- ["Research Data Management with DataLad"](https://www.youtube.com/playlist?list=PLEQHbPfpVqU5sSVrlwxkP0vpoOpgogg5j) | Recording of a full-day workshop on YouTube
+- [Datalad on YouTube](https://www.youtube.com/c/DataLad) | Recorded workshops, tutorials and talks on DataLad
+
+### Learn both (disclaimer: shameless plug :see_no_evil:)
+
+- Full-semester course on ["Version control of code and data using Git and DataLad"](https://lennartwittkuhn.com/versioncontrol-course-uhh-ws23/) in winter semester 2023/24 at University of Hamburg (generously funded by the [Digital and Data Literacy in Teaching Lab](https://www.isa.uni-hamburg.de/en/ddlitlab.html) program)
+
+## References
+
+::: {#refs}
+:::
 
 ## Thank you!
 
