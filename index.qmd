@@ -69,7 +69,7 @@ execute:
 
 # Scientific building blocks are not static
 
-## We need version control
+## Why we need version control
 
 :::: {.columns}
 
