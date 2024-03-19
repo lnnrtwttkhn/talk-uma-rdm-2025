@@ -128,6 +128,9 @@ execute:
 - builds on top of [Git](https://git-scm.com/) and [git-annex](https://git-annex.branchable.com/)
 - **allows to version control arbitrarily large datasets** ^[see DataLad dataset of 80TB / 15 million files from the Human Connectome Project (see [details](https://handbook.datalad.org/en/latest/usecases/HCP_dataset.html#usecase-hcp-dataset))]
 - graphical user interface exists: [DataLad Gooey](http://docs.datalad.org/projects/gooey/en/latest/index.html)
+
+![](images/datalad-sandwich.svg){fig-align="center" width=35%}
+
 :::
 :::
 
