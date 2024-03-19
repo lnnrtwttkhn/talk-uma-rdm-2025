@@ -15,17 +15,12 @@ author:
   url: "{{< var homepage >}}"
   email: "{{< var email >}}"
   orcid: "{{< var orcid >}}"
-  # note: string
-  # acknowledgements: string
   attributes:
     corresponding: true
-    # equal-contributor: boolean
-    # deceased: boolean
-  # metadata: object
   affiliations:
+    - ref: mpib
+    - ref: mps-ucl
     - ref: uhh-psych
-    # - ref: mpib
-    # - ref: mps-ucl
 format:
   revealjs:
     theme: [default, custom.scss]
