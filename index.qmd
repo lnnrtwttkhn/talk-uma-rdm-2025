@@ -607,17 +607,60 @@ When files are dropped, only "meta data" stays behind, and they can be re-obtain
 
 # Data sharing using DataLad and data infrastructure of the Max Planck Society
 
-## Data sharing via Keeper
+## Sharing DataLad datasets via Keeper
 
-![[keeper.mpdl.mpg.de](https://keeper.mpdl.mpg.de/)](images/keeper-logo.svg){fig-align="center" width="20%"}
+::::: {.columns}
+:::: {.column width="50%"}
 
-> "*A free service for all Max Planck employees and project partners with **more than 1TB of storage per user** for your researchdata.
-> Profit from safe data storage, seamlessly integrated into your research workflow.*"
+::::: {.columns}
+:::: {.column width="40%"}
+![[keeper.mpdl.mpg.de](https://keeper.mpdl.mpg.de/)](images/keeper-logo.svg){fig-align="center" width="100%"}
+::::
+:::: {.column width="60%"}
+"*A free service for all Max Planck employees and project partners with **more than 1TB of storage per user** for your researchdata.*"
+::::
+:::::
+
+:::: {.fragment}
+#### :sparkles: Features of Keeper :sparkles:
 
 - \> 1 TB per Max Planck employee (and expandable):
-- based on the cloud-sharing service [Seafile](https://www.seafile.com/en/home/) (similar to Dropbox)
+- based on cloud-sharing service [Seafile](https://www.seafile.com/en/home/)
 - data hosted on MPS servers
 - configurable as a [DataLad special remote](http://handbook.datalad.org/en/latest/basics/101-139-dropbox.html)
+
+
+:::
+::::
+:::: {.column width="50%"}
+::: {.fragment}
+
+1. Configure [rclone](https://rclone.org/)
+
+```{bash}
+rclone config create neuro-data seafile \
+url https://keeper.mpdl.mpg.de/ user wittkuhn@mpib-berlin.mpg.de \
+library neuro-data pass supersafepassword
+```
+
+2. Create a library on Keeper and a Keeper sibling
+
+```{bash}
+git annex initremote keeper type=external externaltype=rclone \
+chunk=50MiB encryption=none target=neuro-data
+```
+
+3. Push dataset to Keeper
+
+```{bash}
+datalad push --to keeper
+```
+
+![](https://owncloud.gwdg.de/index.php/s/VcH0w7sGIcYonld)](images/keeper-screenshot.png){fig-align="center" width="100%"}
+
+:::
+::::
+:::::
 
 ## Walkthrough: Data sharing via Keeper
 
@@ -862,19 +905,24 @@ copy(ok): task-auditory_bold.json (file) [to keeper...]            action summar
 ::::: {.columns}
 :::: {.column width="50%"}
 
+::::: {.columns}
+:::: {.column width="40%"}
 ![[edmond.mpg.de](https://edmond.mpg.de/)](images/edmond-logo.jpg){fig-align="center" width="100%"}
+::::
+:::: {.column width="60%"}
+"*Edmond is a research data repository for Max Planck researchers. It is the place to store completed datasets of research data with open access.*"
+::::
+::::
 
-> "*Edmond is a research data repository for Max Planck researchers. It is the place to store completed datasets of research data with open access. Edmond serves the publication of research data from all disciplines and offers scientists the ability to create citable research objects.*"
+:::: {.fragment}
+#### :sparkles: Features of Edmond :sparkles:
 
 - based on [Dataverse](https://dataverse.org/), hosted on MPS servers
 - use is free of charge
 - no storage limitation (on datasets or individual files)
 - flexible licensing
 
-::::
-:::: {.column width="50%"}
-
-#### DataLad - Dataverse integration (details [here]())
+#### DataLad - Dataverse integration
 
 ![[DataLad - Dataverse integration](http://docs.datalad.org/projects/dataverse/en/latest/)](images/datalad-dataverse.png){fig-align="center" width="60%"}
 
@@ -886,6 +934,34 @@ copy(ok): task-auditory_bold.json (file) [to keeper...]            action summar
 1. **annex mode** (default): non-human readable representation of the dataset that includes Git history and annexed data
 
 1. **filetree mode**: human readable single snapshot of your dataset "as it currently is" that does not include history of annexed files (but Git history)
+:::
+::::
+:::: {.column width="50%"}
+::: {.fragment}
+
+1. Create a Dataverse sibling fpr Edmond:
+
+```{bash}
+datalad add-sibling-dataverse https://edmond.mpg.de/ \
+doi:10.17617/3.PROXB0 --mode filetree
+```
+
+2. Provide Dataverse API token
+
+```{console}
+A dataverse API token is required for access. \
+Find it at https://edmond.mpg.de by clicking on your name \
+at the top right corner and then clicking on API Token \
+token: 
+```
+
+3. Push dataset to Edmond / Dataverse
+
+```{bash}
+datalad push --to dataverse
+```
+
+:::
 ::::
 :::::
 
@@ -973,7 +1049,7 @@ publish(ok): . (dataset) [refs/heads/main->dataverse:refs/heads/main [new branch
 publish(ok): . (dataset) [refs/heads/git-annex->dataverse:refs/heads/git-annex [new branch]]  
 ```
 
-## Data sharing via ownCloud / Nextcloud
+## Sharing DataLad datasets via ownCloud / Nextcloud
 
 ::::: {.columns}
 :::: {.column width="50%"}
@@ -988,15 +1064,20 @@ publish(ok): . (dataset) [refs/heads/git-annex->dataverse:refs/heads/git-annex [
 
 > **ownCloud GWDG:** "*50 GByte default storage space per user; flexible increase possible upon request*"
 
-#### :sparkles: Advantages of ownCloud and Nextcloud :sparkles:
+:::: {.fragment}
 
-- data privacy compliant alternative to Google Drive, Dropbox, etc. (often hosted on-site)
+#### :sparkles: Features of ownCloud and Nextcloud :sparkles:
+
+- data privacy compliant alternative to Google Drive, Dropbox, etc. (usually hosted on-site)
 - provided by your institution, so free to use
 - supports private and public repositories
 - can be used together with external collaborators
+- expose datasets for regular download without DataLad
 
+:::
 ::::
 :::: {.column width="50%"}
+:::: {.fragment}
 
 1. Create a WebDAV sibling:
 
@@ -1006,22 +1087,15 @@ datalad create-sibling-webdav --dataset . \
   'https://owncloud.gwdg.de/remote.php/nonshib-webdav/neuro-data'
 ```
 
-2. Enter access credentials
-
-```{bash}
-User name and password are required for WebDAV access at https://owncloud.gwdg.de/remote.php/nonshib-webdav/neuro-data
-user: wittkuhn@mpib-berlin.mpg.de
-password: supersafepassword
-```
-
-3. Push dataset to ownCloud
+2. Push dataset to ownCloud
 
 ```{bash}
 datalad push --to owncloud-gwdg
 ```
 
-![Access the dataset [on owncloud.gwdg.de](https://owncloud.gwdg.de/index.php/s/VcH0w7sGIcYonld)](images/owncloud-screenshot.png){fig-align="center" width="80%"}
+![Access the dataset [on owncloud.gwdg.de](https://owncloud.gwdg.de/index.php/s/VcH0w7sGIcYonld)](images/owncloud-screenshot.png){fig-align="center" width="100%"}
 
+:::
 ::::
 :::::
 
@@ -1080,7 +1154,7 @@ We can now view the [files on ownCloud](https://owncloud.gwdg.de/index.php/apps/
 
 ![](../static/images/owncloud_datalad_push.png)
 
-## Data sharing via GIN
+## Sharing DataLad datasets via GIN
 
 ::::: {.columns}
 :::: {.column width="50%"}
@@ -1094,19 +1168,22 @@ We can now view the [files on ownCloud](https://owncloud.gwdg.de/index.php/apps/
 ::::
 :::::
 
-#### :sparkles: Advantages of GIN :sparkles:
+:::: {.fragment}
+#### :sparkles: Features of GIN :sparkles:
 
 - free to use and open-source (could be hosted within your institution; for more details, see [here](https://gin.g-node.org/G-Node/Info/wiki/In+House))
 - currently unlimited storage capacity and no restrictions on individual file size
 - supports private and public repositories
 - publicly funded by the Federal Ministry of Education and Research (BMBF; details [here](https://gin.g-node.org/G-Node/Info/wiki/about#support))
-- servers are on German land (Munich, Germany; cf. GDPR)
+- servers on German land (Munich, Germany; cf. GDPR)
 - provides Digital Object Identifiers (DOIs) (details [here](https://gin.g-node.org/G-Node/Info/wiki/DOI)) and allows free licensing (details [here](https://gin.g-node.org/G-Node/Info/wiki/Licensing))
 
+:::
 ::::
 :::: {.column width="50%"}
+::: {.fragment}
 
-1. Create a GIN sibling:
+1. Create a GIN sibling
 
 ```{bash}
 datalad siblings add --dataset . \
@@ -1121,12 +1198,7 @@ datalad push --to gin
 
 ![Access the dataset [on GIN](https://gin.g-node.org/lnnrtwttkhn/neuro-data)](images/gin-screenshot.png){fig-align="center" width="100%"}
 
-3. Clone dataset from GIN
-
-```{bash}
-datalad clone https://gin.g-node.org/lnnrtwttkhn/neuro-data.git
-```
-
+:::
 ::::
 :::::
 
