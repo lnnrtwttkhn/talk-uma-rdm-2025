@@ -92,7 +92,9 @@ execute:
 ::::
 
 ::: {.fragment}
-### If everything is relevant, track everything.
+::: {style="font-size: 200%; text-align: center"}
+**If everything is relevant, track everything.**
+:::
 :::
 
 ::: {.notes}
