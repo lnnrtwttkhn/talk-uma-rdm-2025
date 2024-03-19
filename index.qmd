@@ -605,6 +605,541 @@ Drop file content that is not needed:
 
 When files are dropped, only "meta data" stays behind, and they can be re-obtained on demand.
 
+# Data sharing using DataLad and data infrastructure of the Max Planck Society
+
+## Data sharing via Keeper
+
+![[keeper.mpdl.mpg.de](https://keeper.mpdl.mpg.de/)](images/keeper-logo.svg){fig-align="center" width="20%"}
+
+> "*A free service for all Max Planck employees and project partners with **more than 1TB of storage per user** for your researchdata.
+> Profit from safe data storage, seamlessly integrated into your research workflow.*"
+
+- \> 1 TB per Max Planck employee (and expandable):
+- based on the cloud-sharing service [Seafile](https://www.seafile.com/en/home/) (similar to Dropbox)
+- data hosted on MPS servers
+- configurable as a [DataLad special remote](http://handbook.datalad.org/en/latest/basics/101-139-dropbox.html)
+
+## Walkthrough: Data sharing via Keeper
+
+Configure `rclone`:
+
+```{bash}
+rclone config
+2024/03/19 11:45:32 NOTICE: Config file "/root/.config/rclone/rclone.conf" not found - using defaults
+No remotes found, make a new one?
+n) New remote
+s) Set configuration password
+q) Quit config
+name> neuro-data
+
+Option Storage.
+Type of storage to configure.
+Choose a number from below, or type in your own value.
+ 1 / 1Fichier
+   \ (fichier)
+ 2 / Akamai NetStorage
+   \ (netstorage)
+ 3 / Alias for an existing remote
+   \ (alias)
+ 4 / Amazon S3 Compliant Storage Providers including AWS, Alibaba, ArvanCloud, Ceph, ChinaMobile, Cloudflare, DigitalOcean, Dreamhost, GCS, HuaweiOBS, IBMCOS, IDrive, IONOS, LyveCloud, Leviia, Liara, Linode, Minio, Netease, Petabox, RackCorp, Rclone, Scaleway, SeaweedFS, StackPath, Storj, Synology, TencentCOS, Wasabi, Qiniu and others
+   \ (s3)
+ 5 / Backblaze B2
+   \ (b2)
+ 6 / Better checksums for other remotes
+   \ (hasher)
+ 7 / Box
+   \ (box)
+ 8 / Cache a remote
+   \ (cache)
+ 9 / Citrix Sharefile
+   \ (sharefile)
+10 / Combine several remotes into one
+   \ (combine)
+11 / Compress a remote
+   \ (compress)
+12 / Dropbox
+   \ (dropbox)
+13 / Encrypt/Decrypt a remote
+   \ (crypt)
+14 / Enterprise File Fabric
+   \ (filefabric)
+15 / FTP
+   \ (ftp)
+16 / Google Cloud Storage (this is not Google Drive)
+   \ (google cloud storage)
+17 / Google Drive
+   \ (drive)
+18 / Google Photos
+   \ (google photos)
+19 / HTTP
+   \ (http)
+20 / Hadoop distributed file system
+   \ (hdfs)
+21 / HiDrive
+   \ (hidrive)
+22 / ImageKit.io
+   \ (imagekit)
+23 / In memory object storage system.
+   \ (memory)
+24 / Internet Archive
+   \ (internetarchive)
+25 / Jottacloud
+   \ (jottacloud)
+26 / Koofr, Digi Storage and other Koofr-compatible storage providers
+   \ (koofr)
+27 / Linkbox
+   \ (linkbox)
+28 / Local Disk
+   \ (local)
+29 / Mail.ru Cloud
+   \ (mailru)
+30 / Mega
+   \ (mega)
+31 / Microsoft Azure Blob Storage
+   \ (azureblob)
+32 / Microsoft Azure Files
+   \ (azurefiles)
+33 / Microsoft OneDrive
+   \ (onedrive)
+34 / OpenDrive
+   \ (opendrive)
+35 / OpenStack Swift (Rackspace Cloud Files, Blomp Cloud Storage, Memset Memstore, OVH)
+   \ (swift)
+36 / Oracle Cloud Infrastructure Object Storage
+   \ (oracleobjectstorage)
+37 / Pcloud
+   \ (pcloud)
+38 / PikPak
+   \ (pikpak)
+39 / Proton Drive
+   \ (protondrive)
+40 / Put.io
+   \ (putio)
+41 / QingCloud Object Storage
+   \ (qingstor)
+42 / Quatrix by Maytech
+   \ (quatrix)
+43 / SMB / CIFS
+   \ (smb)
+44 / SSH/SFTP
+   \ (sftp)
+45 / Sia Decentralized Cloud
+   \ (sia)
+46 / Storj Decentralized Cloud Storage
+   \ (storj)
+47 / Sugarsync
+   \ (sugarsync)
+48 / Transparently chunk/split large files
+   \ (chunker)
+49 / Union merges the contents of several upstream fs
+   \ (union)
+50 / Uptobox
+   \ (uptobox)
+51 / WebDAV
+   \ (webdav)
+52 / Yandex Disk
+   \ (yandex)
+53 / Zoho
+   \ (zoho)
+54 / premiumize.me
+   \ (premiumizeme)
+55 / seafile
+   \ (seafile)
+Storage> seafile
+
+Option url.
+URL of seafile host to connect to.
+Choose a number from below, or type in your own value.
+ 1 / Connect to cloud.seafile.com.
+   \ (https://cloud.seafile.com/)
+url> https://keeper.mpdl.mpg.de/
+
+Option user.
+User name (usually email address).
+Enter a value.
+user> wittkuhn@mpib-berlin.mpg.de
+
+Option pass.
+Password.
+Choose an alternative below. Press Enter for the default (n).
+y) Yes, type in my own password
+g) Generate random password
+n) No, leave this optional password blank (default)
+y/g/n> y
+Enter the password:
+password:
+Confirm the password:
+password:
+
+Option 2fa.
+Two-factor authentication ('true' if the account has 2FA enabled).
+Enter a boolean value (true or false). Press Enter for the default (false).
+2fa> false
+
+Option library.
+Name of the library.
+Leave blank to access all non-encrypted libraries.
+Enter a value. Press Enter to leave empty.
+library> neuro-data
+
+Option library_key.
+Library password (for encrypted libraries only).
+Leave blank if you pass it through the command line.
+Choose an alternative below. Press Enter for the default (n).
+y) Yes, type in my own password
+g) Generate random password
+n) No, leave this optional password blank (default)
+y/g/n> n
+
+Edit advanced config?
+y) Yes
+n) No (default)
+y/n> n
+
+Configuration complete.
+Options:
+- type: seafile
+- url: https://keeper.mpdl.mpg.de/
+- user: wittkuhn@mpib-berlin.mpg.de
+- pass: *** ENCRYPTED ***
+- library: neuro-data
+Keep this "neuro-data" remote?
+y) Yes this is OK (default)
+e) Edit this remote
+d) Delete this remote
+y/e/d> y
+
+Current remotes:
+
+Name                 Type
+====                 ====
+neuro-data           seafile
+
+e) Edit existing remote
+n) New remote
+d) Delete remote
+r) Rename remote
+c) Copy remote
+s) Set configuration password
+q) Quit config
+e/n/d/r/c/s/q> q
+```
+
+```{bash}
+export KEEPER_PASSWORD=password
+rclone config create neuro-data seafile url https://keeper.mpdl.mpg.de/ user wittkuhn@mpib-berlin.mpg.de library neuro-data pass $KEEPER_PASSWORD
+```
+
+```{bash}
+git annex initremote keeper type=external externaltype=rclone chunk=50MiB encryption=none target=neuro-data
+```
+
+```{bash}
+initremote keeper ok
+(recording state in git...)
+```
+
+```{bash}
+datalad siblings
+.: here(+) [git]
+.: keeper(+) [rclone]
+```
+
+```{bash}
+datalad push --to keeper
+copy(ok): CHANGES (file) [to keeper...]
+copy(ok): README (file) [to keeper...]
+copy(ok): dataset_description.json (file) [to keeper...]
+copy(ok): sub-01/anat/sub-01_T1w.nii (file) [to keeper...]
+copy(ok): sub-01/func/sub-01_task-auditory_bold.nii (file) [to keeper...]
+copy(ok): sub-01/func/sub-01_task-auditory_events.tsv (file) [to keeper...]
+copy(ok): task-auditory_bold.json (file) [to keeper...]            action summary:
+  copy (ok: 7)
+```
+
+## Sharing DataLad datasets via Edmond
+
+::::: {.columns}
+:::: {.column width="50%"}
+
+![[edmond.mpg.de](https://edmond.mpg.de/)](images/edmond-logo.jpg){fig-align="center" width="100%"}
+
+> "*Edmond is a research data repository for Max Planck researchers. It is the place to store completed datasets of research data with open access. Edmond serves the publication of research data from all disciplines and offers scientists the ability to create citable research objects.*"
+
+- based on [Dataverse](https://dataverse.org/), hosted on MPS servers
+- use is free of charge
+- no storage limitation (on datasets or individual files)
+- flexible licensing
+
+::::
+:::: {.column width="50%"}
+
+#### DataLad - Dataverse integration (details [here]())
+
+![[DataLad - Dataverse integration](http://docs.datalad.org/projects/dataverse/en/latest/)](images/datalad-dataverse.png){fig-align="center" width="60%"}
+
+- push / clone DataLad datasets to / from Edmond
+- primarily for one-time dataset publication and consumption, not extensive collaboration
+
+#### Two modes:
+
+1. **annex mode** (default): non-human readable representation of the dataset that includes Git history and annexed data
+
+1. **filetree mode**: human readable single snapshot of your dataset "as it currently is" that does not include history of annexed files (but Git history)
+::::
+:::::
+
+::: {.notes}
+
+- nach Hackathon während des Meetings der Organization for Human Brain Mapping (OHBM) gibt es seit Juli 2022 eine DataLad-Dataverse Integration (noch nicht getestest!)
+
+
+With datalad-dataverse, the entire dataset is deposited on a Dataverse installation. Internally, this is achieved by packaging the "Git" part and depositing it alongside the annexed data, similar to how the datalad-next extensions allows to do this for webdav based services.
+
+The primary use case for dataverse siblings is dataset deposition, where only one site is uploading dataset and file content updates for others to reuse. Compared to workflows which use repository hosting services, this solution will be less flexible for collaboration (because it's not able to utilise features for controlling dataset history offered by repository hosting services, such as pull requests and conflict resolution), and might be slower (when it comes to file transfer). What it offers, however, is the ability to make the published dataset browsable like regular directories and amendable with metadata on the Dataverse instance while being cloneable through DataLad.
+
+:::
+
+## Walkthough: Sharing DataLad datasets via Edmond
+
+If you want to publish a dataset to Dataverse, you will need a dedicated location on Dataverse that we will publish our dataset to.
+For this, we will use a Dataverse dataset^[Dataverse datasets contain digital files (research data, code, ...), amended with additional metadata. They typically live inside of dataverse collections.].
+
+1. Go to [Edmond](https://edmond.mpg.de/), log in, and create a new draft Dataverse dataset via the `Add Data` header
+1. The `New Dataset` button takes you to a configurator for your Dataverse dataset.
+Provide all relevant details and metadata entries in the form^[At least, `Title`, `Description`, and `Organization` are required.].
+Importantly, **don't upload any of your data files** - this will be done by DataLad later.
+1. Once you have clicked `Save Dataset`, you'll have a draft Dataverse dataset.
+It already has a DOI, and you can find it under the Metadata tab as "Persistent identifier":
+1. Finally, make a note of the URL of your dataverse instance (e.g., <https://edmond.mpg.de/>), and the DOI of your draft dataset.
+You will need this information for step 3.
+
+### Add a Dataverse sibling to your dataset
+
+We will use the `datalad add-sibling-dataverse` command.
+This command registers the remote Dataverse Dataset as a known remote location to your Dataset and will allow you to publish the entire Dataset (Git history and annexed data) or parts of it to Dataverse.
+
+```{bash}
+datalad add-sibling-dataverse https://edmond.mpg.de/ doi:10.17617/3.KUKEKI
+```
+
+If you run this command for the first time, you will need to provide an API Token to authenticate against the chosen Dataverse instance in an interactive prompt.
+This is how this would look:
+
+```{bash}
+A dataverse API token is required for access. Find it at https://edmond.mpg.de by clicking on your name at the top right corner and then clicking on API Token
+token: 
+A dataverse API token is required for access. Find it at https://edmond.mpg.de by clicking on your name at the top right corner and then clicking on API Token
+token (repeat): 
+Enter a name to save the credential securely for future reuse, or 'skip' to not save the credential
+name: 
+```
+
+You'll find this token if you follow the instructions in the prompt under your user account on your Dataverse instance, and you can copy-paste it into the command line.
+
+```{bash}
+add_sibling_dataverse.storage(ok): . [dataverse-storage: https://edmond.mpg.de/ (DOI: doi:10.17617/3.KUKEKI)]
+[INFO   ] Configure additional publication dependency on "dataverse-storage"
+```
+
+```{bash}
+A dataverse API token is required for access. Find it at https://edmond.mpg.de by clicking on your name at the top right corner and then clicking on API Token
+token: 
+A dataverse API token is required for access. Find it at https://edmond.mpg.de by clicking on your name at the top right corner and then clicking on API Token
+token (repeat): 
+Enter a name to save the credential securely for future reuse, or 'skip' to not save the credential
+name: skip
+```
+
+```{bash}
+add_sibling_dataverse(ok): . [dataverse: datalad-annex::?type=external&externaltype=dataverse&encryption=none&exporttree=no&url=https%3A//edmond.mpg.de/&doi=doi:10.17617/3.KUKEKI (DOI: doi:10.17617/3.KUKEKI)]
+```
+
+As soon as you've created the sibling, you can push:
+
+```{bash}
+datalad push --to dataverse
+```
+
+```{bash}
+copy(ok): CHANGES (file) [to dataverse-storage...]
+copy(ok): README (file) [to dataverse-storage...]
+copy(ok): dataset_description.json (file) [to dataverse-storage...]
+copy(ok): sub-01/anat/sub-01_T1w.nii (file) [to dataverse-storage...]
+copy(ok): sub-01/func/sub-01_task-auditory_bold.nii (file) [to dataverse-storage...]
+copy(ok): sub-01/func/sub-01_task-auditory_events.tsv (file) [to dataverse-storage...]
+copy(ok): task-auditory_bold.json (file) [to dataverse-storage...]
+publish(ok): . (dataset) [refs/heads/main->dataverse:refs/heads/main [new branch]]
+publish(ok): . (dataset) [refs/heads/git-annex->dataverse:refs/heads/git-annex [new branch]]  
+```
+
+## Data sharing via ownCloud / Nextcloud
+
+::::: {.columns}
+:::: {.column width="50%"}
+
+::: {layout-ncol=2}
+![[owncloud.gwdg.de](https://owncloud.gwdg.de/)](images/owncloud-logo.svg){fig-align="center" width="20%"}
+
+![[nextcloud.com](https://nextcloud.com/)](images/nextcloud-logo.svg){fig-align="center" width="30%"}
+:::
+
+[DataLad NEXT](http://docs.datalad.org/projects/next/en/latest/generated/datalad.api.create_sibling_webdav.html) extension allows to push / clone DataLad datasets to / from ownCloud & Nextcloud (via WebDAV)
+
+> **ownCloud GWDG:** "*50 GByte default storage space per user; flexible increase possible upon request*"
+
+#### :sparkles: Advantages of ownCloud and Nextcloud :sparkles:
+
+- data privacy compliant alternative to Google Drive, Dropbox, etc. (often hosted on-site)
+- provided by your institution, so free to use
+- supports private and public repositories
+- can be used together with external collaborators
+
+::::
+:::: {.column width="50%"}
+
+1. Create a WebDAV sibling:
+
+```{bash}
+datalad create-sibling-webdav --dataset . \
+  --name owncloud-gwdg --mode filetree \
+  'https://owncloud.gwdg.de/remote.php/nonshib-webdav/neuro-data'
+```
+
+2. Enter access credentials
+
+```{bash}
+User name and password are required for WebDAV access at https://owncloud.gwdg.de/remote.php/nonshib-webdav/neuro-data
+user: wittkuhn@mpib-berlin.mpg.de
+password: supersafepassword
+```
+
+3. Push dataset to ownCloud
+
+```{bash}
+datalad push --to owncloud-gwdg
+```
+
+![Access the dataset [on owncloud.gwdg.de](https://owncloud.gwdg.de/index.php/s/VcH0w7sGIcYonld)](images/owncloud-screenshot.png){fig-align="center" width="80%"}
+
+::::
+:::::
+
+## Walkthrough: Data sharing via ownCloud / nextCloud
+
+### Get the WebDAV address
+
+1. Click on {{< fa gear >}} `Settings` (bottom left)
+1. Copy the WebDAV address, for example: `https://owncloud.gwdg.de/remote.php/nonshib-webdav/`
+
+```{bash}
+datalad create-sibling-webdav \
+  --dataset . \
+  --name owncloud-gwdg \
+  --mode filetree \
+  'https://owncloud.gwdg.de/remote.php/nonshib-webdav/<dataset-name>' # <1>
+```
+1. Replace `<dataset-name>` with the name of your dataset, i.e., the name of your dataset folder.
+In this example, we replace `<dataset-name>` with `neuro-data`.
+The complete command for your example hence looks like this:
+
+```{bash}
+datalad create-sibling-webdav \
+  --dataset . \
+  --name owncloud-gwdg \
+  --mode filetree \
+  'https://owncloud.gwdg.de/remote.php/nonshib-webdav/neuro-data'
+```
+
+You will be asked to provide your ownCloud account credentials:
+
+```{bash}
+user: # <1>
+password: # <2>
+password (repeat): # <3>
+```
+1. Enter the email address of your ownCloud account.
+2. Enter the password of your ownCloud account.
+3. Repeat the password of your ownCloud account.
+
+```{bash}
+create_sibling_webdav.storage(ok): . [owncloud-gwdg-storage: https://owncloud.gwdg.de/remote.php/nonshib-webdav/neuro-data]
+[INFO   ] Configure additional publication dependency on "owncloud-gwdg-storage" 
+create_sibling_webdav(ok): . [owncloud-gwdg: datalad-annex::?type=webdav&encryption=none&exporttree=yes&url=https%3A//owncloud.gwdg.de/remote.php/nonshib-webdav/neuro-data]
+```
+
+Finally, we can push the dataset to ownCloud:
+
+```{bash}
+datalad push --to owncloud-gwdg # <1>
+```
+1. Use `datalad push` to push the dataset contents to ownCloud.
+For details on `datalad push`, see the [command line reference](http://docs.datalad.org/en/stable/generated/man/datalad-push.html) and [this chapter](https://handbook.datalad.org/en/latest/basics/101-141-push.html) in the DataLad Handbook.
+
+We can now view the [files on ownCloud](https://owncloud.gwdg.de/index.php/apps/files/) and inspect them through the web browser:
+
+![](../static/images/owncloud_datalad_push.png)
+
+## Data sharing via GIN
+
+::::: {.columns}
+:::: {.column width="50%"}
+
+::::: {.columns}
+:::: {.column width="30%"}
+![[gin.g-node.org](https://gin.g-node.org/)](images/gin-logo.png){fig-align="left" width="100%"}
+::::
+:::: {.column width="70%"}
+"*GIN is [...] a web-accessible repository store of your data **based on git and git-annex** that you can access securely anywhere you desire while keeping your data in sync, backed up and easily accessible [...]"*
+::::
+:::::
+
+#### :sparkles: Advantages of GIN :sparkles:
+
+- free to use and open-source (could be hosted within your institution; for more details, see [here](https://gin.g-node.org/G-Node/Info/wiki/In+House))
+- currently unlimited storage capacity and no restrictions on individual file size
+- supports private and public repositories
+- publicly funded by the Federal Ministry of Education and Research (BMBF; details [here](https://gin.g-node.org/G-Node/Info/wiki/about#support))
+- servers are on German land (Munich, Germany; cf. GDPR)
+- provides Digital Object Identifiers (DOIs) (details [here](https://gin.g-node.org/G-Node/Info/wiki/DOI)) and allows free licensing (details [here](https://gin.g-node.org/G-Node/Info/wiki/Licensing))
+
+::::
+:::: {.column width="50%"}
+
+1. Create a GIN sibling:
+
+```{bash}
+datalad siblings add --dataset . \
+--name gin --url git@gin.g-node.org:/lnnrtwttkhn/neuro-data.git
+```
+
+2. Push dataset to GIN
+
+```{bash}
+datalad push --to gin
+```
+
+![Access the dataset [on GIN](https://gin.g-node.org/lnnrtwttkhn/neuro-data)](images/gin-screenshot.png){fig-align="center" width="100%"}
+
+3. Clone dataset from GIN
+
+```{bash}
+datalad clone https://gin.g-node.org/lnnrtwttkhn/neuro-data.git
+```
+
+::::
+:::::
+
+::: {.notes}
+- Angebot des German Neuroinformatics Node (GNode) in München
+- Fokus auf Neurowissenschaften, aber im Prinzip für Daten verschiedener Disziplinen verwendbar
+- We have an *experimental* [in-house GIN instance](http://gin.mpib-berlin.mpg.de/) with 5TB that can also host annexed data
+- DataLad plays perfectly with GIN, since both use git + git-annex (details [here](https://handbook.datalad.org/en/latest/basics/101-139-gin.html))
+:::
+
+###
+
+
 ## Summary
 
 ### Scientific building blocks are not static: Version Control all the things
