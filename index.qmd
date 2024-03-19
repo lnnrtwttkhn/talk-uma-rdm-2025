@@ -138,18 +138,53 @@ execute:
 ::: {.fragment}
 ![from the [Datalad Handbook](https://handbook.datalad.org/en/latest/intro/executive_summary.html) (License: [CC BY-SA 4.0](https://handbook.datalad.org/en/latest/licenses.html))](images/datalad-dataset.svg){fig-align="center" width=84%}
 
-```bash
-datalad create mydataset
+```{bash}
+datalad create neuro-data
 ```
+
+<br/>
+<details>
+<summary>View output</summary>
+```{bash}
+#| code-overflow: wrap
+create(error): /tmp/neuro-data (dataset) [will not create a dataset in a non-empty directory, use `--force` option to ignore]
+```
+
+Rerun the command using `--force`:
+
+```{bash}
+datalad create --force neuro-data
+create(ok): /tmp/neuro-data (dataset)
+```
+</details>
+
 :::
 :::
 ::: {.column width="50%"}
 ::: {.fragment}
 ![from the [Datalad Handbook](https://handbook.datalad.org/en/latest/intro/executive_summary.html) (License: [CC BY-SA 4.0](https://handbook.datalad.org/en/latest/licenses.html))](images/datalad-local_wf.svg){fig-align="center" width=100%}
 
-```bash
-datalad save -m "save large dataset"
+```{bash}
+datalad save -m "save neuro data"
 ```
+
+<br/>
+<details>
+<summary>View output</summary>
+```{bash}
+add(ok): CHANGES (file)
+add(ok): README (file)
+add(ok): dataset_description.json (file)
+add(ok): sub-01/anat/sub-01_T1w.nii (file)
+add(ok): sub-01/func/sub-01_task-auditory_bold.nii (file)
+add(ok): sub-01/func/sub-01_task-auditory_events.tsv (file)
+add(ok): task-auditory_bold.json (file)
+save(ok): . (dataset)                                              action summary:
+  add (ok: 7)
+  save (ok: 1)
+```
+</details>
+
 :::
 :::
 ::::
