@@ -131,6 +131,41 @@ execute:
 
 ::::
 
+## Example Dataset: Brain Imaging Data
+
+Single subject epoch (block) auditory fMRI activation data
+
+::::: {.columns}
+:::: {.column width="50%"}
+```{bash}
+#| file: code/create_dataset.sh
+```
+
+![[Brain Imaging Data Structure (BIDS)](https://bids.neuroimaging.io/) @gorgolewski2016 (License: [CC BY 4.0](https://github.com/bids-standard/bids-specification?tab=CC-BY-4.0-1-ov-file#readme))](images/bids-logo.svg){fig-align="center" width=70%}
+::::
+:::: {.column width="50%"}
+```{bash}
+tree
+.
+├── CHANGES
+├── README
+├── dataset_description.json
+├── sub-01
+│   ├── anat
+│   │   └── sub-01_T1w.nii
+│   └── func
+│       ├── sub-01_task-auditory_bold.nii
+│       └── sub-01_task-auditory_events.tsv
+└── task-auditory_bold.json
+
+4 directories, 7 files
+```
+
+![[Brain Imaging Data Structure (BIDS)](https://bids.neuroimaging.io/) @gorgolewski2016 (License: [CC BY 4.0](https://www.nature.com/articles/sdata201644#rightslink))](images/bids-overview.png){fig-align="center" width=100%}
+
+::::
+:::::
+
 ## Version Control with DataLad
 
 :::: {.columns}
