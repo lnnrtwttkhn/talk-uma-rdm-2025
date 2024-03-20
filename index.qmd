@@ -1144,19 +1144,123 @@ datalad push --to gin
 - DataLad plays perfectly with GIN, since both use git + git-annex (details [here](https://handbook.datalad.org/en/latest/basics/101-139-gin.html))
 :::
 
-## Many siblings
+## Sharing DataLad datasets via GitLab
+
+::::: {.columns}
+:::: {.column width="50%"}
+
+::::: {.columns}
+:::: {.column width="30%"}
+![[gitlab.com](https://about.gitlab.com/)](images/gitlab-logo.svg){fig-align="left" width="100%"}
+::::
+:::: {.column width="70%"}
+"*GitLab is open source software to collaborate on code. Manage git repositories with fine-grained access controls that keep your code secure.*"
+::::
+:::::
+
+:::: {.fragment}
+#### GitLab for Max Planck employees
+
+- hosted by GWDG: [gitlab.gwdg.de](https://gitlab.gwdg.de)
+- hosted by your institute, e.g., [git.mpib-berlin.mpg.de](https://git.mpib-berlin.mpg.de)
+::::
+
+:::: {.fragment}
+#### :sparkles: Features of GitLab :sparkles:
+
+- free to use and open-source
+- several MPS instances available (see above)
+- supports private and public repositories
+- use project management infrastructure (merge requests, issue boards, etc.) for your dataset projects
+
+:::
+::::
+:::: {.column width="50%"}
+::: {.fragment}
+
+1. Create a GitLab sibling
 
 ```{bash}
-datalad siblings               
-.: here(+) [git]
-.: dataverse-storage(+) [dataverse]
-.: owncloud-gwdg-storage(+) [git]
-.: gin(+) [https://gin.g-node.org/lnnrtwttkhn/neuro-data (git)]
-.: gin-src(+) [https://gin.g-node.org/lnnrtwttkhn/neuro-data (git)]
-.: keeper(+) [rclone]
-.: dataverse(-) [datalad-annex::?type=external&externaltype=dataverse&encryption=none&exporttree=no&url=https%3A//edmond.mpg.de/&doi=doi:10.17617/3.KUKEKI (git)]
-.: owncloud-gwdg(-) [datalad-annex::?type=webdav&encryption=none&exporttree=yes&url=https%3A//owncloud.gwdg.de/remote.php/nonshib-webdav/neuro-data (git)]
+datalad siblings add --dataset . --name gitlab \
+--url git@git.mpib-berlin.mpg.de:wittkuhn/neuro-data.git
 ```
+
+2. Push dataset *metadata* to GitLab
+
+```{bash}
+datalad push --to gitlab
+```
+
+![Access the dataset [on GitLab](https://git.mpib-berlin.mpg.de/wittkuhn/neuro-data)](images/gitlab-screenshot.png){fig-align="center" width="100%"}
+
+:::
+::::
+:::::
+
+## Share and develop ~~data~~ *anything* like source code
+
+::::: {.columns}
+:::: {.column width="50%"}
+::: {.fragment}
+
+Datasets can *comfortably* live in multiple locations:
+
+```{bash}
+datalad siblings
+.: here(+) [git]
+.: owncloud-gwdg(+) [git]
+.: dataverse(+) [dataverse]
+.: gin(+) [https://gin.g-node.org/lnnrtwttkhn/neuro-data (git)]
+.: keeper(+) [rclone]
+.: gitlab(-) [git@git.mpib-berlin.mpg.de:wittkuhn/neuro-data.git (git)]
+```
+
+Publication dependencies automate update in all places:
+
+![](images/datalad-publishing-network-publishdepends.svg){fig-align="center" width="90%"}
+
+```{bash}
+datalad siblings configure --name gitlab --publish-depends SIBLING
+```
+
+:::
+::::
+:::: {.column width="50%"}
+::: {.fragment}
+
+Redundancy: DataLad gets data from available sources
+
+![](images/datalad-collaboration.svg){fig-align="center" width="100%"}
+
+Clone the dataset from GitLab:
+
+```{bash}
+datalad clone https://git.mpib-berlin.mpg.de/wittkuhn/neuro-data
+````
+
+Access to special remotes needs to be configured:
+
+```{bash}
+[INFO   ] access to 3 dataset siblings keeper, dataverse-storage,
+owncloud-gwdg-storage not auto-enabled, enable with:
+| 		datalad siblings -d "/tmp/neuro-data" enable -s SIBLING 
+install(ok): /tmp/neuro-data-clone (dataset)
+```
+
+DataLad retrieves data from available sources (here, GIN):
+
+```{bash}
+#| code-line-numbers: "1"
+datalad get .
+get(ok): CHANGES (file) [from gin-src...]
+get(ok): README (file) [from gin-src...]
+get(ok): dataset_description.json (file) [from gin-src...]
+[...]
+```
+
+:::
+::::
+:::::
 
 # Summary
 
