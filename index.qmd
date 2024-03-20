@@ -1388,9 +1388,19 @@ Full-semester course on ["Version control of code and data using Git and DataLad
 ::: {.column width="65%"}
 
 ::: {layout-ncol=2}
-![](images/uhh-logo.svg){width=50%}
+![](images/uhh-logo.svg){width="35%"}
 
-![](images/mpib-logo.png){width=70%}
+![](images/mpib-logo.png){width="50%"}
+:::
+
+::: {layout-ncol=4}
+![](images/datalad-logo-full.svg){width="15%"}
+
+![](images/datalad-handbook-logo.svg){width="7%"}
+
+![](images/turing-way-logo.jpg){width="10%"}
+
+![](images/repronim-logo.png){width="10%"}
 :::
 
 {{< fa display >}} **Slides:** [{{< var website >}}]({{< var website >}})
