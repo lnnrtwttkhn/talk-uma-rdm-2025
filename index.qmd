@@ -586,6 +586,7 @@ index 0000000..b9eb768
 :::
 :::
 ::: {.column width="45%"}
+
 ::: {.fragment fragment-index=1}
 ![from the [DataLad Handbook](https://handbook.datalad.org/en/latest/index.html) by @wagner2022 ([CC BY-SA 4.0](https://handbook.datalad.org/en/latest/licenses.html))](images/datalad-linkage.svg){fig-align="center" width="100%"}
 :::
@@ -616,7 +617,7 @@ index 0000000..b9eb768
 :::
 :::
 
-## Reusing past work is hard
+## Reusing previous work is hard
 
 ![[&copy; Jorge Cham (phdcomics.com)](https://phdcomics.com/comics/archive/phd031214s.gif)](images/phd-comic-scratch.gif){fig-align="center" width="60%"}
 
@@ -709,7 +710,6 @@ get(ok): mri/sub-01_bold.nii (file)
 [INFO   ] == Command start (output follows) =====
 [INFO   ] == Command exit (modification check follows) =====
 add(ok): sub-01/LC_timeseries_run-*.csv(file)
-        [...]
 ```
 :::
 
@@ -1221,7 +1221,7 @@ datalad push --to gitlab
 ::::
 :::::
 
-## Consume datasets like source code
+## Publish and consume datasets like source code
 
 ::::: {.columns}
 :::: {.column width="50%"}
@@ -1267,8 +1267,7 @@ Access to special remotes needs to be configured:
 ```{bash}
 [INFO   ] access to 3 dataset siblings keeper, dataverse-storage,
 owncloud-gwdg-storage not auto-enabled, enable with:
-| 		datalad siblings -d "/tmp/neuro-data" enable -s SIBLING 
-install(ok): /tmp/neuro-data-clone (dataset)
+| 		datalad siblings -d "/tmp/neuro-data" enable -s SIBLING
 ```
 
 DataLad retrieves data from available sources (here, GIN):
@@ -1278,7 +1277,6 @@ DataLad retrieves data from available sources (here, GIN):
 datalad get .
 get(ok): CHANGES (file) [from gin-src...]
 get(ok): README (file) [from gin-src...]
-get(ok): dataset_description.json (file) [from gin-src...]
 [...]
 ```
 
