@@ -67,6 +67,48 @@ execute:
 :::
 ::::
 
+## Acknowledgements and further reading
+
+::::: {.columns}
+:::: {.column width="30%"}
+![[Slides](https://files.inm7.de/adina/talks/html/hamburg_2024.html#/) by @wagner2024 ([CC BY-SA 4.0](https://github.com/datalad-handbook/datalad-course/blob/main/LICENSE))](images/datalad-talk-screenshot.png){width=100% fig-align="center"}
+
+::::
+:::: {.column width="30%"}
+**Slides and presentations on DataLad** by Dr. Adina Wagner, e.g., "DataLad - Decentralized Management of Digital Objects for Open Science" [@wagner2024] and [on YouTube](https://www.youtube.com/c/DataLad)
+::::
+:::: {.column width="15%"}
+![[DataLad Handbook](https://handbook.datalad.org/en/latest/) by @wagner2022 ([CC BY-SA 4.0](https://handbook.datalad.org/en/latest/licenses.html))](images/datalad-handbook-logo.svg){width=100% fig-align="center"}
+::::
+:::: {.column width="25%"}
+The **DataLad Handbook** by @wagner2022 is a comprehensive educational resource for data management with DataLad.
+::::
+:::::
+
+## Agenda
+
+1. **Scientific workflows with DataLad**
+    
+    1.1 Version Control
+    
+    1.2 Modularity & Linking
+    
+    1.3 Provenance
+    
+    1.4 Collaboration & Interoperability
+
+2. **Integrating DataLad with MPS infrastructure (and beyond)**
+    
+    2.1 Keeper
+    
+    2.2 Edmond
+    
+    2.3 ownCloud / nextCloud
+    
+    2.4 GIN
+
+3. **Summary & Discussion**
+
 # Scientific building blocks are not static
 
 ## Why we need version control
