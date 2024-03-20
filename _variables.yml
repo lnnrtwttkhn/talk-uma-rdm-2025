@@ -1,5 +1,5 @@
 title: "Reproducible Research Data Management with DataLad"
-subtitle: "6th RDM-Workshop 2024 on Research Data Management in the Max Planck Society"
+subtitle: "6<sup>th</sup> RDM-Workshop 2024 on Research Data Management in the Max Planck Society"
 project-name: "talk-mps-fdm-2024"
 footer: "{{< var title >}}"
 source: "https://github.com/lnnrtwttkhn/{{< var project-name >}}"
