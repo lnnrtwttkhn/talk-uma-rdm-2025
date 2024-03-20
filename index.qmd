@@ -111,6 +111,12 @@ The **DataLad Handbook** by @wagner2022 is a comprehensive educational resource 
 
 # Scientific building blocks are not static
 
+::: {.fragment}
+::: {style="font-size: 250%"}
+**We need version control**
+:::
+:::
+
 ## Why we need version control
 
 :::: {.columns}
@@ -140,8 +146,15 @@ The **DataLad Handbook** by @wagner2022 is a comprehensive educational resource 
 :::
 
 ::: {.notes}
+#### Version Control of Code
 - Analysis code, manuscripts and other files evolve
 - Rewrite, fix bugs, add functions, refactor, extend, ...
+
+#### Version Control of Data
+- errors are fixed, data is extended
+- naming standards change
+- an analysis requires only a subset of your data
+
 - Version control is relevant for anyone who wants to track the evolution of digital objects
 :::
 
@@ -173,7 +186,7 @@ The **DataLad Handbook** by @wagner2022 is a comprehensive educational resource 
 ::: {.fragment}
 {{< fa upload >}} "push" your repo to a "remote" location & share it
 
-{{< fa brands github >}} {{< fa brands gitlab >}} share repos on platforms like GitHub or GitLab
+{{< fa brands github >}} share repos on platforms like GitHub or GitLab
 
 {{< fa people-group >}} work together on the same files at the same time
 
@@ -193,7 +206,7 @@ The **DataLad Handbook** by @wagner2022 is a comprehensive educational resource 
 
 ::: {.column width="50%"}
 ::: {.fragment}
-![[git-scm.com](https://git-scm.com/) (Logo by Jason Long; License: [CC BY 3.0 Unported](https://git-scm.com/downloads/logos))](images/git-logo-full.svg){fig-align="center" width=50%}
+![[git-scm.com](https://git-scm.com/) (Logo by Jason Long; License: [CC BY 3.0 Unported](https://git-scm.com/downloads/logos))](images/git-logo-full.svg){fig-align="center" width="40%"}
 
 - most popular version control system
 - free, [open-source](https://github.com/git) command-line tool
@@ -212,7 +225,7 @@ Sadly, Git does not handle large files well.
 
 ::: {.column width="50%"}
 ::: {.fragment}
-![[datalad.org](https://www.datalad.org/)](images/datalad-logo-full.svg){fig-align="center" width=50%}
+![[datalad.org](https://www.datalad.org/)](images/datalad-logo-full.svg){fig-align="center" width="38%"}
 
 - "Git for (large) data"
 - free, [open-source](https://github.com/datalad/datalad) command-line tool
@@ -339,57 +352,78 @@ save(ok): . (dataset)                                              action summar
 ::: {.notes}
 - DataLad knows two things: Datasets and files
 - Every file you put into a in a dataset can be easily version-controlled, regardless of size
+- Non-complex DataLad core API (easier than Git)
+- Pure Git or git-annex commands (for regular Git or git-annex users, or to use specific functionality)
+- Save meaningful units of change
+- Attach helpful commit messages
 :::
 
 ## Data in DataLad datasets are either stored in Git or git-annex
 
-![from the [Datalad Handbook](https://handbook.datalad.org/en/latest/index.html#) (License: [CC BY-SA 4.0](https://handbook.datalad.org/en/latest/licenses.html))](images/datalad-publishing-gitvsannex.svg){fig-align="center" width=100%}
+![from the [Datalad Handbook](https://handbook.datalad.org/en/latest/index.html#) (License: [CC BY-SA 4.0](https://handbook.datalad.org/en/latest/licenses.html))](images/datalad-publishing-gitvsannex.svg){fig-align="center" width="70%"}
 
-:::: {.columns}
-::: {.column width="50%"}
-#### Git
+::::: {.columns}
+:::: {.column width="50%"}
+::: {.fragment}
 
-- handles small files well (text, code)
-- file contents are in Git history and will be shared
+### Git
+
+- handles **small files** well (text, code)
+- file contents are in Git history and will be **shared**
 - Shared with every dataset clone
-- Useful: Small, non-binary, frequently modified files 
-:::
-::: {.column width="50%"}
-#### git-annex
-
-- handles all types and sizes of files well
-- file contents are in the annex. Not necessarily shared
-- Can be kept private on a per-file level
-- Useful: Large files, private files
+- Useful: small, non-binary, frequently modified files 
 :::
 ::::
+:::: {.column width="50%"}
+::: {.fragment}
+
+### git-annex
+
+- handles **all** types and sizes of files well
+- file contents are in the annex, not necessarily shared
+- **Can be kept private** on a per-file level
+- Useful: Large files, private files
+
+:::
+::::
+:::::
+
+::: {.notes}
+- By default, everything is annexed, i.e., stored in a dataset annex
+:::
+
 
 # Science is build from modular units
 
-## Science is build from modular units
+::: {.fragment}
+::: {style="font-size: 250%"}
+**We need modularity and linking**
+:::
+:::
+
+## Version control beyond single repositories
 
 ::::: {.columns}
 :::: {.column width="50%"}
 ::: {.fragment}
 ### Research as a sequence
-![from the [Datalad Handbook](https://handbook.datalad.org/en/latest/intro/executive_summary.html) (License: [CC BY-SA 4.0](https://handbook.datalad.org/en/latest/licenses.html))](images/datalad-submodule-setup.svg){fig-align="center" width=104%}
+![from the [Datalad Handbook](https://handbook.datalad.org/en/latest/intro/executive_summary.html) (License: [CC BY-SA 4.0](https://handbook.datalad.org/en/latest/licenses.html))](images/datalad-submodule-setup.svg){fig-align="center" width="100%"}
 :::
 ::: {.fragment}
-- Everything is in one big project folder
-- In which modules should we put each step?
-- Prior works (algorithm development, empirical data, etc.) are combined to produce novel results with to goal of a publication
+- Prior works (code development, empirical data, etc.) are combined to produce results with goal of a publication
 - Aggregation across time and contributors
 - Aiming for (but often failing) to be reproducible
+- Often, there is one big project folder
+
+**A single repository is not enough!**
 :::
 ::::
 :::: {.column width="50%"}
 ::: {.fragment}
 ### Research as a cycle
-![[Turing Way!](https://www.datalad.org/)](images/turing-way-research-cycle.svg){fig-align="center" width=80%}
+![@theturingwaycommunity2024 ([CC BY 4.0](https://doi.org/10.5281/zenodo.3332807))](images/turing-way-research-cycle.svg){fig-align="center" width="100%"}
 :::
 ::: {.fragment}
-#### What we need
-- Git can struggle with 1M+ files or 100k+ commits
 - Develop scientific outputs as modular but linked units
 - Independently update and develop data sources
 - Manage access to public / private datasets
@@ -398,19 +432,29 @@ save(ok): . (dataset)                                              action summar
 :::::
 
 ::: {.notes}
-- Project-specific which data to put where
+
+**Why are multiple repositories needed (in science)?**
+
+- Size impacts I/O and logistics
+    - Git can struggle with 1M+ files or 100k+ commits
+    - Filesystems (licensing) can struggle with large numbers of inodes
+- Target audience is different
+    - Public vs. private or personal vs. anonymized data
+- Pace of evolution or access patterns are different
+    - "Factual" raw data vs. choices of (pre-)processing
+    - Completed acquisition vs. ongoing study
 :::
 
-## Dataset nesting
+## Nesting of modular DataLad datsets
+
+![from the [Datalad Handbook](https://handbook.datalad.org/en/latest/basics/101-106-nesting.html) (License: [CC BY-SA 4.0](https://handbook.datalad.org/en/latest/licenses.html))](images/datalad-linkage-subds.svg){fig-align="center" width="90%"}
 
 - seamless nesting of modular datasets in hierarchical super-/sub-dataset relationships
-- based in Git submodules, but mono-repo feeling thanks to recursive operations
-- overcomes scaling issues with large amounts of files (Example: Human Connectome Project)
+- based in Git submodules, but mono-repo feel thanks to recursive operations
+- overcomes scaling issues with large amounts of files (Example: [Human Connectome Project](https://github.com/datalad-datasets/human-connectome-project-openaccess))
 - modularizes research components for transparency, reuse and access management
 
-![from the [Datalad Handbook](https://handbook.datalad.org/en/latest/basics/101-106-nesting.html) (License: [CC BY-SA 4.0](https://handbook.datalad.org/en/latest/licenses.html))](images/datalad-linkage-subds.svg){fig-align="center" width=104%}
-
-## Example
+## Example: Intuitive data analysis structure
 
 ![from the [Datalad Handbook](https://handbook.datalad.org/en/latest/basics/101-106-nesting.html) (License: [CC BY-SA 4.0](https://handbook.datalad.org/en/latest/licenses.html))](images/datalad-linkage-subds.svg){width="40%"}
 
@@ -432,7 +476,7 @@ create(ok): /tmp/myanalysis (dataset)
 :::
 ::: {.column width="45%"}
 ::: {.fragment}
-`-c yoda` initializes useful structure:
+`-c yoda` initializes useful structure (details [here](https://handbook.datalad.org/en/latest/basics/101-127-yoda.html)):
 ```{bash}
 tree
 .
@@ -469,7 +513,7 @@ action summary:
 ::: {.fragment}
 `input` is a regular folder inside `myanalysis`
 ```{bash}
-#| code-line-numbers: "7,8"
+#| code-line-numbers: "7-9"
 tree
 .
 ├── CHANGELOG.md
@@ -488,7 +532,7 @@ tree
 
 :::: {.columns}
 ::: {.column width="55%"}
-::: {.fragment}
+::: {.fragment fragment-index=1}
 ```{bash}
 #| code-line-numbers: "8-12,19"
 git diff HEAD~1
@@ -514,78 +558,141 @@ index 0000000..b9eb768
 :::
 :::
 ::: {.column width="45%"}
-::: {.fragment}
-![from the [Datalad Handbook](https://handbook.datalad.org/en/latest/basics/101-106-nesting.html) (License: [CC BY-SA 4.0](https://handbook.datalad.org/en/latest/licenses.html))](images/datalad-linkage.svg){fig-align="center" width=100%}
+::: {.fragment fragment-index=1}
+![from the [Datalad Handbook](https://handbook.datalad.org/en/latest/basics/101-106-nesting.html) (License: [CC BY-SA 4.0](https://handbook.datalad.org/en/latest/licenses.html))](images/datalad-linkage.svg){fig-align="center" width="100%"}
 :::
 :::
 ::::
 
 :::: {.columns}
 ::: {.column width="55%"}
-::: {.fragment}
-We know **exactly**:
+::: {.fragment fragment-index=2}
 
-1. where the subdataset comes from
-1. which version of the subdataset is installed
-
-- We can update each subdataset independently
+- We know *exactly* where the subdataset comes from
+- We know *exactly* which version of the subdataset is installed
+- We can develop and update each subdataset independently
 :::
 :::
 ::: {.column width="45%"}
-::: {.fragment}
-![[Turing Way!](https://www.datalad.org/)](images/turing-way-provenance.svg){fig-align="center" width=100%}
+::: {.fragment fragment-index=2}
+![[by Scriberia for The Turing Way community (CC BY 4.0)](https://zenodo.org/record/3695300/)](images/turing-way-provenance.svg){fig-align="center" width="80%"}
 :::
 :::
 ::::
 
-# Science is exploratory, multi-stepped and iterative
+# Science is exploratory and iterative
+
+::: {.fragment}
+::: {style="font-size: 250%"}
+**We need provenance**
+:::
+:::
 
 ## Reusing past work is hard
 
-![[Turing Way!](https://www.datalad.org/)](images/phd-comic-scratch.gif){fig-align="center" width=70%}
+![[&copy; Jorge Cham (phdcomics.com)](https://phdcomics.com/comics/archive/phd031214s.gif)](images/phd-comic-scratch.gif){fig-align="center" width="60%"}
 
-> Your number 1 collaborator if yourself from 6 months ago and they don't answer emails.
-
-> "Shit, which version of which script produced these outputs from which version of what data?"
-
-> "Shit, why buttons did I click and in which order did I use all those tools?"
-
-
-## datalad-run
-
-::::: {.fragment}
-:::: {.columns}
-::: {.column width="50%"}
-**datalad run** wraps around anything expressed in a command line call and saves the dataset modifications resulting from the execution.
-:::
-::: {.column width="50%"}
-![](images/datalad-run-basic.svg){fig-align="center" width="80%"}
-:::
+::::: {.columns}
+:::: {.column width="35%"}
+![[by Scriberia for The Turing Way community (CC BY 4.0)](https://zenodo.org/record/3695300/)](images/turing-way-version-control.svg){fig-align="center" width="100%"}
+::::
+:::: {.column width="15%"}
+"*Your number one collaborator is yourself from 6 months ago and they don't answer emails.*"
+::::
+:::: {.column width="35%"}
+![](images/turing-way-readable-code.svg){fig-align="center" width="100%"}
+::::
+:::: {.column width="15%"}
+"*Which version of which script produced these outputs from which version of which data?*"
 ::::
 :::::
 
-::::: {.fragment}
-:::: {.columns}
-::: {.column width="50%"}
+## Establishing provenance with DataLad
+
+::::: {.columns}
+:::: {.column width="50%"}
+::: {.fragment fragment-index=1}
+**datalad run** wraps around anything expressed in a command line call and saves the dataset modifications resulting from the execution.
+:::
+::: {.fragment fragment-index=2}
 **datalad rerun** repeats captured executions. 
 If the outcomes differ, it saves a new state of them.
 :::
-::: {.column width="50%"}
-![](images/datalad-rerun.svg){fig-align="center" width="80%"}
+::: {.fragment fragment-index=2}
+**datalad containers-run** executes command line calls inside a tracked software container and saves the dataset modifications resulting from the execution.
 :::
+
+::: {.fragment fragment-index=3}
+```{bash}
+#| code-line-numbers: "1-6,13-24"
+datalad containers-run \
+  --message "Time series extraction from Locus Coeruleus"
+  --container-name nilearn \
+  --input 'mri/*_bold.nii' \
+  --output 'sub-*/LC_timeseries_run-*.csv' \
+  "python3 code/extract_lc_timeseries.py"
+ 
+-- Git commit --
+  commit 5a7565a640ff6de67e07292a26bf272f1ee4b00e
+  Author:     Adina Wagner adina.wagner@t-online.de
+  AuthorDate: Mon Nov 11 16:15:08 2019 +0100
+
+  [DATALAD RUNCMD] Time series extraction from Locus Coeruleus
+  === Do not change lines below ===
+  {
+   "cmd": "singularity exec --bind {pwd} .datalad/environments/nilearn.simg bash..",
+   "dsid": "92ea1faa-632a-11e8-af29-a0369f7c647e",
+   "inputs": [
+    "mri/*.bold.nii.gz",
+    ".datalad/environments/nilearn.simg"
+   ],
+   "outputs": ["sub-*/LC_timeseries_run-*.csv"],
+   ...
+  }
+  ^^^ Do not change lines above ^^^
+```
+:::
+
+::::
+:::: {.column width="50%"}
+
+::: {.fragment fragment-index=1}
+![](images/datalad-run-basic.svg){fig-align="center" width="100%"}
+:::
+
+::: {.fragment fragment-index=4}
+- Enshrine the analysis in a script and record code execution together with input data, output files and software environment in the execution command
+:::
+::: {.fragment fragment-index=5}
+- Result: Machine readable record about which data, code and software produced a result how, when and why
+:::
+::: {.fragment fragment-index=6}
+- Use the unique identifier (hash) of the execution record to have a machine recompute and verify past work
+:::
+
+::: {.fragment fragment-index=6}
+```{bash}
+#| code-line-numbers: "1"
+datalad rerun 5a7565a640ff6de67
+[INFO   ] run commit 5a7565a640ff6de67; (Time series extraction from Locus Coeruleus)
+[INFO   ] Making sure inputs are available (this may take some time)
+get(ok): mri/sub-01_bold.nii (file)
+        [...]
+[INFO   ] == Command start (output follows) =====
+[INFO   ] == Command exit (modification check follows) =====
+add(ok): sub-01/LC_timeseries_run-*.csv(file)
+        [...]
+```
+:::
+
 ::::
 :::::
 
-::::: {.fragment}
-:::: {.columns}
-::: {.column width="50%"}
-**datalad containers-run** executes command line calls inside a tracked software container and saves the dataset modifications resulting from the execution.
-:::
-::: {.column width="50%"}
+::: {.notes}
+![](images/datalad-rerun.svg){fig-align="center" width="80%"}
+
 ![[DataLad Handbook](https://handbook.datalad.org/en/latest/basics/basics-run.html)](images/datalad-containers-run-basic.svg){fig-align="center" width="80%"}
 :::
-::::
-:::::
 
 ## Example: "Let me just quickly copy those files ..."
 
@@ -666,6 +773,12 @@ bla
 :::::
 
 # Science is collaborative & distributed
+
+::: {.fragment}
+::: {style="font-size: 250%"}
+**We need interoperability & transport logistics**
+:::
+:::
 
 ## Data sharing and collaboration with DataLad
 
@@ -1492,9 +1605,10 @@ datalad siblings
 ::: {.fragment}
 ### Science is complex
 
-- Scientific building blocks are not static: We need version control
+- Scientific units are not static: We need version control
 - Science is modular: We need to link modular datasets
-- Science is collaborative and distributed: We want to share our work and integrate flexibly with diverse infrastructure
+- Science is iterative: We need to establish provenance
+- Science is collaborative and distributed: We want to share our work and integrate with diverse infrastructure
 
 :::
 ::::
@@ -1507,15 +1621,15 @@ datalad siblings
 - Code and data *storage* on various infrastructure (**GIN**, **OSF**, **S3**, **Keeper**, **Dataverse**, and many more!)
 - Project-related communication (ideas, problems, discussions) via **issue boards** on GitLab / GitHub etc.
 - Transparent contributions to code and data via **merge requests** on GitLab (i.e., pull requests on GitHub)
-- *Reproducible procedures using e.g., Make or datalad run commands*
-- *Reproducible computational environments using software containers (e.g., Docker)*
+- **Reproducible procedures** using datalad run, rerun, and containers-run commands (also [Make](https://www.gnu.org/software/make/) etc.)
+- *Reproducible computational environments using software containers (e.g., Docker, Apptainer, etc.)*
 :::
 ::::
 :::::
 
 :::: {.fragment}
-::: {style="font-size: 110%; text-align: center"}
-:sparkles: Towards science as distributed, open-source ~~software~~ *knowledge* development :sparkles: (cf. McElreath, 2020)
+::: {style="font-size: 100%; text-align: center"}
+:sparkles: Towards science as distributed, open-source ~~software~~ *knowledge* development :sparkles: (cf. McElreath, [2020](https://www.youtube.com/watch?v=zwRdO9_GGhY), [2023](https://www.youtube.com/watch?v=8qzVV7eEiaI))
 :::
 ::::
 
