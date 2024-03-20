@@ -1197,7 +1197,7 @@ datalad push --to gitlab
 ::::
 :::::
 
-## Share and develop ~~data~~ *anything* like source code
+## Consume datasets like source code
 
 ::::: {.columns}
 :::: {.column width="50%"}
@@ -1268,7 +1268,8 @@ get(ok): dataset_description.json (file) [from gin-src...]
 
 ::::: {.columns}
 :::: {.column width="50%"}
-::: {.fragment}
+::: {.fragment .fade-in-then-semi-out}
+
 ### Science is complex
 
 - Scientific units are not static: We need version control
@@ -1277,10 +1278,20 @@ get(ok): dataset_description.json (file) [from gin-src...]
 - Science is collaborative and distributed: We want to share our work and integrate with diverse infrastructure
 
 :::
+::: {.fragment .fade-in-then-semi-out}
+
+### DataLad: Decentralized management of digital objects for open science
+
+- DataLad can version control arbitrary datasets
+- DataLad links modular version-controlled datasets
+- DataLad establishes provenance and transparency
+- DataLad integrates with diverse infrastructure
+
+:::
 ::::
 :::: {.column width="50%"}
-::: {.fragment}
-### Technical solutions are already available!
+::: {.fragment .fade-in-then-semi-out}
+### Develop *everything* like source code
 
 - Code and data *management* using **Git** and **DataLad** (free, open-source command-line tools)
 - Code and data *sharing* via flexible repository hosting services (**GitLab, GitHub, GIN**, etc.)
@@ -1324,9 +1335,11 @@ get(ok): dataset_description.json (file) [from gin-src...]
 - ["Research Data Management with DataLad"](https://www.youtube.com/playlist?list=PLEQHbPfpVqU5sSVrlwxkP0vpoOpgogg5j) | Recording of a full-day workshop on YouTube
 - [Datalad on YouTube](https://www.youtube.com/c/DataLad) | Recorded workshops, tutorials and talks on DataLad
 
+::: {.fragment}
 ### Learn both (disclaimer: shameless plug :see_no_evil:)
 
-- Full-semester course on ["Version control of code and data using Git and DataLad"](https://lennartwittkuhn.com/versioncontrol-course-uhh-ws23/) in winter semester 2023/24 at University of Hamburg (generously funded by the [Digital and Data Literacy in Teaching Lab](https://www.isa.uni-hamburg.de/en/ddlitlab.html) program)
+Full-semester course on ["Version control of code and data using Git and DataLad"](https://lennartwittkuhn.com/versioncontrol-course-uhh-ws23/) (v2.0!) in summer semester 2024 at University of Hamburg (generously funded by the [Digital and Data Literacy in Teaching Lab](https://www.isa.uni-hamburg.de/en/ddlitlab.html) program) with many open educational resources ([online guide](https://lennartwittkuhn.com/version-control-book/), quizzes and exercises)
+:::
 
 ## References
 
@@ -1356,8 +1369,6 @@ get(ok): dataset_description.json (file) [from gin-src...]
 
 ![](images/mpib-logo.png){width=70%}
 :::
-
-{{< fa image >}} **Images:** [Scriberia with The Turing Way community](https://doi.org/10.5281/zenodo.3332807) (License: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/))
 
 {{< fa display >}} **Slides:** [{{< var website >}}]({{< var website >}})
 
