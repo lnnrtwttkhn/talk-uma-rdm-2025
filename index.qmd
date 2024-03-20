@@ -75,15 +75,35 @@ execute:
 
 ::::
 :::: {.column width="30%"}
-**Slides and presentations on DataLad** by Dr. Adina Wagner, e.g., "DataLad - Decentralized Management of Digital Objects for Open Science" [@wagner2024] and [on YouTube](https://www.youtube.com/c/DataLad)
+**Slides and presentations** by Dr. Adina Wagner and the DataLad team, e.g., "DataLad - Decentralized Management of Digital Objects for Open Science" [@wagner2024]
 ::::
 :::: {.column width="15%"}
-![[DataLad Handbook](https://handbook.datalad.org/en/latest/) by @wagner2022 ([CC BY-SA 4.0](https://handbook.datalad.org/en/latest/licenses.html))](images/datalad-handbook-logo.svg){width=100% fig-align="center"}
+![[DataLad Handbook](https://handbook.datalad.org/en/latest/)<br/>([CC BY-SA 4.0](https://handbook.datalad.org/en/latest/licenses.html))](images/datalad-handbook-logo.svg){width=100% fig-align="center"}
 ::::
 :::: {.column width="25%"}
 The **DataLad Handbook** by @wagner2022 is a comprehensive educational resource for data management with DataLad.
 ::::
 :::::
+
+:::::: {.fragment}
+::::: {.columns}
+:::: {.column width="55%"}
+#### Papers
+
+- Wilson et al. (2014). [Best practices for scientific computing](https://doi.org/10.1371/journal.pbio.1001745). *PLOS Biology*.
+- Wilson et al. (2017). [Good enough practices in scientific computing](https://doi.org/10.1371/journal.pcbi.1005510). *PLOS Computational Biology*.
+- Lowndes et al. (2017). [Our path to better science in less time using open data science tools](https://doi.org/10.1038/s41559-017-0160). *Nature Ecology Evolution*.
+::::
+:::: {.column width="40%"}
+#### Talks
+
+- Richard McElreath (2020). [Science as amateur software development](https://www.youtube.com/watch?v=zwRdO9_GGhY). YouTube
+- Russ Poldrack (2020). [Toward a Culture of Computational Reproducibility](https://www.youtube.com/watch?v=XjW3t-qXAiE). YouTube
+
+... and many more!
+::::
+:::::
+::::::
 
 ## Agenda
 
