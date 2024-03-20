@@ -255,6 +255,7 @@ Sadly, Git does not handle large files well.
 - free, [open-source](https://github.com/datalad/datalad) command-line tool
 - builds on top of [Git](https://git-scm.com/) and [git-annex](https://git-annex.branchable.com/)
 - **allows to version control arbitrarily large datasets** ^[see DataLad dataset of 80TB / 15 million files from the Human Connectome Project (see [details](https://handbook.datalad.org/en/latest/usecases/HCP_dataset.html#usecase-hcp-dataset))]
+- [DataLad Python API](http://docs.datalad.org/en/stable/modref.html): Use DataLad in your Python code
 - graphical user interface exists: [DataLad Gooey](http://docs.datalad.org/projects/gooey/en/latest/index.html)
 
 ![](images/datalad-sandwich.svg){fig-align="center" width=35%}
