@@ -200,7 +200,9 @@ The **DataLad Handbook** by @wagner2022 is a comprehensive educational resource 
 
 {{< fa code-pull-request >}} work on parallel "branches" & flexibly "merge" them
 
-![[by Scriberia for The Turing Way community (CC BY 4.0)](https://zenodo.org/record/3695300/files/VersionControl.jpg?download=1)](images/turing-way-version-control.svg){width=80% fig-align="center"}
+
+
+![by @theturingwaycommunity2024 ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/))](images/turing-way-version-control.svg){width=80% fig-align="center"}
 :::
 ::::
 
@@ -216,7 +218,7 @@ The **DataLad Handbook** by @wagner2022 is a comprehensive educational resource 
 
 {{< fa box-open >}} make your repo public and openly share your work
 
-![[by Scriberia for The Turing Way community (CC BY 4.0)](https://zenodo.org/record/3695300/files/FirstPullRequest.jpg?download=1)](images/turing-way-pull-request.svg){width=84% fig-align="center"}
+![by @theturingwaycommunity2024 ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/))](images/turing-way-pull-request.svg){width=84% fig-align="center"}
 :::
 ::::
 
@@ -228,7 +230,7 @@ The **DataLad Handbook** by @wagner2022 is a comprehensive educational resource 
 
 ::: {.column width="50%"}
 ::: {.fragment}
-![[git-scm.com](https://git-scm.com/) (Logo by Jason Long; License: [CC BY 3.0 Unported](https://git-scm.com/downloads/logos))](images/git-logo-full.svg){fig-align="center" width="40%"}
+![[git-scm.com](https://git-scm.com/) (by Jason Long; [CC BY 3.0 Unported](https://git-scm.com/downloads/logos))](images/git-logo-full.svg){fig-align="center" width="40%"}
 
 - most popular version control system
 - free, [open-source](https://github.com/git) command-line tool
@@ -247,7 +249,7 @@ Sadly, Git does not handle large files well.
 
 ::: {.column width="50%"}
 ::: {.fragment}
-![[datalad.org](https://www.datalad.org/)](images/datalad-logo-full.svg){fig-align="center" width="38%"}
+![[datalad.org](https://www.datalad.org/) (from the [DataLad Handbook](https://handbook.datalad.org/en/latest/index.html) by @wagner2022; [CC BY-SA 4.0](https://handbook.datalad.org/en/latest/licenses.html))](images/datalad-logo-full.svg){fig-align="center" width="38%"}
 
 - "Git for (large) data"
 - free, [open-source](https://github.com/datalad/datalad) command-line tool
@@ -284,13 +286,13 @@ Single subject epoch (block) auditory fMRI activation data
 :::
 
 ::: {.fragment .fade-in-then-semi-out}
-![[Brain Imaging Data Structure (BIDS)](https://bids.neuroimaging.io/) @gorgolewski2016 (License: [CC BY 4.0](https://github.com/bids-standard/bids-specification?tab=CC-BY-4.0-1-ov-file#readme))](images/bids-logo.svg){fig-align="center" width=70%}
+![[Brain Imaging Data Structure (BIDS)](https://bids.neuroimaging.io/) @gorgolewski2016 ([CC BY 4.0](https://github.com/bids-standard/bids-specification?tab=CC-BY-4.0-1-ov-file#readme))](images/bids-logo.svg){fig-align="center" width=70%}
 :::
 ::::
 :::: {.column width="50%"}
 
 ::: {.fragment .fade-in-then-semi-out}
-![[Brain Imaging Data Structure (BIDS)](https://bids.neuroimaging.io/) @gorgolewski2016 (License: [CC BY 4.0](https://www.nature.com/articles/sdata201644#rightslink))](images/bids-overview.png){fig-align="center" width=100%}
+![[Brain Imaging Data Structure (BIDS)](https://bids.neuroimaging.io/) @gorgolewski2016 ([CC BY 4.0](https://www.nature.com/articles/sdata201644#rightslink))](images/bids-overview.png){fig-align="center" width=100%}
 
 ```{bash}
 tree
@@ -322,7 +324,7 @@ Dataset from Functional Imaging Laboratory, UCL Queen Square Institute of Neurol
 :::: {.columns}
 ::: {.column width="50%"}
 ::: {.fragment}
-![from the [Datalad Handbook](https://handbook.datalad.org/en/latest/intro/executive_summary.html) (License: [CC BY-SA 4.0](https://handbook.datalad.org/en/latest/licenses.html))](images/datalad-dataset.svg){fig-align="center" width=84%}
+![from the [DataLad Handbook](https://handbook.datalad.org/en/latest/index.html) by @wagner2022 ([CC BY-SA 4.0](https://handbook.datalad.org/en/latest/licenses.html))](images/datalad-dataset.svg){fig-align="center" width=84%}
 
 ```{bash}
 datalad create neuro-data
@@ -348,7 +350,7 @@ create(ok): /tmp/neuro-data (dataset)
 :::
 ::: {.column width="50%"}
 ::: {.fragment}
-![from the [Datalad Handbook](https://handbook.datalad.org/en/latest/intro/executive_summary.html) (License: [CC BY-SA 4.0](https://handbook.datalad.org/en/latest/licenses.html))](images/datalad-local_wf.svg){fig-align="center" width=100%}
+![from the [DataLad Handbook](https://handbook.datalad.org/en/latest/index.html) by @wagner2022 ([CC BY-SA 4.0](https://handbook.datalad.org/en/latest/licenses.html))](images/datalad-local_wf.svg){fig-align="center" width=100%}
 
 ```{bash}
 datalad save -m "save neuro data"
@@ -386,7 +388,7 @@ save(ok): . (dataset)                                              action summar
 
 ## Data in DataLad datasets are either stored in Git or git-annex
 
-![from the [Datalad Handbook](https://handbook.datalad.org/en/latest/index.html#) (License: [CC BY-SA 4.0](https://handbook.datalad.org/en/latest/licenses.html))](images/datalad-publishing-gitvsannex.svg){fig-align="center" width="70%"}
+![from the [DataLad Handbook](https://handbook.datalad.org/en/latest/index.html) by @wagner2022 ([CC BY-SA 4.0](https://handbook.datalad.org/en/latest/licenses.html))](images/datalad-publishing-gitvsannex.svg){fig-align="center" width="70%"}
 
 ::::: {.columns}
 :::: {.column width="50%"}
@@ -433,7 +435,7 @@ save(ok): . (dataset)                                              action summar
 :::: {.column width="50%"}
 ::: {.fragment}
 ### Research as a sequence
-![from the [Datalad Handbook](https://handbook.datalad.org/en/latest/intro/executive_summary.html) (License: [CC BY-SA 4.0](https://handbook.datalad.org/en/latest/licenses.html))](images/datalad-submodule-setup.svg){fig-align="center" width="100%"}
+![from the [DataLad Handbook](https://handbook.datalad.org/en/latest/index.html) by @wagner2022 ([CC BY-SA 4.0](https://handbook.datalad.org/en/latest/licenses.html))](images/datalad-submodule-setup.svg){fig-align="center" width="100%"}
 :::
 ::: {.fragment}
 - Prior works (code development, empirical data, etc.) are combined to produce results with goal of a publication
@@ -447,7 +449,7 @@ save(ok): . (dataset)                                              action summar
 :::: {.column width="50%"}
 ::: {.fragment}
 ### Research as a cycle
-![@theturingwaycommunity2024 ([CC BY 4.0](https://doi.org/10.5281/zenodo.3332807))](images/turing-way-research-cycle.svg){fig-align="center" width="100%"}
+![by @theturingwaycommunity2024 ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/))](images/turing-way-research-cycle.svg){fig-align="center" width="100%"}
 :::
 ::: {.fragment}
 - Develop scientific outputs as modular but linked units
@@ -473,7 +475,7 @@ save(ok): . (dataset)                                              action summar
 
 ## Nesting of modular DataLad datsets
 
-![from the [Datalad Handbook](https://handbook.datalad.org/en/latest/basics/101-106-nesting.html) (License: [CC BY-SA 4.0](https://handbook.datalad.org/en/latest/licenses.html))](images/datalad-linkage-subds.svg){fig-align="center" width="90%"}
+![from the [DataLad Handbook](https://handbook.datalad.org/en/latest/index.html) by @wagner2022 ([CC BY-SA 4.0](https://handbook.datalad.org/en/latest/licenses.html))](images/datalad-linkage-subds.svg){fig-align="center" width="90%"}
 
 - seamless nesting of modular datasets in hierarchical super-/sub-dataset relationships
 - based in Git submodules, but mono-repo feel thanks to recursive operations
@@ -482,7 +484,7 @@ save(ok): . (dataset)                                              action summar
 
 ## Example: Intuitive data analysis structure
 
-![from the [Datalad Handbook](https://handbook.datalad.org/en/latest/basics/101-106-nesting.html) (License: [CC BY-SA 4.0](https://handbook.datalad.org/en/latest/licenses.html))](images/datalad-linkage-subds.svg){width="40%"}
+![from the [DataLad Handbook](https://handbook.datalad.org/en/latest/index.html) by @wagner2022 ([CC BY-SA 4.0](https://handbook.datalad.org/en/latest/licenses.html))](images/datalad-linkage-subds.svg){width="40%"}
 
 :::: {.columns}
 ::: {.column width="55%"}
@@ -585,7 +587,7 @@ index 0000000..b9eb768
 :::
 ::: {.column width="45%"}
 ::: {.fragment fragment-index=1}
-![from the [Datalad Handbook](https://handbook.datalad.org/en/latest/basics/101-106-nesting.html) (License: [CC BY-SA 4.0](https://handbook.datalad.org/en/latest/licenses.html))](images/datalad-linkage.svg){fig-align="center" width="100%"}
+![from the [DataLad Handbook](https://handbook.datalad.org/en/latest/index.html) by @wagner2022 ([CC BY-SA 4.0](https://handbook.datalad.org/en/latest/licenses.html))](images/datalad-linkage.svg){fig-align="center" width="100%"}
 :::
 :::
 ::::
@@ -601,7 +603,7 @@ index 0000000..b9eb768
 :::
 ::: {.column width="45%"}
 ::: {.fragment fragment-index=2}
-![[by Scriberia for The Turing Way community (CC BY 4.0)](https://zenodo.org/record/3695300/)](images/turing-way-provenance.svg){fig-align="center" width="80%"}
+![by @theturingwaycommunity2024 ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/))](images/turing-way-provenance.svg){fig-align="center" width="80%"}
 :::
 :::
 ::::
@@ -620,13 +622,13 @@ index 0000000..b9eb768
 
 ::::: {.columns}
 :::: {.column width="35%"}
-![[by Scriberia for The Turing Way community (CC BY 4.0)](https://zenodo.org/record/3695300/)](images/turing-way-version-control.svg){fig-align="center" width="100%"}
+![by @theturingwaycommunity2024](images/turing-way-version-control.svg){fig-align="center" width="100%"}
 ::::
 :::: {.column width="15%"}
 "*Your number one collaborator is yourself from 6 months ago and they don't answer emails.*"
 ::::
 :::: {.column width="35%"}
-![](images/turing-way-readable-code.svg){fig-align="center" width="100%"}
+![by @theturingwaycommunity2024 ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/))](images/turing-way-readable-code.svg){fig-align="center" width="100%"}
 ::::
 :::: {.column width="15%"}
 "*Which version of which script produced these outputs from which version of which data?*"
@@ -683,7 +685,7 @@ datalad containers-run \
 :::: {.column width="50%"}
 
 ::: {.fragment fragment-index=1}
-![](images/datalad-run-basic.svg){fig-align="center" width="100%"}
+![from the [DataLad Handbook](https://handbook.datalad.org/en/latest/index.html) by @wagner2022 ([CC BY-SA 4.0](https://handbook.datalad.org/en/latest/licenses.html))](images/datalad-run-basic.svg){fig-align="center" width="100%"}
 :::
 
 ::: {.fragment fragment-index=4}
@@ -715,9 +717,9 @@ add(ok): sub-01/LC_timeseries_run-*.csv(file)
 :::::
 
 ::: {.notes}
-![](images/datalad-rerun.svg){fig-align="center" width="80%"}
+![from the [DataLad Handbook](https://handbook.datalad.org/en/latest/index.html) by @wagner2022 ([CC BY-SA 4.0](https://handbook.datalad.org/en/latest/licenses.html))](images/datalad-rerun.svg){fig-align="center" width="80%"}
 
-![[DataLad Handbook](https://handbook.datalad.org/en/latest/basics/basics-run.html)](images/datalad-containers-run-basic.svg){fig-align="center" width="80%"}
+![from the [DataLad Handbook](https://handbook.datalad.org/en/latest/index.html) by @wagner2022 ([CC BY-SA 4.0](https://handbook.datalad.org/en/latest/licenses.html))](images/datalad-containers-run-basic.svg){fig-align="center" width="80%"}
 :::
 
 # Science is collaborative & distributed
@@ -763,7 +765,7 @@ tree
 
 **Challenge:** Scientific workflows are idiosyncratic across institutions / departments / labs / any two scientists
 
-![](images/datalad-services-only.png){fig-align="center" width="100%"}
+![from the [DataLad Handbook](https://handbook.datalad.org/en/latest/index.html) by @wagner2022 ([CC BY-SA 4.0](https://handbook.datalad.org/en/latest/licenses.html))](images/datalad-services-only.png){fig-align="center" width="95%"}
 
 :::
 ::::
@@ -774,7 +776,7 @@ tree
 - With DataLad, you can **share data like you share code**: As version-controlled datasets via repository hosting services
 - DataLad datsets can be cloned, pushed and updated from and to a wide range of remote hosting services
 
-![](images/datalad-collaboration.svg){fig-align="center" width="100%"}
+![from the [DataLad Handbook](https://handbook.datalad.org/en/latest/index.html) by @wagner2022 ([CC BY-SA 4.0](https://handbook.datalad.org/en/latest/licenses.html))](images/datalad-collaboration.svg){fig-align="center" width="100%"}
 
 ## Interoperability with a range of hosting services
 
@@ -788,7 +790,7 @@ DataLad is built to **maximize interoperability** and **streamline routines acro
 - Data can't be stored in the repository hosting service but can be kept in almost any third party storage
 - Publication dependencies automate interactions between both paces
 
-![see DataLad Handbook: ["Beyond shared infrastructure"](https://handbook.datalad.org/en/latest/basics/101-138-sharethirdparty.html)](images/datalad-publishing-network.svg){fig-align="center" width="55%"}
+![from the [DataLad Handbook](https://handbook.datalad.org/en/latest/index.html) by @wagner2022 ([CC BY-SA 4.0](https://handbook.datalad.org/en/latest/licenses.html))](images/datalad-publishing-network.svg){fig-align="center" width="55%"}
 
 ## Special cases
 
@@ -798,7 +800,7 @@ DataLad is built to **maximize interoperability** and **streamline routines acro
 
 #### Repositories with annex support
 
-![](images/datalad-publishing-network-publish-gin.svg){fig-align="center" width="100%"}
+![from the [DataLad Handbook](https://handbook.datalad.org/en/latest/index.html) by @wagner2022 ([CC BY-SA 4.0](https://handbook.datalad.org/en/latest/licenses.html))](images/datalad-publishing-network-publish-gin.svg){fig-align="center" width="100%"}
 
 ::::: {.columns}
 :::: {.column width="20%"}
@@ -817,7 +819,7 @@ DataLad is built to **maximize interoperability** and **streamline routines acro
 
 #### Special remotes with repositories
 
-![](images/datalad-publishing-network-publish-osf.svg){fig-align="center" width="100%"}
+![from the [DataLad Handbook](https://handbook.datalad.org/en/latest/index.html) by @wagner2022 ([CC BY-SA 4.0](https://handbook.datalad.org/en/latest/licenses.html))](images/datalad-publishing-network-publish-osf.svg){fig-align="center" width="100%"}
 
 ::::: {.columns}
 :::: {.column width="20%"}
@@ -1252,7 +1254,7 @@ datalad siblings configure --name gitlab --publish-depends SIBLING
 
 Redundancy: DataLad gets data from available sources
 
-![](images/datalad-collaboration.svg){fig-align="center" width="100%"}
+![from the [DataLad Handbook](https://handbook.datalad.org/en/latest/index.html) by @wagner2022 ([CC BY-SA 4.0](https://handbook.datalad.org/en/latest/licenses.html))](images/datalad-collaboration.svg){fig-align="center" width="100%"}
 
 Clone the dataset from GitLab:
 
