@@ -1260,7 +1260,7 @@ Clone the dataset from GitLab:
 
 ```{bash}
 datalad clone https://git.mpib-berlin.mpg.de/wittkuhn/neuro-data
-````
+```
 
 Access to special remotes needs to be configured:
 
