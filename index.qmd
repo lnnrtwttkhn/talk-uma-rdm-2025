@@ -351,7 +351,7 @@ create(ok): /tmp/neuro-data (dataset)
 :::
 ::: {.column width="50%"}
 ::: {.fragment}
-![from the [DataLad Handbook](https://handbook.datalad.org/en/latest/index.html) by @wagner2022 ([CC BY-SA 4.0](https://handbook.datalad.org/en/latest/licenses.html))](images/datalad-local_wf.svg){fig-align="center" width=100%}
+![from the [DataLad Handbook](https://handbook.datalad.org/en/latest/index.html) by @wagner2022 ([CC BY-SA 4.0](https://handbook.datalad.org/en/latest/licenses.html))](images/datalad-local-wf.svg){fig-align="center" width=100%}
 
 ```{bash}
 datalad save -m "save neuro data"
@@ -624,13 +624,13 @@ index 0000000..b9eb768
 
 ::::: {.columns}
 :::: {.column width="35%"}
-![by @theturingwaycommunity2024](images/turing-way-version-control.svg){fig-align="center" width="100%"}
+![by @theturingwaycommunity2024](images/turing-way-version-control.svg){fig-align="center" width="85%"}
 ::::
 :::: {.column width="15%"}
 "*Your number one collaborator is yourself from 6 months ago and they don't answer emails.*"
 ::::
 :::: {.column width="35%"}
-![by @theturingwaycommunity2024 ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/))](images/turing-way-readable-code.svg){fig-align="center" width="100%"}
+![by @theturingwaycommunity2024](images/turing-way-readable-code.svg){fig-align="center" width="80%"}
 ::::
 :::: {.column width="15%"}
 "*Which version of which script produced these outputs from which version of which data?*"
@@ -1008,19 +1008,15 @@ datalad push --to keeper
 - no storage limitation (on datasets or individual files)
 - flexible licensing
 
-#### DataLad - Dataverse integration
-
-![[DataLad - Dataverse integration](http://docs.datalad.org/projects/dataverse/en/latest/)](images/datalad-dataverse.png){fig-align="center" width="60%"}
-
-- push / clone DataLad datasets to / from Edmond
-- primarily for one-time dataset publication and consumption, not extensive collaboration
-
+::::
+:::: {.fragment}
 #### Two modes:
 
 1. **annex mode** (default): non-human readable representation of the dataset that includes Git history and annexed data
 
 1. **filetree mode**: human readable single snapshot of your dataset "as it currently is" that does not include history of annexed files (but Git history)
-:::
+
+::::
 ::::
 :::: {.column width="50%"}
 ::: {.fragment}
@@ -1032,16 +1028,7 @@ datalad add-sibling-dataverse https://edmond.mpg.de/ \
 doi:10.17617/3.8LDVXK --mode filetree
 ```
 
-2. Provide Dataverse API token
-
-```{console}
-A dataverse API token is required for access. \
-Find it at https://edmond.mpg.de by clicking on your name \
-at the top right corner and then clicking on API Token \
-token: 
-```
-
-3. Push dataset to Edmond / Dataverse
+2. Push dataset to Edmond / Dataverse
 
 ```{bash}
 datalad push --to dataverse
@@ -1052,6 +1039,10 @@ datalad push --to dataverse
 :::
 ::::
 :::::
+
+::: {.notes}
+![[DataLad - Dataverse integration](http://docs.datalad.org/projects/dataverse/en/latest/)](images/datalad-dataverse.png){fig-align="center" width="60%"}
+:::
 
 ## Sharing DataLad datasets via ownCloud / Nextcloud
 
@@ -1205,7 +1196,7 @@ datalad siblings add --dataset . --name gitlab \
 datalad push --to gitlab
 ```
 
-![Access the dataset [on GitLab](https://git.mpib-berlin.mpg.de/wittkuhn/neuro-data)](images/gitlab-screenshot.png){fig-align="center" width="100%"}
+![Access the dataset [on GitLab](https://git.mpib-berlin.mpg.de/wittkuhn/neuro-data)](images/gitlab-screenshot.png){fig-align="center" width="80%"}
 
 :::
 ::::
