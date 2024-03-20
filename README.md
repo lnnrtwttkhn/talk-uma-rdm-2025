@@ -10,6 +10,10 @@
 Source code for slides for talk on "Reproducible Research Data Management with DataLad" by Dr. Lennart Wittkuhn, held at the "6th RDM-Workshop 2024 on Research Data Management in the Max Planck Society" on March 20th 2024 in Heidelberg, Germany (hybrid).
 For details, see <https://rdm.mpdl.mpg.de/mpdl-services/workshops/fdm-workshop-2024/vortraege/>
 
+## Feedback
+
+> "*I really liked the integration with MPG infrastructure. That was added value!*"
+
 ## License
 
 [![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC_BY_SA_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
