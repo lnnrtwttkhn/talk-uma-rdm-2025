@@ -14,7 +14,7 @@ license-badge: "[![License: CC BY 4.0](https://img.shields.io/badge/License-CC_B
 doi: 10.5281/zenodo.8300151
 doi-badge: "[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.8300151.svg)](https://doi.org/10.5281/zenodo.8300151)"
 homepage: https://lennartwittkuhn.com/
-email: "lennart.wittkuhn@uni-hamburg.de"
+email: "wittkuhn@mpib-berlin.mpg.de"
 mailto: "mailto:{{< var email >}}"
 twitter: https://twitter.com/lnnrtwttkhn
 mastodon: https://fediscience.org/@lnnrtwttkhn
