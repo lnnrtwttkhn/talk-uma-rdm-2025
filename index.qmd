@@ -287,6 +287,10 @@ tree
 4 directories, 7 files
 ```
 
+::: {style="font-size: 50%"}
+Dataset from Functional Imaging Laboratory, UCL Queen Square Institute of Neurology, London, UK ([Source](https://www.fil.ion.ucl.ac.uk/spm/data/auditory/))
+:::
+
 :::
 ::::
 :::::
@@ -951,7 +955,7 @@ chunk=50MiB encryption=none target=neuro-data
 datalad push --to keeper
 ```
 
-![](https://owncloud.gwdg.de/index.php/s/VcH0w7sGIcYonld)](images/keeper-screenshot.png){fig-align="center" width="100%"}
+![](images/keeper-screenshot.png){fig-align="center" width="100%"}
 
 :::
 ::::
@@ -1185,7 +1189,7 @@ datalad siblings
 
 :::: {.fragment}
 ::: {style="font-size: 100%; text-align: center"}
-:sparkles: Towards science as distributed, open-source ~~software~~ *knowledge* development :sparkles: (cf. McElreath, [2020](https://www.youtube.com/watch?v=zwRdO9_GGhY), [2023](https://www.youtube.com/watch?v=8qzVV7eEiaI))
+:sparkles: **Towards science as distributed, open-source ~~software~~ *knowledge* development** :sparkles: (cf. McElreath, [2020](https://www.youtube.com/watch?v=zwRdO9_GGhY), [2023](https://www.youtube.com/watch?v=8qzVV7eEiaI))
 :::
 ::::
 
