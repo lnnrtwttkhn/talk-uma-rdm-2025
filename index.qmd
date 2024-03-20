@@ -107,27 +107,29 @@ The **DataLad Handbook** by @wagner2022 is a comprehensive educational resource 
 
 ## Agenda
 
-1. **Scientific workflows with DataLad**
+### 1. Scientific workflows with DataLad
     
-    1.1 Version Control
-    
-    1.2 Modularity & Linking
-    
-    1.3 Provenance
-    
-    1.4 Collaboration & Interoperability
+1.1 Version Control
 
-2. **Integrating DataLad with MPS infrastructure (and beyond)**
-    
-    2.1 Keeper
-    
-    2.2 Edmond
-    
-    2.3 ownCloud / nextCloud
-    
-    2.4 GIN
+1.2 Modularity & Linking
 
-3. **Summary & Discussion**
+1.3 Provenance
+
+1.4 Collaboration & Interoperability
+
+### 2. Integrating DataLad with MPS infrastructure (and beyond)
+    
+2.1 Keeper
+
+2.2 Edmond
+
+2.3 ownCloud / nextCloud
+
+2.4 GIN
+
+2.5 GitLab
+
+### 3. Summary & Discussion
 
 # Scientific building blocks are not static
 
