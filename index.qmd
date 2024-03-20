@@ -1000,11 +1000,11 @@ datalad push --to keeper
 :::: {.column width="50%"}
 ::: {.fragment}
 
-1. Create a Dataverse sibling fpr Edmond:
+1. Create a Dataverse sibling for Edmond:
 
 ```{bash}
 datalad add-sibling-dataverse https://edmond.mpg.de/ \
-doi:10.17617/3.PROXB0 --mode filetree
+doi:10.17617/3.8LDVXK --mode filetree
 ```
 
 2. Provide Dataverse API token
@@ -1021,6 +1021,8 @@ token:
 ```{bash}
 datalad push --to dataverse
 ```
+
+![](images/edmond-screenshot.png){fig-align="center" width="100%"}
 
 :::
 ::::
@@ -1081,7 +1083,7 @@ datalad create-sibling-webdav --dataset . \
 datalad push --to owncloud-gwdg
 ```
 
-![Access the dataset [on owncloud.gwdg.de](https://owncloud.gwdg.de/index.php/s/VcH0w7sGIcYonld)](images/owncloud-screenshot.png){fig-align="center" width="100%"}
+![Access the dataset [on owncloud.gwdg.de](https://owncloud.gwdg.de/index.php/s/s1DYXQV2Mqk9YJq)](images/owncloud-screenshot.png){fig-align="center" width="100%"}
 
 :::
 ::::
