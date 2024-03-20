@@ -23,3 +23,6 @@ images:
 .PHONY: clean
 clean:
 	rm -rf _site $(IMAGES_DIR)*
+
+dataset: code/create_dataset.sh
+	. code/create_dataset.sh

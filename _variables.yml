@@ -1,5 +1,5 @@
 title: "Reproducible Research Data Management with DataLad"
-subtitle: "6th RDM-Workshop 2024 on Research Data Management in the Max Planck Society"
+subtitle: "6<sup>th</sup> RDM-Workshop 2024 on Research Data Management in the Max Planck Society"
 project-name: "talk-mps-fdm-2024"
 footer: "{{< var title >}}"
 source: "https://github.com/lnnrtwttkhn/{{< var project-name >}}"
@@ -8,13 +8,13 @@ issues: "https://github.com/lnnrtwttkhn/{{< var project-name >}}/issues"
 # license-long: "[MIT](https://opensource.org/license/mit/)"
 # license-short: "[MIT](https://opensource.org/license/mit/)"
 # license-badge: "[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)"
-license-long: "Creative Commons Attribution 4.0 International ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/))"
-license-short: "[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)"
-license-badge: "[![License: CC BY 4.0](https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)"
+license-long: "Creative Commons Attribution-ShareAlike 4.0 ([CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/))"
+license-short: "[CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)"
+license-badge: "[![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC_BY_SA_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-sa/4.0/)"
 doi: 10.5281/zenodo.8300151
 doi-badge: "[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.8300151.svg)](https://doi.org/10.5281/zenodo.8300151)"
 homepage: https://lennartwittkuhn.com/
-email: "lennart.wittkuhn@uni-hamburg.de"
+email: "wittkuhn@mpib-berlin.mpg.de"
 mailto: "mailto:{{< var email >}}"
 twitter: https://twitter.com/lnnrtwttkhn
 mastodon: https://fediscience.org/@lnnrtwttkhn

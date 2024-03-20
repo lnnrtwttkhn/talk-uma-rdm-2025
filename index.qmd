@@ -9,6 +9,9 @@ subtitle: |
   {{< var license-badge >}}
   {{< var doi-badge >}}
 date: 2024-03-20
+engine: knitr
+execute:
+  eval: false
 ---
 
 ## About
@@ -64,6 +67,1279 @@ date: 2024-03-20
 :::
 ::::
 
+## Acknowledgements and further reading
+
+::::: {.columns}
+:::: {.column width="30%"}
+![[Slides](https://files.inm7.de/adina/talks/html/hamburg_2024.html#/) by @wagner2024 ([CC BY-SA 4.0](https://github.com/datalad-handbook/datalad-course/blob/main/LICENSE))](images/datalad-talk-screenshot.png){width=100% fig-align="center"}
+
+::::
+:::: {.column width="30%"}
+**Slides and presentations** by Dr. Adina Wagner and the DataLad team, e.g., "DataLad - Decentralized Management of Digital Objects for Open Science" [@wagner2024]
+::::
+:::: {.column width="15%"}
+![[DataLad Handbook](https://handbook.datalad.org/en/latest/)<br/>([CC BY-SA 4.0](https://handbook.datalad.org/en/latest/licenses.html))](images/datalad-handbook-logo.svg){width=100% fig-align="center"}
+::::
+:::: {.column width="25%"}
+The **DataLad Handbook** by @wagner2022 is a comprehensive educational resource for data management with DataLad.
+::::
+:::::
+
+:::::: {.fragment}
+::::: {.columns}
+:::: {.column width="55%"}
+#### Papers
+
+- Wilson et al. (2014). [Best practices for scientific computing](https://doi.org/10.1371/journal.pbio.1001745). *PLOS Biology*.
+- Wilson et al. (2017). [Good enough practices in scientific computing](https://doi.org/10.1371/journal.pcbi.1005510). *PLOS Computational Biology*.
+- Lowndes et al. (2017). [Our path to better science in less time using open data science tools](https://doi.org/10.1038/s41559-017-0160). *Nature Ecology Evolution*.
+::::
+:::: {.column width="40%"}
+#### Talks
+
+- Richard McElreath (2020). [Science as amateur software development](https://www.youtube.com/watch?v=zwRdO9_GGhY). YouTube
+- Russ Poldrack (2020). [Toward a Culture of Computational Reproducibility](https://www.youtube.com/watch?v=XjW3t-qXAiE). YouTube
+
+... and many more!
+::::
+:::::
+::::::
+
+## Agenda
+
+### 1. Scientific workflows with DataLad
+    
+1.1 Version Control
+
+1.2 Modularity & Linking
+
+1.3 Provenance
+
+1.4 Collaboration & Interoperability
+
+### 2. Integrating DataLad with MPS infrastructure (and beyond)
+    
+2.1 Keeper
+
+2.2 Edmond
+
+2.3 ownCloud / nextCloud
+
+2.4 GIN
+
+2.5 GitLab
+
+### 3. Summary & Discussion
+
+# Scientific building blocks are not static
+
+::: {.fragment}
+::: {style="font-size: 250%"}
+**We need version control**
+:::
+:::
+
+## Why we need version control
+
+:::: {.columns}
+
+::: {.column width="42%"}
+::: {.fragment}
+... for **code** (text files)
+![](images/phd-comic-version-control-code-cropped-upper.gif)
+:::
+::: {.fragment}
+![[&copy; Jorge Cham (phdcomics.com)](http://phdcomics.com/comics/archive/phd101212s.gif)](images/phd-comic-version-control-code-cropped-lower.gif)
+:::
+:::
+
+::: {.column width="58%"}
+::: {.fragment}
+... for **data** (binary files)
+![[&copy; Jorge Cham (phdcomics.com)](http://phdcomics.com/comics/archive/phd052810s.gif)](images/phd-comic-version-control-data.gif)
+:::
+:::
+::::
+
+::: {.fragment}
+::: {style="font-size: 200%; text-align: center"}
+**If everything is relevant, track everything.**
+:::
+:::
+
+::: {.notes}
+#### Version Control of Code
+- Analysis code, manuscripts and other files evolve
+- Rewrite, fix bugs, add functions, refactor, extend, ...
+
+#### Version Control of Data
+- errors are fixed, data is extended
+- naming standards change
+- an analysis requires only a subset of your data
+
+- Version control is relevant for anyone who wants to track the evolution of digital objects
+:::
+
+## What is version control?
+
+::: {.fragment}
+*"Version control is a systematic approach to record changes made in a [...] set of files, over time. This allows you and your collaborators to track the history, see what changed, and recall specific versions later [...]"* ([Turing Way](https://the-turing-way.netlify.app/reproducible-research/vcs.html))
+:::
+
+::::: {.columns}
+
+:::: {.column width="50%"}
+::: {.fragment}
+{{< fa laptop-code >}} keep track of changes in a directory (a "repository")
+
+{{< fa code-commit >}} take snapshots ("commits") of your repo at any time
+
+{{< fa timeline >}} know the history: what was changed when by whom
+
+{{< fa code-compare >}} compare commits and go back to any previous state
+
+{{< fa code-pull-request >}} work on parallel "branches" & flexibly "merge" them
+
+
+
+![by @theturingwaycommunity2024 ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/))](images/turing-way-version-control.svg){width=80% fig-align="center"}
+:::
+::::
+
+:::: {.column width="50%"}
+::: {.fragment}
+{{< fa upload >}} "push" your repo to a "remote" location & share it
+
+{{< fa brands github >}} share repos on platforms like GitHub or GitLab
+
+{{< fa people-group >}} work together on the same files at the same time
+
+{{< fa pen-to-square >}} others can read, copy, edit and suggest changes
+
+{{< fa box-open >}} make your repo public and openly share your work
+
+![by @theturingwaycommunity2024 ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/))](images/turing-way-pull-request.svg){width=84% fig-align="center"}
+:::
+::::
+
+:::::
+
+## What are Git and DataLad?
+
+:::: {.columns}
+
+::: {.column width="50%"}
+::: {.fragment}
+![[git-scm.com](https://git-scm.com/) (by Jason Long; [CC BY 3.0 Unported](https://git-scm.com/downloads/logos))](images/git-logo-full.svg){fig-align="center" width="40%"}
+
+- most popular version control system
+- free, [open-source](https://github.com/git) command-line tool
+- graphical user interfaces exist, e.g., [GitKraken](https://www.gitkraken.com/)
+- standard tool in the software industry
+- 100 million [GitHub](https://github.com/) users ^[(Source: [Wikipedia](https://en.wikipedia.org/wiki/GitHub))]
+:::
+
+::: {.fragment}
+Sadly, Git does not handle large files well.
+
+![](images/git-snapshot.png){fig-align="center" width=100%}
+:::
+
+:::
+
+::: {.column width="50%"}
+::: {.fragment}
+![[datalad.org](https://www.datalad.org/) (from the [DataLad Handbook](https://handbook.datalad.org/en/latest/index.html) by @wagner2022; [CC BY-SA 4.0](https://handbook.datalad.org/en/latest/licenses.html))](images/datalad-logo-full.svg){fig-align="center" width="38%"}
+
+- "Git for (large) data"
+- free, [open-source](https://github.com/datalad/datalad) command-line tool
+- builds on top of [Git](https://git-scm.com/) and [git-annex](https://git-annex.branchable.com/)
+- **allows to version control arbitrarily large datasets** ^[see DataLad dataset of 80TB / 15 million files from the Human Connectome Project (see [details](https://handbook.datalad.org/en/latest/usecases/HCP_dataset.html#usecase-hcp-dataset))]
+- [DataLad Python API](http://docs.datalad.org/en/stable/modref.html): Use DataLad in your Python code
+- graphical user interface exists: [DataLad Gooey](http://docs.datalad.org/projects/gooey/en/latest/index.html)
+
+![](images/datalad-sandwich.svg){fig-align="center" width=35%}
+
+:::
+:::
+
+::::
+
+## Example Dataset: Brain Imaging Data
+
+Single subject epoch (block) auditory fMRI activation data
+
+::::: {.columns}
+:::: {.column width="50%"}
+
+::: {.fragment .fade-in-then-semi-out}
+::: {layout-ncol=2}
+![](images/mri.png){width=50%}
+
+![](images/brain-anatomical.png){width=40%}
+:::
+:::
+
+::: {.fragment .fade-in-then-semi-out}
+```{bash}
+#| file: code/create_dataset.sh
+```
+:::
+
+::: {.fragment .fade-in-then-semi-out}
+![[Brain Imaging Data Structure (BIDS)](https://bids.neuroimaging.io/) @gorgolewski2016 ([CC BY 4.0](https://github.com/bids-standard/bids-specification?tab=CC-BY-4.0-1-ov-file#readme))](images/bids-logo.svg){fig-align="center" width=70%}
+:::
+::::
+:::: {.column width="50%"}
+
+::: {.fragment .fade-in-then-semi-out}
+![[Brain Imaging Data Structure (BIDS)](https://bids.neuroimaging.io/) @gorgolewski2016 ([CC BY 4.0](https://www.nature.com/articles/sdata201644#rightslink))](images/bids-overview.png){fig-align="center" width=100%}
+
+```{bash}
+tree
+.
+├── CHANGES
+├── README
+├── dataset_description.json
+├── sub-01
+│   ├── anat
+│   │   └── sub-01_T1w.nii
+│   └── func
+│       ├── sub-01_task-auditory_bold.nii
+│       └── sub-01_task-auditory_events.tsv
+└── task-auditory_bold.json
+
+4 directories, 7 files
+```
+
+::: {style="font-size: 50%"}
+Dataset from Functional Imaging Laboratory, UCL Queen Square Institute of Neurology, London, UK ([Source](https://www.fil.ion.ucl.ac.uk/spm/data/auditory/))
+:::
+
+:::
+::::
+:::::
+
+## Version Control with DataLad
+
+:::: {.columns}
+::: {.column width="50%"}
+::: {.fragment}
+![from the [DataLad Handbook](https://handbook.datalad.org/en/latest/index.html) by @wagner2022 ([CC BY-SA 4.0](https://handbook.datalad.org/en/latest/licenses.html))](images/datalad-dataset.svg){fig-align="center" width=84%}
+
+```{bash}
+datalad create neuro-data
+```
+
+<br/>
+<details>
+<summary>View output</summary>
+```{bash}
+#| code-overflow: wrap
+create(error): /tmp/neuro-data (dataset) [will not create a dataset in a non-empty directory, use `--force` option to ignore]
+```
+
+Rerun the command using `--force`:
+
+```{bash}
+datalad create --force neuro-data
+create(ok): /tmp/neuro-data (dataset)
+```
+</details>
+
+:::
+:::
+::: {.column width="50%"}
+::: {.fragment}
+![from the [DataLad Handbook](https://handbook.datalad.org/en/latest/index.html) by @wagner2022 ([CC BY-SA 4.0](https://handbook.datalad.org/en/latest/licenses.html))](images/datalad-local-wf.svg){fig-align="center" width=100%}
+
+```{bash}
+datalad save -m "save neuro data"
+```
+
+<br/>
+<details>
+<summary>View output</summary>
+```{bash}
+add(ok): CHANGES (file)
+add(ok): README (file)
+add(ok): dataset_description.json (file)
+add(ok): sub-01/anat/sub-01_T1w.nii (file)
+add(ok): sub-01/func/sub-01_task-auditory_bold.nii (file)
+add(ok): sub-01/func/sub-01_task-auditory_events.tsv (file)
+add(ok): task-auditory_bold.json (file)
+save(ok): . (dataset)                                              action summary:
+  add (ok: 7)
+  save (ok: 1)
+```
+</details>
+
+:::
+:::
+::::
+
+::: {.notes}
+- DataLad knows two things: Datasets and files
+- Every file you put into a in a dataset can be easily version-controlled, regardless of size
+- Non-complex DataLad core API (easier than Git)
+- Pure Git or git-annex commands (for regular Git or git-annex users, or to use specific functionality)
+- Save meaningful units of change
+- Attach helpful commit messages
+:::
+
+## Data in DataLad datasets are either stored in Git or git-annex
+
+![from the [DataLad Handbook](https://handbook.datalad.org/en/latest/index.html) by @wagner2022 ([CC BY-SA 4.0](https://handbook.datalad.org/en/latest/licenses.html))](images/datalad-publishing-gitvsannex.svg){fig-align="center" width="70%"}
+
+::::: {.columns}
+:::: {.column width="50%"}
+::: {.fragment}
+
+### Git
+
+- handles **small files** well (text, code)
+- file contents are in Git history and will be **shared**
+- Shared with every dataset clone
+- Useful: small, non-binary, frequently modified files 
+:::
+::::
+:::: {.column width="50%"}
+::: {.fragment}
+
+### git-annex
+
+- handles **all** types and sizes of files well
+- file contents are in the annex, not necessarily shared
+- **Can be kept private** on a per-file level
+- Useful: Large files, private files
+
+:::
+::::
+:::::
+
+::: {.notes}
+- By default, everything is annexed, i.e., stored in a dataset annex
+:::
+
+
+# Science is build from modular units
+
+::: {.fragment}
+::: {style="font-size: 250%"}
+**We need modularity and linking**
+:::
+:::
+
+## Version control beyond single repositories
+
+::::: {.columns}
+:::: {.column width="50%"}
+::: {.fragment}
+### Research as a sequence
+![from the [DataLad Handbook](https://handbook.datalad.org/en/latest/index.html) by @wagner2022 ([CC BY-SA 4.0](https://handbook.datalad.org/en/latest/licenses.html))](images/datalad-submodule-setup.svg){fig-align="center" width="100%"}
+:::
+::: {.fragment}
+- Prior works (code development, empirical data, etc.) are combined to produce results with goal of a publication
+- Aggregation across time and contributors
+- Aiming for (but often failing) to be reproducible
+- Often, there is one big project folder
+
+**A single repository is not enough!**
+:::
+::::
+:::: {.column width="50%"}
+::: {.fragment}
+### Research as a cycle
+![by @theturingwaycommunity2024 ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/))](images/turing-way-research-cycle.svg){fig-align="center" width="100%"}
+:::
+::: {.fragment}
+- Develop scientific outputs as modular but linked units
+- Independently update and develop data sources
+- Manage access to public / private datasets
+:::
+::::
+:::::
+
+::: {.notes}
+
+**Why are multiple repositories needed (in science)?**
+
+- Size impacts I/O and logistics
+    - Git can struggle with 1M+ files or 100k+ commits
+    - Filesystems (licensing) can struggle with large numbers of inodes
+- Target audience is different
+    - Public vs. private or personal vs. anonymized data
+- Pace of evolution or access patterns are different
+    - "Factual" raw data vs. choices of (pre-)processing
+    - Completed acquisition vs. ongoing study
+:::
+
+## Nesting of modular DataLad datasets
+
+![from the [DataLad Handbook](https://handbook.datalad.org/en/latest/index.html) by @wagner2022 ([CC BY-SA 4.0](https://handbook.datalad.org/en/latest/licenses.html))](images/datalad-linkage-subds.svg){fig-align="center" width="90%"}
+
+- seamless nesting of modular datasets in hierarchical super-/sub-dataset relationships
+- based in Git submodules, but mono-repo feel thanks to recursive operations
+- overcomes scaling issues with large amounts of files (Example: [Human Connectome Project](https://github.com/datalad-datasets/human-connectome-project-openaccess))
+- modularizes research components for transparency, reuse and access management
+
+## Example: Intuitive data analysis structure
+
+![from the [DataLad Handbook](https://handbook.datalad.org/en/latest/index.html) by @wagner2022 ([CC BY-SA 4.0](https://handbook.datalad.org/en/latest/licenses.html))](images/datalad-linkage-subds.svg){width="40%"}
+
+:::: {.columns}
+::: {.column width="55%"}
+::: {.fragment}
+First, let's create a new data analysis dataset:
+```{bash}
+#| code-line-numbers: "1"
+datalad create -c yoda myanalysis
+[INFO   ] Creating a new annex repo at /tmp/myanalysis
+[INFO   ] Scanning for unlocked files (this may take some time)
+[INFO   ] Running procedure cfg_yoda
+[INFO   ] == Command start (output follows) =====
+[INFO   ] == Command exit (modification check follows) =====
+create(ok): /tmp/myanalysis (dataset)
+```
+:::
+:::
+::: {.column width="45%"}
+::: {.fragment}
+`-c yoda` initializes useful structure (details [here](https://handbook.datalad.org/en/latest/basics/101-127-yoda.html)):
+```{bash}
+tree
+.
+├── CHANGELOG.md
+├── README.md
+└── code
+    └── README.md
+2 directories, 3 files
+```
+:::
+:::
+::::
+
+:::: {.columns}
+::: {.column width="55%"}
+::: {.fragment}
+We install analysis input data as a subdataset to the dataset:
+```{bash}
+#| code-line-numbers: "1"
+datalad clone -d . https://github.com/datalad-handbook/iris_data.git input/
+[INFO   ] Remote origin not usable by git-annex; setting annex-ignore
+install(ok): input (dataset)
+add(ok): input (dataset)
+add(ok): .gitmodules (file)
+save(ok): . (dataset)
+action summary:
+  add (ok: 2)
+  install (ok: 1)
+  save (ok: 1)
+```
+:::
+:::
+::: {.column width="45%"}
+::: {.fragment}
+`input` is a regular folder inside `myanalysis`
+```{bash}
+#| code-line-numbers: "7-9"
+tree
+.
+├── CHANGELOG.md
+├── README.md
+├── code
+│   └── README.md
+└── input
+    └── iris.csv
+3 directories, 4 files
+```
+:::
+:::
+::::
+
+## Modular units with clear provenance
+
+:::: {.columns}
+::: {.column width="55%"}
+::: {.fragment fragment-index=1}
+```{bash}
+#| code-line-numbers: "8-12,19"
+git diff HEAD~1
+diff --git a/.gitmodules b/.gitmodules
+new file mode 100644
+index 0000000..fc69c84
+--- /dev/null
++++ b/.gitmodules
+@@ -0,0 +1,5 @@
++[submodule "input"]
++       path = input
++       url = https://github.com/datalad-handbook/iris_data.git
++       datalad-id = 5800e71c-09f9-11ea-98f1-e86a64c8054c
++       datalad-url = https://github.com/datalad-handbook/iris_data.git
+diff --git a/input b/input
+new file mode 160000
+index 0000000..b9eb768
+--- /dev/null
++++ b/input
+@@ -0,0 +1 @@
++Subproject commit b9eb768c145e4a253d619d2c8285e540869d2021
+```
+:::
+:::
+::: {.column width="45%"}
+
+::: {.fragment fragment-index=1}
+![from the [DataLad Handbook](https://handbook.datalad.org/en/latest/index.html) by @wagner2022 ([CC BY-SA 4.0](https://handbook.datalad.org/en/latest/licenses.html))](images/datalad-linkage.svg){fig-align="center" width="100%"}
+:::
+:::
+::::
+
+:::: {.columns}
+::: {.column width="55%"}
+::: {.fragment fragment-index=2}
+
+- We know *exactly* where the subdataset comes from
+- We know *exactly* which version of the subdataset is installed
+- We can develop and update each subdataset independently
+:::
+:::
+::: {.column width="45%"}
+::: {.fragment fragment-index=2}
+![by @theturingwaycommunity2024 ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/))](images/turing-way-provenance.svg){fig-align="center" width="80%"}
+:::
+:::
+::::
+
+# Science is exploratory and iterative
+
+::: {.fragment}
+::: {style="font-size: 250%"}
+**We need provenance**
+:::
+:::
+
+## Reusing previous work is hard
+
+![[&copy; Jorge Cham (phdcomics.com)](https://phdcomics.com/comics/archive/phd031214s.gif)](images/phd-comic-scratch.gif){fig-align="center" width="60%"}
+
+::::: {.columns}
+:::: {.column width="35%"}
+![by @theturingwaycommunity2024](images/turing-way-version-control.svg){fig-align="center" width="85%"}
+::::
+:::: {.column width="15%"}
+"*Your number one collaborator is yourself from 6 months ago and they don't answer emails.*"
+::::
+:::: {.column width="35%"}
+![by @theturingwaycommunity2024](images/turing-way-readable-code.svg){fig-align="center" width="80%"}
+::::
+:::: {.column width="15%"}
+"*Which version of which script produced these outputs from which version of which data?*"
+::::
+:::::
+
+## Establishing provenance with DataLad
+
+::::: {.columns}
+:::: {.column width="50%"}
+::: {.fragment fragment-index=1}
+**datalad run** wraps around anything expressed in a command line call and saves the dataset modifications resulting from the execution.
+:::
+::: {.fragment fragment-index=2}
+**datalad rerun** repeats captured executions. 
+If the outcomes differ, it saves a new state of them.
+:::
+::: {.fragment fragment-index=2}
+**datalad containers-run** executes command line calls inside a tracked software container and saves the dataset modifications resulting from the execution.
+:::
+
+::: {.fragment fragment-index=3}
+```{bash}
+#| code-line-numbers: "1-6,13-24"
+datalad containers-run \
+  --message "Time series extraction from Locus Coeruleus"
+  --container-name nilearn \
+  --input 'mri/*_bold.nii' \
+  --output 'sub-*/LC_timeseries_run-*.csv' \
+  "python3 code/extract_lc_timeseries.py"
+ 
+-- Git commit --
+  commit 5a7565a640ff6de67e07292a26bf272f1ee4b00e
+  Author:     Adina Wagner adina.wagner@t-online.de
+  AuthorDate: Mon Nov 11 16:15:08 2019 +0100
+
+  [DATALAD RUNCMD] Time series extraction from Locus Coeruleus
+  === Do not change lines below ===
+  {
+   "cmd": "singularity exec --bind {pwd} .datalad/environments/nilearn.simg bash..",
+   "dsid": "92ea1faa-632a-11e8-af29-a0369f7c647e",
+   "inputs": [
+    "mri/*.bold.nii.gz",
+    ".datalad/environments/nilearn.simg"
+   ],
+   "outputs": ["sub-*/LC_timeseries_run-*.csv"],
+   ...
+  }
+  ^^^ Do not change lines above ^^^
+```
+:::
+
+::::
+:::: {.column width="50%"}
+
+::: {.fragment fragment-index=1}
+![from the [DataLad Handbook](https://handbook.datalad.org/en/latest/index.html) by @wagner2022 ([CC BY-SA 4.0](https://handbook.datalad.org/en/latest/licenses.html))](images/datalad-run-basic.svg){fig-align="center" width="100%"}
+:::
+
+::: {.fragment fragment-index=4}
+- Enshrine the analysis in a script and record code execution together with input data, output files and software environment in the execution command
+:::
+::: {.fragment fragment-index=5}
+- Result: Machine readable record about which data, code and software produced a result how, when and why
+:::
+::: {.fragment fragment-index=6}
+- Use the unique identifier (hash) of the execution record to have a machine recompute and verify past work
+:::
+
+::: {.fragment fragment-index=6}
+```{bash}
+#| code-line-numbers: "1"
+datalad rerun 5a7565a640ff6de67
+[INFO   ] run commit 5a7565a640ff6de67; (Time series extraction from Locus Coeruleus)
+[INFO   ] Making sure inputs are available (this may take some time)
+get(ok): mri/sub-01_bold.nii (file)
+        [...]
+[INFO   ] == Command start (output follows) =====
+[INFO   ] == Command exit (modification check follows) =====
+add(ok): sub-01/LC_timeseries_run-*.csv(file)
+```
+:::
+
+::::
+:::::
+
+::: {.notes}
+![from the [DataLad Handbook](https://handbook.datalad.org/en/latest/index.html) by @wagner2022 ([CC BY-SA 4.0](https://handbook.datalad.org/en/latest/licenses.html))](images/datalad-rerun.svg){fig-align="center" width="80%"}
+
+![from the [DataLad Handbook](https://handbook.datalad.org/en/latest/index.html) by @wagner2022 ([CC BY-SA 4.0](https://handbook.datalad.org/en/latest/licenses.html))](images/datalad-containers-run-basic.svg){fig-align="center" width="80%"}
+:::
+
+# Science is collaborative & distributed
+
+::: {.fragment}
+::: {style="font-size: 250%"}
+**We need interoperability & transport logistics**
+:::
+:::
+
+## Data sharing and collaboration with DataLad
+
+::::: {.columns}
+:::: {.column width="50%"}
+::: {.fragment}
+
+"*I have a dataset on my computer.*<br/>
+*How can I share it or collaborate on it?*"
+
+![](images/datalad-startingpoint.svg){fig-align="center" width="100%"}
+
+```{bash}
+tree
+.
+├── CHANGES
+├── README
+├── dataset_description.json
+├── sub-01
+│   ├── anat
+│   │   └── sub-01_T1w.nii
+│   └── func
+│       ├── sub-01_task-auditory_bold.nii
+│       └── sub-01_task-auditory_events.tsv
+└── task-auditory_bold.json
+
+4 directories, 7 files
+```
+
+:::
+::::
+:::: {.column width="50%"}
+::: {.fragment}
+
+**Challenge:** Scientific workflows are idiosyncratic across institutions / departments / labs / any two scientists
+
+![from the [DataLad Handbook](https://handbook.datalad.org/en/latest/index.html) by @wagner2022 ([CC BY-SA 4.0](https://handbook.datalad.org/en/latest/licenses.html))](images/datalad-services-only.png){fig-align="center" width="95%"}
+
+:::
+::::
+:::::
+
+## Share data like code
+
+- With DataLad, you can **share data like you share code**: As version-controlled datasets via repository hosting services
+- DataLad datasets can be cloned, pushed and updated from and to a wide range of remote hosting services
+
+![from the [DataLad Handbook](https://handbook.datalad.org/en/latest/index.html) by @wagner2022 ([CC BY-SA 4.0](https://handbook.datalad.org/en/latest/licenses.html))](images/datalad-collaboration.svg){fig-align="center" width="100%"}
+
+## Interoperability with a range of hosting services
+
+DataLad is built to **maximize interoperability** and **streamline routines across hosting services** and storage technology
+
+![see DataLad Handbook: ["Beyond shared infrastructure"](https://handbook.datalad.org/en/latest/basics/101-138-sharethirdparty.html)](images/datalad-services-connected.png){fig-align="center" width="45%"}
+
+## Separate content in Git vs. git-annex behind the scenes
+
+- DataLad datasets are exposed via private or public repositories on a repository hosting service (e.g., GitLab or GitHub)
+- Data can't be stored in the repository hosting service but can be kept in almost any third party storage
+- Publication dependencies automate interactions between both paces
+
+![from the [DataLad Handbook](https://handbook.datalad.org/en/latest/index.html) by @wagner2022 ([CC BY-SA 4.0](https://handbook.datalad.org/en/latest/licenses.html))](images/datalad-publishing-network.svg){fig-align="center" width="55%"}
+
+## Special cases
+
+::::: {.columns}
+:::: {.column width="50%"}
+::: {.fragment}
+
+#### Repositories with annex support
+
+![from the [DataLad Handbook](https://handbook.datalad.org/en/latest/index.html) by @wagner2022 ([CC BY-SA 4.0](https://handbook.datalad.org/en/latest/licenses.html))](images/datalad-publishing-network-publish-gin.svg){fig-align="center" width="100%"}
+
+::::: {.columns}
+:::: {.column width="20%"}
+![[gin.g-node.org](https://gin.g-node.org/)](images/gin-logo.png){fig-align="left" width="100%"}
+::::
+:::: {.column width="80%"}
+- Easy: Only one remote repository
+- Examples: [GIN](https://gin.g-node.org/), GitLab with annex support
+::::
+:::::
+
+:::
+::::
+:::: {.column width="50%"}
+::: {.fragment}
+
+#### Special remotes with repositories
+
+![from the [DataLad Handbook](https://handbook.datalad.org/en/latest/index.html) by @wagner2022 ([CC BY-SA 4.0](https://handbook.datalad.org/en/latest/licenses.html))](images/datalad-publishing-network-publish-osf.svg){fig-align="center" width="100%"}
+
+::::: {.columns}
+:::: {.column width="20%"}
+![[DataLad-OSF](http://docs.datalad.org/projects/osf/en/latest/)](images/git-annex-osf-logo.png){fig-align="left" width="100%"}
+::::
+:::: {.column width="80%"}
+- Flexible: Full history or single snapshot
+- Examples: [DataLad-OSF](http://docs.datalad.org/projects/osf/en/latest/)
+::::
+:::::
+
+:::
+::::
+:::::
+
+## Have access to more data than you have disk-space
+
+::::: {.columns}
+:::: {.column width="45%"}
+::: {.fragment fragment-index=1}
+Cloned datasets are lean.
+
+```{bash}
+#| code-line-numbers: "1,3,4"
+datalad clone git@gin.g-node.org:/lnnrtwttkhn/neuro-data.git
+install(ok): /tmp/neuro-data (dataset)
+cd neuro-data && du -sh
+212K
+```
+
+:::
+
+::: {.fragment fragment-index=2}
+"Metadata" (file names, availability) are present ...
+```{bash}
+tree
+.
+├── CHANGES
+├── README
+├── dataset_description.json
+├── sub-01
+│   ├── anat
+│   │   └── sub-01_T1w.nii
+│   └── func
+│       ├── sub-01_task-auditory_bold.nii
+│       └── sub-01_task-auditory_events.tsv
+└── task-auditory_bold.json
+
+4 directories, 7 files
+```
+
+... but no file content:
+
+```{bash}
+open README
+The file /tmp/README does not exist.
+```
+:::
+
+::::
+:::: {.column width="55%"}
+::: {.fragment fragment-index=3}
+File contents can be retrieved on demand:
+```{bash}
+#| code-line-numbers: "1"
+datalad get .
+get(ok): CHANGES (file) [from origin...]
+get(ok): README (file) [from origin...]
+get(ok): dataset_description.json (file) [from origin...]
+get(ok): sub-01/anat/sub-01_T1w.nii (file) [from origin...]
+get(ok): sub-01/func/sub-01_task-auditory_bold.nii (file) [from origin...]
+get(ok): sub-01/func/sub-01_task-auditory_events.tsv (file) [from origin...]
+action summary:
+  get (ok: 6)
+```
+
+Let's check the dataset size again:
+
+```{bash}
+#| code-line-numbers: "7,8"
+du -sh
+49M
+```
+:::
+
+::: {.fragment fragment-index=4}
+Drop file content that is not needed:
+
+```{bash}
+#| code-line-numbers: "1"
+datalad drop .
+drop(ok): CHANGES (file) [locking origin...]
+drop(ok): README (file) [locking origin...]
+drop(ok): dataset_description.json (file) [locking origin...]
+drop(ok): sub-01/anat/sub-01_T1w.nii (file) [locking origin...]
+drop(ok): sub-01/func/sub-01_task-auditory_bold.nii (file) [locking origin...]
+drop(ok): sub-01/func/sub-01_task-auditory_events.tsv (file) [locking origin...]
+drop(ok): . (directory)
+action summary:
+  drop (ok: 7)
+```
+
+When files are dropped, only "metadata" stays behind, and files can be re-obtained on demand.
+
+:::
+::::
+:::::
+
+# Data sharing using DataLad and data infrastructure of the Max Planck Society
+
+## Sharing DataLad datasets via Keeper
+
+::::: {.columns}
+:::: {.column width="50%"}
+
+::::: {.columns}
+:::: {.column width="40%"}
+![[keeper.mpdl.mpg.de](https://keeper.mpdl.mpg.de/)](images/keeper-logo.svg){fig-align="center" width="100%"}
+::::
+:::: {.column width="60%"}
+"*A free service for all Max Planck employees and project partners with **more than 1TB of storage per user** for your researchdata.*"
+::::
+:::::
+
+:::: {.fragment}
+#### :sparkles: Features of Keeper :sparkles:
+
+- \> 1 TB per Max Planck employee (and expandable):
+- based on cloud-sharing service [Seafile](https://www.seafile.com/en/home/)
+- data hosted on MPS servers
+- configurable as a [DataLad special remote](http://handbook.datalad.org/en/latest/basics/101-139-dropbox.html)
+
+
+:::
+::::
+:::: {.column width="50%"}
+::: {.fragment}
+
+1. Configure [rclone](https://rclone.org/)
+
+```{bash}
+rclone config create neuro-data seafile \
+url https://keeper.mpdl.mpg.de/ user wittkuhn@mpib-berlin.mpg.de \
+library neuro-data pass supersafepassword
+```
+
+2. Create a library on Keeper and a Keeper sibling
+
+```{bash}
+git annex initremote keeper type=external externaltype=rclone \
+chunk=50MiB encryption=none target=neuro-data
+```
+
+3. Push dataset to Keeper
+
+```{bash}
+datalad push --to keeper
+```
+
+![](images/keeper-screenshot.png){fig-align="center" width="100%"}
+
+:::
+::::
+:::::
+
+## Sharing DataLad datasets via Edmond
+
+::::: {.columns}
+:::: {.column width="50%"}
+
+::::: {.columns}
+:::: {.column width="40%"}
+![[edmond.mpg.de](https://edmond.mpg.de/)](images/edmond-logo.jpg){fig-align="center" width="100%"}
+::::
+:::: {.column width="60%"}
+"*Edmond is a research data repository for Max Planck researchers. It is the place to store completed datasets of research data with open access.*"
+::::
+::::
+
+:::: {.fragment}
+#### :sparkles: Features of Edmond :sparkles:
+
+- based on [Dataverse](https://dataverse.org/), hosted on MPS servers
+- use is free of charge
+- no storage limitation (on datasets or individual files)
+- flexible licensing
+
+::::
+:::: {.fragment}
+#### Two modes:
+
+1. **annex mode** (default): non-human readable representation of the dataset that includes Git history and annexed data
+
+1. **filetree mode**: human readable single snapshot of your dataset "as it currently is" that does not include history of annexed files (but Git history)
+
+::::
+::::
+:::: {.column width="50%"}
+::: {.fragment}
+
+1. Create a Dataverse sibling for Edmond:
+
+```{bash}
+datalad add-sibling-dataverse https://edmond.mpg.de/ \
+doi:10.17617/3.8LDVXK --mode filetree
+```
+
+2. Push dataset to Edmond / Dataverse
+
+```{bash}
+datalad push --to dataverse
+```
+
+![](images/edmond-screenshot.png){fig-align="center" width="100%"}
+
+:::
+::::
+:::::
+
+::: {.notes}
+![[DataLad - Dataverse integration](http://docs.datalad.org/projects/dataverse/en/latest/)](images/datalad-dataverse.png){fig-align="center" width="60%"}
+:::
+
+## Sharing DataLad datasets via ownCloud / Nextcloud
+
+::::: {.columns}
+:::: {.column width="50%"}
+
+::: {layout-ncol=2}
+![[owncloud.gwdg.de](https://owncloud.gwdg.de/)](images/owncloud-logo.svg){fig-align="center" width="20%"}
+
+![[nextcloud.com](https://nextcloud.com/)](images/nextcloud-logo.svg){fig-align="center" width="30%"}
+:::
+
+[DataLad NEXT](http://docs.datalad.org/projects/next/en/latest/generated/datalad.api.create_sibling_webdav.html) extension allows to push / clone DataLad datasets to / from ownCloud & Nextcloud (via WebDAV)
+
+> **ownCloud GWDG:** "*50 GByte default storage space per user; flexible increase possible upon request*"
+
+:::: {.fragment}
+
+#### :sparkles: Features of ownCloud and Nextcloud :sparkles:
+
+- data privacy compliant alternative to Google Drive, Dropbox, etc. (usually hosted on-site)
+- provided by your institution, so free to use
+- supports private and public repositories
+- can be used together with external collaborators
+- expose datasets for regular download without DataLad
+
+:::
+::::
+:::: {.column width="50%"}
+:::: {.fragment}
+
+1. Create a WebDAV sibling:
+
+```{bash}
+datalad create-sibling-webdav --dataset . \
+  --name owncloud-gwdg --mode filetree \
+  'https://owncloud.gwdg.de/remote.php/nonshib-webdav/neuro-data'
+```
+
+2. Push dataset to ownCloud
+
+```{bash}
+datalad push --to owncloud-gwdg
+```
+
+![Access the dataset [on owncloud.gwdg.de](https://owncloud.gwdg.de/index.php/s/s1DYXQV2Mqk9YJq)](images/owncloud-screenshot.png){fig-align="center" width="100%"}
+
+:::
+::::
+:::::
+
+## Sharing DataLad datasets via GIN
+
+::::: {.columns}
+:::: {.column width="50%"}
+
+::::: {.columns}
+:::: {.column width="30%"}
+![[gin.g-node.org](https://gin.g-node.org/)](images/gin-logo.png){fig-align="left" width="100%"}
+::::
+:::: {.column width="70%"}
+"*GIN is [...] a web-accessible repository store of your data **based on git and git-annex** that you can access securely anywhere you desire while keeping your data in sync, backed up and easily accessible [...]"*
+::::
+:::::
+
+:::: {.fragment}
+#### :sparkles: Features of GIN :sparkles:
+
+- free to use and open-source (could be hosted within your institution; for more details, see [here](https://gin.g-node.org/G-Node/Info/wiki/In+House))
+- currently unlimited storage capacity and no restrictions on individual file size
+- supports private and public repositories
+- publicly funded by the Federal Ministry of Education and Research (BMBF; details [here](https://gin.g-node.org/G-Node/Info/wiki/about#support))
+- servers on German land (Munich, Germany; cf. GDPR)
+- provides Digital Object Identifiers (DOIs) (details [here](https://gin.g-node.org/G-Node/Info/wiki/DOI)) and allows free licensing (details [here](https://gin.g-node.org/G-Node/Info/wiki/Licensing))
+
+:::
+::::
+:::: {.column width="50%"}
+::: {.fragment}
+
+1. Create a GIN sibling
+
+```{bash}
+datalad siblings add --dataset . \
+--name gin --url git@gin.g-node.org:/lnnrtwttkhn/neuro-data.git
+```
+
+2. Push dataset to GIN
+
+```{bash}
+datalad push --to gin
+```
+
+![Access the dataset [on GIN](https://gin.g-node.org/lnnrtwttkhn/neuro-data)](images/gin-screenshot.png){fig-align="center" width="100%"}
+
+:::
+::::
+:::::
+
+::: {.notes}
+- Angebot des German Neuroinformatics Node (GNode) in München
+- Fokus auf Neurowissenschaften, aber im Prinzip für Daten verschiedener Disziplinen verwendbar
+- We have an *experimental* [in-house GIN instance](http://gin.mpib-berlin.mpg.de/) with 5TB that can also host annexed data
+- DataLad plays perfectly with GIN, since both use git + git-annex (details [here](https://handbook.datalad.org/en/latest/basics/101-139-gin.html))
+:::
+
+## Sharing DataLad datasets via GitLab
+
+::::: {.columns}
+:::: {.column width="50%"}
+
+::::: {.columns}
+:::: {.column width="30%"}
+![[gitlab.com](https://about.gitlab.com/)](images/gitlab-logo.svg){fig-align="left" width="100%"}
+::::
+:::: {.column width="70%"}
+"*GitLab is open source software to collaborate on code. Manage git repositories with fine-grained access controls that keep your code secure.*"
+::::
+:::::
+
+:::: {.fragment}
+#### GitLab for Max Planck employees
+
+- hosted by GWDG: [gitlab.gwdg.de](https://gitlab.gwdg.de)
+- hosted by your institute, e.g., [git.mpib-berlin.mpg.de](https://git.mpib-berlin.mpg.de)
+::::
+
+:::: {.fragment}
+#### :sparkles: Features of GitLab :sparkles:
+
+- free to use and open-source
+- several MPS instances available (see above)
+- supports private and public repositories
+- use project management infrastructure (merge requests, issue boards, etc.) for your dataset projects
+
+:::
+::::
+:::: {.column width="50%"}
+::: {.fragment}
+
+1. Create a GitLab sibling
+
+```{bash}
+datalad siblings add --dataset . --name gitlab \
+--url git@git.mpib-berlin.mpg.de:wittkuhn/neuro-data.git
+```
+
+2. Push dataset *metadata* to GitLab
+
+```{bash}
+datalad push --to gitlab
+```
+
+![Access the dataset [on GitLab](https://git.mpib-berlin.mpg.de/wittkuhn/neuro-data)](images/gitlab-screenshot.png){fig-align="center" width="80%"}
+
+:::
+::::
+:::::
+
+## Publish and consume datasets like source code
+
+::::: {.columns}
+:::: {.column width="50%"}
+::: {.fragment}
+
+Datasets can *comfortably* live in multiple locations:
+
+```{bash}
+datalad siblings
+.: here(+) [git]
+.: owncloud-gwdg(+) [git]
+.: dataverse(+) [dataverse]
+.: gin(+) [https://gin.g-node.org/lnnrtwttkhn/neuro-data (git)]
+.: keeper(+) [rclone]
+.: gitlab(-) [git@git.mpib-berlin.mpg.de:wittkuhn/neuro-data.git (git)]
+```
+
+Publication dependencies automate update in all places:
+
+![](images/datalad-publishing-network-publishdepends.svg){fig-align="center" width="90%"}
+
+```{bash}
+datalad siblings configure --name gitlab --publish-depends SIBLING
+```
+
+:::
+::::
+:::: {.column width="50%"}
+::: {.fragment}
+
+Redundancy: DataLad gets data from available sources
+
+![from the [DataLad Handbook](https://handbook.datalad.org/en/latest/index.html) by @wagner2022 ([CC BY-SA 4.0](https://handbook.datalad.org/en/latest/licenses.html))](images/datalad-collaboration.svg){fig-align="center" width="100%"}
+
+Clone the dataset from GitLab:
+
+```{bash}
+datalad clone https://git.mpib-berlin.mpg.de/wittkuhn/neuro-data
+```
+
+Access to special remotes needs to be configured:
+
+```{bash}
+[INFO   ] access to 3 dataset siblings keeper, dataverse-storage,
+owncloud-gwdg-storage not auto-enabled, enable with:
+| 		datalad siblings -d "/tmp/neuro-data" enable -s SIBLING
+```
+
+DataLad retrieves data from available sources (here, GIN):
+
+```{bash}
+#| code-line-numbers: "1"
+datalad get .
+get(ok): CHANGES (file) [from gin-src...]
+get(ok): README (file) [from gin-src...]
+[...]
+```
+
+:::
+::::
+:::::
+
+# Summary
+
+## Summary and discussion
+
+::::: {.columns}
+:::: {.column width="50%"}
+::: {.fragment .fade-in-then-semi-out}
+
+### Science is complex
+
+- Scientific units are not static: We need version control
+- Science is modular: We need to link modular datasets
+- Science is iterative: We need to establish provenance
+- Science is collaborative and distributed: We want to share our work and integrate with diverse infrastructure
+
+:::
+::: {.fragment .fade-in-then-semi-out}
+
+### DataLad: Decentralized management of digital objects for open science
+
+- DataLad can version control arbitrary datasets
+- DataLad links modular version-controlled datasets
+- DataLad establishes provenance and transparency
+- DataLad integrates with diverse infrastructure
+
+:::
+::::
+:::: {.column width="50%"}
+::: {.fragment .fade-in-then-semi-out}
+### Develop *everything* like source code
+
+- Code and data *management* using **Git** and **DataLad** (free, open-source command-line tools)
+- Code and data *sharing* via flexible repository hosting services (**GitLab, GitHub, GIN**, etc.)
+- Code and data *storage* on various infrastructure (**GIN**, **OSF**, **S3**, **Keeper**, **Dataverse**, and many more!)
+- Project-related communication (ideas, problems, discussions) via **issue boards** on GitLab / GitHub etc.
+- Transparent contributions to code and data via **merge requests** on GitLab (i.e., pull requests on GitHub)
+- **Reproducible procedures** using datalad run, rerun, and containers-run commands (also [Make](https://www.gnu.org/software/make/) etc.)
+- *Reproducible computational environments using software containers (e.g., Docker, Apptainer, etc.)*
+:::
+::::
+:::::
+
+:::: {.fragment}
+::: {style="font-size: 100%; text-align: center"}
+:sparkles: **Towards science as distributed, open-source ~~software~~ *knowledge* development** :sparkles: (cf. McElreath, [2020](https://www.youtube.com/watch?v=zwRdO9_GGhY), [2023](https://www.youtube.com/watch?v=8qzVV7eEiaI))
+:::
+::::
+
+## Overview of learning resources
+
+### Learn Git
+
+- ["Pro Git"](https://git-scm.com/book/en/v2) by Scott Chacon & Ben Straub
+- ["Happy Git and GitHub for the useR"](https://happygitwithr.com/) by Jenny Bryan, the STAT 545 TAs & Jim Hester
+- ["Version Control"](https://the-turing-way.netlify.app/reproducible-research/vcs.html) by The Turing Way
+- ["Version Control with Git"](https://swcarpentry.github.io/git-novice/) by The Software Carpentries
+- ["Version control"](http://neuroimaging-data-science.org/content/002-datasci-toolbox/002-git.html) (chapter 3 of "Neuroimaging and Data Science") by Ariel Rokem & Tal Yarkoni
+
+### Learn DataLad
+
+- ["Datalad Handbook"](http://handbook.datalad.org/en/latest/) by the DataLad team / Wagner et al., 2022, *Zenodo*
+- ["Research Data Management with DataLad"](https://www.youtube.com/playlist?list=PLEQHbPfpVqU5sSVrlwxkP0vpoOpgogg5j) | Recording of a full-day workshop on YouTube
+- [Datalad on YouTube](https://www.youtube.com/c/DataLad) | Recorded workshops, tutorials and talks on DataLad
+
+::: {.fragment}
+### Learn both (disclaimer: shameless plug :see_no_evil:)
+
+Full-semester course on ["Version control of code and data using Git and DataLad"](https://lennartwittkuhn.com/versioncontrol-course-uhh-ws23/) (v2.0!) in summer semester 2024 at University of Hamburg (generously funded by the [Digital and Data Literacy in Teaching Lab](https://www.isa.uni-hamburg.de/en/ddlitlab.html) program) with many open educational resources ([online guide](https://lennartwittkuhn.com/version-control-book/), quizzes and exercises)
+:::
+
+## References
+
+::: {#refs}
+:::
+
 ## Thank you!
 
 :::: {.columns}
@@ -83,12 +1359,20 @@ date: 2024-03-20
 ::: {.column width="65%"}
 
 ::: {layout-ncol=2}
-![](images/uhh-logo.svg){width=50%}
+![](images/uhh-logo.svg){width="35%"}
 
-![](images/mpib-logo.png){width=70%}
+![](images/mpib-logo.png){width="50%"}
 :::
 
-{{< fa image >}} **Images:** [Scriberia with The Turing Way community](https://doi.org/10.5281/zenodo.3332807) (License: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/))
+::: {layout-ncol=4}
+![](images/datalad-logo-full.svg){width="15%"}
+
+![](images/datalad-handbook-logo.svg){width="7%"}
+
+![](images/turing-way-logo.jpg){width="10%"}
+
+![](images/repronim-logo.png){width="10%"}
+:::
 
 {{< fa display >}} **Slides:** [{{< var website >}}]({{< var website >}})
 
@@ -102,3 +1386,447 @@ date: 2024-03-20
 
 :::
 ::::
+
+# Appendix
+
+## Example: "Let me just quickly copy those files ..."
+
+### Without datalad run
+
+::::: {.columns}
+:::: {.column width="50%"}
+::: {.fragment}
+Researcher writes some Python code to copy files:
+```python
+for sourcefile, dest in zip(glob(path_source), glob(path_dest)):
+  destination = path.join(dest, Path(sourcefile).name)
+  shutil.move(sourcefile, destination)
+```
+::: {.fragment}
+`glob` does not sort! :scream:
+:::
+:::
+::::
+:::: {.column width="25%"}
+::: {.fragment}
+```{bash}
+#| code-line-numbers: "1,3,5,7,9"
+source/
+├── sub-01
+│   └── sub-01-events.tsv
+├── sub-02
+│   └── sub-02-events.tsv
+├── sub-03
+│   └── sub-03-events.tsv
+├── sub-04
+│   └── sub-04-events.tsv
+[...]
+```
+:::
+::::
+:::: {.column width="25%"}
+::: {.fragment}
+```{bash}
+#| code-line-numbers: "1,3,5,7,9"
+destination/
+├── sub-01
+│   └── sub-03-events.tsv
+├── sub-02
+│   └── sub-01-events.tsv
+├── sub-03
+│   └── sub-04-events.tsv
+├── sub-04
+│   └── sub-02-events.tsv
+[...]
+```
+:::
+::::
+:::::
+
+Researcher shares `analysis` with collaborators.
+
+
+### With datalad run
+
+::::: {.columns}
+:::: {.column width="50%"}
+::: {.fragment}
+Researcher uses `datalad-run` to copy files:
+```{bash}
+$ datalad run -m "Copy event files" \
+"for sub in eventfiles;
+    do mv ${sub}/events.tsv analysis/${sub}/events.tsv;
+done"
+```
+:::
+::::
+:::: {.column width="45%"}
+::: {.fragment}
+empty
+:::
+::::
+:::::
+
+## Walkthrough: Sharing DataLad datasets via Keeper
+
+Configure `rclone`:
+
+```{bash}
+rclone config
+2024/03/19 11:45:32 NOTICE: Config file "/root/.config/rclone/rclone.conf" not found - using defaults
+No remotes found, make a new one?
+n) New remote
+s) Set configuration password
+q) Quit config
+name> neuro-data
+
+Option Storage.
+Type of storage to configure.
+Choose a number from below, or type in your own value.
+ 1 / 1Fichier
+   \ (fichier)
+ 2 / Akamai NetStorage
+   \ (netstorage)
+ 3 / Alias for an existing remote
+   \ (alias)
+ 4 / Amazon S3 Compliant Storage Providers including AWS, Alibaba, ArvanCloud, Ceph, ChinaMobile, Cloudflare, DigitalOcean, Dreamhost, GCS, HuaweiOBS, IBMCOS, IDrive, IONOS, LyveCloud, Leviia, Liara, Linode, Minio, Netease, Petabox, RackCorp, Rclone, Scaleway, SeaweedFS, StackPath, Storj, Synology, TencentCOS, Wasabi, Qiniu and others
+   \ (s3)
+ 5 / Backblaze B2
+   \ (b2)
+ 6 / Better checksums for other remotes
+   \ (hasher)
+ 7 / Box
+   \ (box)
+ 8 / Cache a remote
+   \ (cache)
+ 9 / Citrix Sharefile
+   \ (sharefile)
+10 / Combine several remotes into one
+   \ (combine)
+11 / Compress a remote
+   \ (compress)
+12 / Dropbox
+   \ (dropbox)
+13 / Encrypt/Decrypt a remote
+   \ (crypt)
+14 / Enterprise File Fabric
+   \ (filefabric)
+15 / FTP
+   \ (ftp)
+16 / Google Cloud Storage (this is not Google Drive)
+   \ (google cloud storage)
+17 / Google Drive
+   \ (drive)
+18 / Google Photos
+   \ (google photos)
+19 / HTTP
+   \ (http)
+20 / Hadoop distributed file system
+   \ (hdfs)
+21 / HiDrive
+   \ (hidrive)
+22 / ImageKit.io
+   \ (imagekit)
+23 / In memory object storage system.
+   \ (memory)
+24 / Internet Archive
+   \ (internetarchive)
+25 / Jottacloud
+   \ (jottacloud)
+26 / Koofr, Digi Storage and other Koofr-compatible storage providers
+   \ (koofr)
+27 / Linkbox
+   \ (linkbox)
+28 / Local Disk
+   \ (local)
+29 / Mail.ru Cloud
+   \ (mailru)
+30 / Mega
+   \ (mega)
+31 / Microsoft Azure Blob Storage
+   \ (azureblob)
+32 / Microsoft Azure Files
+   \ (azurefiles)
+33 / Microsoft OneDrive
+   \ (onedrive)
+34 / OpenDrive
+   \ (opendrive)
+35 / OpenStack Swift (Rackspace Cloud Files, Blomp Cloud Storage, Memset Memstore, OVH)
+   \ (swift)
+36 / Oracle Cloud Infrastructure Object Storage
+   \ (oracleobjectstorage)
+37 / Pcloud
+   \ (pcloud)
+38 / PikPak
+   \ (pikpak)
+39 / Proton Drive
+   \ (protondrive)
+40 / Put.io
+   \ (putio)
+41 / QingCloud Object Storage
+   \ (qingstor)
+42 / Quatrix by Maytech
+   \ (quatrix)
+43 / SMB / CIFS
+   \ (smb)
+44 / SSH/SFTP
+   \ (sftp)
+45 / Sia Decentralized Cloud
+   \ (sia)
+46 / Storj Decentralized Cloud Storage
+   \ (storj)
+47 / Sugarsync
+   \ (sugarsync)
+48 / Transparently chunk/split large files
+   \ (chunker)
+49 / Union merges the contents of several upstream fs
+   \ (union)
+50 / Uptobox
+   \ (uptobox)
+51 / WebDAV
+   \ (webdav)
+52 / Yandex Disk
+   \ (yandex)
+53 / Zoho
+   \ (zoho)
+54 / premiumize.me
+   \ (premiumizeme)
+55 / seafile
+   \ (seafile)
+Storage> seafile
+
+Option url.
+URL of seafile host to connect to.
+Choose a number from below, or type in your own value.
+ 1 / Connect to cloud.seafile.com.
+   \ (https://cloud.seafile.com/)
+url> https://keeper.mpdl.mpg.de/
+
+Option user.
+User name (usually email address).
+Enter a value.
+user> wittkuhn@mpib-berlin.mpg.de
+
+Option pass.
+Password.
+Choose an alternative below. Press Enter for the default (n).
+y) Yes, type in my own password
+g) Generate random password
+n) No, leave this optional password blank (default)
+y/g/n> y
+Enter the password:
+password:
+Confirm the password:
+password:
+
+Option 2fa.
+Two-factor authentication ('true' if the account has 2FA enabled).
+Enter a boolean value (true or false). Press Enter for the default (false).
+2fa> false
+
+Option library.
+Name of the library.
+Leave blank to access all non-encrypted libraries.
+Enter a value. Press Enter to leave empty.
+library> neuro-data
+
+Option library_key.
+Library password (for encrypted libraries only).
+Leave blank if you pass it through the command line.
+Choose an alternative below. Press Enter for the default (n).
+y) Yes, type in my own password
+g) Generate random password
+n) No, leave this optional password blank (default)
+y/g/n> n
+
+Edit advanced config?
+y) Yes
+n) No (default)
+y/n> n
+
+Configuration complete.
+Options:
+- type: seafile
+- url: https://keeper.mpdl.mpg.de/
+- user: wittkuhn@mpib-berlin.mpg.de
+- pass: *** ENCRYPTED ***
+- library: neuro-data
+Keep this "neuro-data" remote?
+y) Yes this is OK (default)
+e) Edit this remote
+d) Delete this remote
+y/e/d> y
+
+Current remotes:
+
+Name                 Type
+====                 ====
+neuro-data           seafile
+
+e) Edit existing remote
+n) New remote
+d) Delete remote
+r) Rename remote
+c) Copy remote
+s) Set configuration password
+q) Quit config
+e/n/d/r/c/s/q> q
+```
+
+```{bash}
+export KEEPER_PASSWORD=password
+rclone config create neuro-data seafile url https://keeper.mpdl.mpg.de/ user wittkuhn@mpib-berlin.mpg.de library neuro-data pass $KEEPER_PASSWORD
+```
+
+```{bash}
+git annex initremote keeper type=external externaltype=rclone chunk=50MiB encryption=none target=neuro-data
+```
+
+```{bash}
+initremote keeper ok
+(recording state in git...)
+```
+
+```{bash}
+datalad siblings
+.: here(+) [git]
+.: keeper(+) [rclone]
+```
+
+```{bash}
+datalad push --to keeper
+copy(ok): CHANGES (file) [to keeper...]
+copy(ok): README (file) [to keeper...]
+copy(ok): dataset_description.json (file) [to keeper...]
+copy(ok): sub-01/anat/sub-01_T1w.nii (file) [to keeper...]
+copy(ok): sub-01/func/sub-01_task-auditory_bold.nii (file) [to keeper...]
+copy(ok): sub-01/func/sub-01_task-auditory_events.tsv (file) [to keeper...]
+copy(ok): task-auditory_bold.json (file) [to keeper...]            action summary:
+  copy (ok: 7)
+```
+
+## Walkthrough: Sharing DataLad datasets via Edmond
+
+If you want to publish a dataset to Dataverse, you will need a dedicated location on Dataverse that we will publish our dataset to.
+For this, we will use a Dataverse dataset^[Dataverse datasets contain digital files (research data, code, ...), amended with additional metadata. They typically live inside of dataverse collections.].
+
+1. Go to [Edmond](https://edmond.mpg.de/), log in, and create a new draft Dataverse dataset via the `Add Data` header
+1. The `New Dataset` button takes you to a configurator for your Dataverse dataset.
+Provide all relevant details and metadata entries in the form^[At least, `Title`, `Description`, and `Organization` are required.].
+Importantly, **don't upload any of your data files** - this will be done by DataLad later.
+1. Once you have clicked `Save Dataset`, you'll have a draft Dataverse dataset.
+It already has a DOI, and you can find it under the Metadata tab as "Persistent identifier":
+1. Finally, make a note of the URL of your dataverse instance (e.g., <https://edmond.mpg.de/>), and the DOI of your draft dataset.
+You will need this information for step 3.
+
+### Add a Dataverse sibling to your dataset
+
+We will use the `datalad add-sibling-dataverse` command.
+This command registers the remote Dataverse Dataset as a known remote location to your Dataset and will allow you to publish the entire Dataset (Git history and annexed data) or parts of it to Dataverse.
+
+```{bash}
+datalad add-sibling-dataverse https://edmond.mpg.de/ doi:10.17617/3.KUKEKI
+```
+
+If you run this command for the first time, you will need to provide an API Token to authenticate against the chosen Dataverse instance in an interactive prompt.
+This is how this would look:
+
+```{bash}
+A dataverse API token is required for access. Find it at https://edmond.mpg.de by clicking on your name at the top right corner and then clicking on API Token
+token: 
+A dataverse API token is required for access. Find it at https://edmond.mpg.de by clicking on your name at the top right corner and then clicking on API Token
+token (repeat): 
+Enter a name to save the credential securely for future reuse, or 'skip' to not save the credential
+name: 
+```
+
+You'll find this token if you follow the instructions in the prompt under your user account on your Dataverse instance, and you can copy-paste it into the command line.
+
+```{bash}
+add_sibling_dataverse.storage(ok): . [dataverse-storage: https://edmond.mpg.de/ (DOI: doi:10.17617/3.KUKEKI)]
+[INFO   ] Configure additional publication dependency on "dataverse-storage"
+```
+
+```{bash}
+A dataverse API token is required for access. Find it at https://edmond.mpg.de by clicking on your name at the top right corner and then clicking on API Token
+token: 
+A dataverse API token is required for access. Find it at https://edmond.mpg.de by clicking on your name at the top right corner and then clicking on API Token
+token (repeat): 
+Enter a name to save the credential securely for future reuse, or 'skip' to not save the credential
+name: skip
+```
+
+```{bash}
+add_sibling_dataverse(ok): . [dataverse: datalad-annex::?type=external&externaltype=dataverse&encryption=none&exporttree=no&url=https%3A//edmond.mpg.de/&doi=doi:10.17617/3.KUKEKI (DOI: doi:10.17617/3.KUKEKI)]
+```
+
+As soon as you've created the sibling, you can push:
+
+```{bash}
+datalad push --to dataverse
+```
+
+```{bash}
+copy(ok): CHANGES (file) [to dataverse-storage...]
+copy(ok): README (file) [to dataverse-storage...]
+copy(ok): dataset_description.json (file) [to dataverse-storage...]
+copy(ok): sub-01/anat/sub-01_T1w.nii (file) [to dataverse-storage...]
+copy(ok): sub-01/func/sub-01_task-auditory_bold.nii (file) [to dataverse-storage...]
+copy(ok): sub-01/func/sub-01_task-auditory_events.tsv (file) [to dataverse-storage...]
+copy(ok): task-auditory_bold.json (file) [to dataverse-storage...]
+publish(ok): . (dataset) [refs/heads/main->dataverse:refs/heads/main [new branch]]
+publish(ok): . (dataset) [refs/heads/git-annex->dataverse:refs/heads/git-annex [new branch]]  
+```
+
+## Walkthrough: Sharing DataLad datasets via ownCloud / nextCloud
+
+### Get the WebDAV address
+
+1. Click on {{< fa gear >}} `Settings` (bottom left)
+1. Copy the WebDAV address, for example: `https://owncloud.gwdg.de/remote.php/nonshib-webdav/`
+
+```{bash}
+datalad create-sibling-webdav \
+  --dataset . \
+  --name owncloud-gwdg \
+  --mode filetree \
+  'https://owncloud.gwdg.de/remote.php/nonshib-webdav/<dataset-name>' # <1>
+```
+1. Replace `<dataset-name>` with the name of your dataset, i.e., the name of your dataset folder.
+In this example, we replace `<dataset-name>` with `neuro-data`.
+The complete command for your example hence looks like this:
+
+```{bash}
+datalad create-sibling-webdav \
+  --dataset . \
+  --name owncloud-gwdg \
+  --mode filetree \
+  'https://owncloud.gwdg.de/remote.php/nonshib-webdav/neuro-data'
+```
+
+You will be asked to provide your ownCloud account credentials:
+
+```{bash}
+user: # <1>
+password: # <2>
+password (repeat): # <3>
+```
+1. Enter the email address of your ownCloud account.
+2. Enter the password of your ownCloud account.
+3. Repeat the password of your ownCloud account.
+
+```{bash}
+create_sibling_webdav.storage(ok): . [owncloud-gwdg-storage: https://owncloud.gwdg.de/remote.php/nonshib-webdav/neuro-data]
+[INFO   ] Configure additional publication dependency on "owncloud-gwdg-storage" 
+create_sibling_webdav(ok): . [owncloud-gwdg: datalad-annex::?type=webdav&encryption=none&exporttree=yes&url=https%3A//owncloud.gwdg.de/remote.php/nonshib-webdav/neuro-data]
+```
+
+Finally, we can push the dataset to ownCloud:
+
+```{bash}
+datalad push --to owncloud-gwdg # <1>
+```
+1. Use `datalad push` to push the dataset contents to ownCloud.
+For details on `datalad push`, see the [command line reference](http://docs.datalad.org/en/stable/generated/man/datalad-push.html) and [this chapter](https://handbook.datalad.org/en/latest/basics/101-141-push.html) in the DataLad Handbook.
+
+We can now view the [files on ownCloud](https://owncloud.gwdg.de/index.php/apps/files/) and inspect them through the web browser.

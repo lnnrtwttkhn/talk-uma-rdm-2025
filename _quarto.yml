@@ -15,17 +15,12 @@ author:
   url: "{{< var homepage >}}"
   email: "{{< var email >}}"
   orcid: "{{< var orcid >}}"
-  # note: string
-  # acknowledgements: string
   attributes:
     corresponding: true
-    # equal-contributor: boolean
-    # deceased: boolean
-  # metadata: object
   affiliations:
+    - ref: mpib
+    - ref: mps-ucl
     - ref: uhh-psych
-    # - ref: mpib
-    # - ref: mps-ucl
 format:
   revealjs:
     theme: [default, custom.scss]
@@ -51,11 +46,10 @@ format:
     menu: true
     chalkboard: true
     mutliplex: false
-    code-fold: show
-    code-summary: "Show the code"
+    code-fold: false
     code-overflow: wrap
-    code-line-numbers: false
-    code-copy: true
+    code-line-numbers: true
+    code-copy: false
     code-link: false
     code-annotations: true
     code-tools:
@@ -63,6 +57,7 @@ format:
       toggle: true
       caption: "Code"
     highlight-style: github
+    auto-stretch: false
     date-format: long
     engine: knitr
     execute:
