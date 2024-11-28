@@ -18,9 +18,9 @@ author:
   attributes:
     corresponding: true
   affiliations:
+    - ref: uhh-psych
     - ref: mpib
     - ref: mps-ucl
-    - ref: uhh-psych
 format:
   revealjs:
     theme: [default, custom.scss]
