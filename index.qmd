@@ -993,6 +993,51 @@ When files are dropped, only "metadata" stays behind, and files can be re-obtain
 
 # Data sharing using DataLad and data infrastructure of the University of Hamburg
 
+## Sharing DataLad datasets via UHHCloud (Nextcloud)
+
+::::: {.columns}
+:::: {.column width="50%"}
+
+![[cloud.uni-hamburg.de](https://cloud.uni-hamburg.de/)](images/nextcloud-logo.svg){fig-align="center"}
+
+[DataLad NEXT](http://docs.datalad.org/projects/next/en/latest/generated/datalad.api.create_sibling_webdav.html) extension allows to push / clone DataLad datasets to / from Nextcloud (via WebDAV)
+
+> **UHHCloud:** "*UHH members have a standard quota of **5 terabytes** each (students have 100 gigabytes).*"
+
+:::: {.fragment}
+
+#### :sparkles: Features of UHHCloud (Nextcloud) :sparkles:
+
+- data privacy compliant alternative to Google Drive, Dropbox, etc. (usually hosted on-site)
+- provided by your institution, so free to use
+- supports private and public repositories
+- can be used together with external collaborators
+- expose datasets for regular download without DataLad
+
+:::
+::::
+:::: {.column width="50%"}
+:::: {.fragment}
+
+1. Create a WebDAV sibling:
+
+```{bash}
+datalad create-sibling-webdav --dataset . \
+  --name uhhcloud --mode filetree \
+  'https://cloud.uni-hamburg.de/remote.php/dav/files/USERNAME/neuro-data'
+```
+
+2. Push dataset to UHHCloud
+
+```{bash}
+datalad push --to uhhcloud
+```
+
+![Access the dataset [on cloud.uni-hamburg.de](https://cloud.uni-hamburg.de/s/KAej7g98A8C4k9R)](images/nextcloud-screenshot.png){fig-align="center" width="100%"}
+
+:::
+::::
+:::::
 # Data sharing using DataLad and data infrastructure of the Max Planck Society
 
 ## Sharing DataLad datasets via Keeper
