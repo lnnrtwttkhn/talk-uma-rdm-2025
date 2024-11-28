@@ -3,8 +3,8 @@ title: "{{< var title >}}"
 subtitle: |
   {{< var subtitle >}}
   
-  [{{< fa display >}} Slides]({{< var website >}}) |
-  [{{< fa brands github >}} Source]({{< var source >}})
+  [{{< fa display >}} Slides](https://lennartwittkuhn.com/talk-uhh-rdm-2024) |
+  [{{< fa brands github >}} Source](https://github.com/lnnrtwttkhn/talk-uhh-rdm-2024)
   
   {{< var license-badge >}}
   {{< var doi-badge >}}
