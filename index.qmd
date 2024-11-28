@@ -1089,6 +1089,57 @@ datalad push --to uhh-object-storage
 ::::
 :::::
 
+## Sharing DataLad datasets via GitLab
+
+::::: {.columns}
+:::: {.column width="50%"}
+
+::::: {.columns}
+:::: {.column width="30%"}
+![[gitlab.com](https://about.gitlab.com/)](images/gitlab-logo.svg){fig-align="left" width="100%"}
+::::
+:::: {.column width="70%"}
+"*GitLab is open source software to collaborate on code. Manage git repositories with fine-grained access controls that keep your code secure.*"
+::::
+:::::
+
+:::: {.fragment}
+#### GitLab for UHH students and employees
+
+- hosted by UHH: [gitlab.rrz.uni-hamburg.de](https://gitlab.rrz.uni-hamburg.de/users/sign_in)
+::::
+
+:::: {.fragment}
+#### :sparkles: Features of GitLab :sparkles:
+
+- free to use and open-source
+- supports private and public repositories
+- use project management infrastructure (merge requests, issue boards, etc.) for your dataset projects
+
+:::
+::::
+:::: {.column width="50%"}
+::: {.fragment}
+
+1. Create a GitLab sibling
+
+```{bash}
+datalad siblings add --dataset . --name gitlab \
+--url git@gitlab.rrz.uni-hamburg.de:wittkuhn/neuro-data.git
+```
+
+2. Push dataset *metadata* to GitLab
+
+```{bash}
+datalad push --to gitlab
+```
+
+![Access the dataset [on GitLab](https://git.mpib-berlin.mpg.de/wittkuhn/neuro-data)](images/gitlab-screenshot.png){fig-align="center" width="80%"}
+
+:::
+::::
+:::::
+
 # Data sharing using DataLad and data infrastructure of the Max Planck Society
 
 ## Sharing DataLad datasets via Keeper
