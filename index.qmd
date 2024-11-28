@@ -170,7 +170,7 @@ The **DataLad Handbook** by @wagner2022 is a comprehensive educational resource 
 - computational reproducibility is hard
 - researchers lack training 
 - incentives are not (yet) aligned ^[see e.g., @poldrack2019]
-- ...
+- **Scientific workflows are *special*** :sparkles: (see next slides)
 :::
 ::::
 :::::
