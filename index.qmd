@@ -36,7 +36,7 @@ execute:
 
 ### About me
 
-{{< fa user-tie >}} I am a **Postdoctoral Research Data Scientist** in Cognitive Neuroscience at the [Institute of Psychology](https://www.psy.uni-hamburg.de/en.html) at the [University of Hamburg](https://www.psy.uni-hamburg.de/en/arbeitsbereiche/lern-und-veraenderungsmechanismen.html) (PI: Nicolas Schuck)
+{{< fa user-tie >}} I am a **Postdoctoral Researcher** in Cognitive Neuroscience at the [Institute of Psychology](https://www.psy.uni-hamburg.de/en.html) at the [University of Hamburg](https://www.psy.uni-hamburg.de/en/arbeitsbereiche/lern-und-veraenderungsmechanismen.html) (PI: Prof. Nicolas Schuck)
 
 {{< fa graduation-cap >}} **BSc Psychology** & **MSc Cognitive Neuroscience** (TU Dresden), **PhD Cognitive Neuroscience** (Max Planck Institute for Human Development)
 
@@ -302,7 +302,7 @@ The **DataLad Handbook** by @wagner2022 is a comprehensive educational resource 
 :::
 
 ::: {.fragment}
-Sadly, Git does not handle large files well.
+Sadly, Git does not handle large (binary) files well.
 
 ![](images/git-snapshot.png){fig-align="center" width=100%}
 :::
@@ -1545,7 +1545,7 @@ get(ok): README (file) [from gin-src...]
 ::: {.fragment}
 ### Learn both (disclaimer: shameless plug :see_no_evil:)
 
-Full-semester course on ["Version control of code and data using Git and DataLad"](https://lennartwittkuhn.com/versioncontrol-course-uhh-ws23/) (v2.0!) in summer semester 2024 at University of Hamburg (generously funded by the [Digital and Data Literacy in Teaching Lab](https://www.isa.uni-hamburg.de/en/ddlitlab.html) program) with many open educational resources ([online guide](https://lennartwittkuhn.com/version-control-book/), quizzes and exercises)
+Full-semester course on ["Version control of code and data using Git and DataLad"](https://lennartwittkuhn.com/versioncontrol-course-uhh-ws23/) at University of Hamburg (generously funded by the [Digital and Data Literacy in Teaching Lab](https://www.isa.uni-hamburg.de/en/ddlitlab.html) program) with many open educational resources ([online guide](https://lennartwittkuhn.com/version-control-book/), quizzes and exercises)
 :::
 
 ## References
