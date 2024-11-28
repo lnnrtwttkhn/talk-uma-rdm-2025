@@ -107,6 +107,9 @@ The **DataLad Handbook** by @wagner2022 is a comprehensive educational resource 
 
 ## Agenda
 
+:::: {.columns}
+::: {.column width="50%"}
+
 ### 0. Background
 
 ### 1. Scientific workflows with DataLad
@@ -119,19 +122,35 @@ The **DataLad Handbook** by @wagner2022 is a comprehensive educational resource 
 
 1.4 Collaboration & Interoperability
 
-### 2. Integrating DataLad with MPS infrastructure (and beyond)
-    
-2.1 Keeper
+### 2. Integrating DataLad with University of Hamburg infrastructure
 
-2.2 Edmond
+2.1 UHHCloud (NextCloud)
 
-2.3 ownCloud / nextCloud
+2.2 UHH Object Storage
 
-2.4 GIN
+2.3 UHH GitLab
 
-2.5 GitLab
+:::
+::: {.column width="50%"}
 
-### 3. Summary & Discussion
+### 3. Integrating DataLad with Max Planck Society infrastructure
+
+3.1 Keeper
+
+3.2 Edmond
+
+3.3 ownCloud / nextCloud
+
+3.4 GitLab
+
+### 4. Integrating DataLad with third-party infrastructure
+
+4.1 GIN
+
+### 5. Summary & Discussion
+
+:::
+::::
 
 # Background
 
