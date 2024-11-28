@@ -1305,6 +1305,61 @@ datalad push --to owncloud-gwdg
 ::::
 :::::
 
+## Sharing DataLad datasets via GitLab
+
+::::: {.columns}
+:::: {.column width="50%"}
+
+::::: {.columns}
+:::: {.column width="30%"}
+![[gitlab.com](https://about.gitlab.com/)](images/gitlab-logo.svg){fig-align="left" width="100%"}
+::::
+:::: {.column width="70%"}
+"*GitLab is open source software to collaborate on code. Manage git repositories with fine-grained access controls that keep your code secure.*"
+::::
+:::::
+
+:::: {.fragment}
+#### GitLab for Max Planck employees
+
+- hosted by GWDG: [gitlab.gwdg.de](https://gitlab.gwdg.de)
+- hosted by your institute, e.g., [git.mpib-berlin.mpg.de](https://git.mpib-berlin.mpg.de)
+::::
+
+:::: {.fragment}
+#### :sparkles: Features of GitLab :sparkles:
+
+- free to use and open-source
+- several MPS instances available (see above)
+- supports private and public repositories
+- use project management infrastructure (merge requests, issue boards, etc.) for your dataset projects
+
+:::
+::::
+:::: {.column width="50%"}
+::: {.fragment}
+
+1. Create a GitLab sibling
+
+```{bash}
+datalad siblings add --dataset . --name gitlab \
+--url git@git.mpib-berlin.mpg.de:wittkuhn/neuro-data.git
+```
+
+2. Push dataset *metadata* to GitLab
+
+```{bash}
+datalad push --to gitlab
+```
+
+![Access the dataset [on GitLab](https://git.mpib-berlin.mpg.de/wittkuhn/neuro-data)](images/gitlab-screenshot.png){fig-align="center" width="80%"}
+
+:::
+::::
+:::::
+
+# Data sharing using DataLad and third-party data infrastructure
+
 ## Sharing DataLad datasets via GIN
 
 ::::: {.columns}
@@ -1359,59 +1414,6 @@ datalad push --to gin
 - We have an *experimental* [in-house GIN instance](http://gin.mpib-berlin.mpg.de/) with 5TB that can also host annexed data
 - DataLad plays perfectly with GIN, since both use git + git-annex (details [here](https://handbook.datalad.org/en/latest/basics/101-139-gin.html))
 :::
-
-## Sharing DataLad datasets via GitLab
-
-::::: {.columns}
-:::: {.column width="50%"}
-
-::::: {.columns}
-:::: {.column width="30%"}
-![[gitlab.com](https://about.gitlab.com/)](images/gitlab-logo.svg){fig-align="left" width="100%"}
-::::
-:::: {.column width="70%"}
-"*GitLab is open source software to collaborate on code. Manage git repositories with fine-grained access controls that keep your code secure.*"
-::::
-:::::
-
-:::: {.fragment}
-#### GitLab for Max Planck employees
-
-- hosted by GWDG: [gitlab.gwdg.de](https://gitlab.gwdg.de)
-- hosted by your institute, e.g., [git.mpib-berlin.mpg.de](https://git.mpib-berlin.mpg.de)
-::::
-
-:::: {.fragment}
-#### :sparkles: Features of GitLab :sparkles:
-
-- free to use and open-source
-- several MPS instances available (see above)
-- supports private and public repositories
-- use project management infrastructure (merge requests, issue boards, etc.) for your dataset projects
-
-:::
-::::
-:::: {.column width="50%"}
-::: {.fragment}
-
-1. Create a GitLab sibling
-
-```{bash}
-datalad siblings add --dataset . --name gitlab \
---url git@git.mpib-berlin.mpg.de:wittkuhn/neuro-data.git
-```
-
-2. Push dataset *metadata* to GitLab
-
-```{bash}
-datalad push --to gitlab
-```
-
-![Access the dataset [on GitLab](https://git.mpib-berlin.mpg.de/wittkuhn/neuro-data)](images/gitlab-screenshot.png){fig-align="center" width="80%"}
-
-:::
-::::
-:::::
 
 ## Publish and consume datasets like source code
 
