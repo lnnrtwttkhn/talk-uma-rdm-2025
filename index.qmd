@@ -991,6 +991,8 @@ When files are dropped, only "metadata" stays behind, and files can be re-obtain
 ::::
 :::::
 
+# Data sharing using DataLad and data infrastructure of the University of Hamburg
+
 # Data sharing using DataLad and data infrastructure of the Max Planck Society
 
 ## Sharing DataLad datasets via Keeper
