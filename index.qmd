@@ -107,6 +107,8 @@ The **DataLad Handbook** by @wagner2022 is a comprehensive educational resource 
 
 ## Agenda
 
+### 0. Background
+
 ### 1. Scientific workflows with DataLad
     
 1.1 Version Control
@@ -131,11 +133,11 @@ The **DataLad Handbook** by @wagner2022 is a comprehensive educational resource 
 
 ### 3. Summary & Discussion
 
-# Scientific building blocks are not static
+# Background
 
 ::: {.fragment}
 ::: {style="font-size: 250%"}
-**We need version control**
+**Computational reproducibility**
 :::
 :::
 
@@ -191,6 +193,14 @@ The **DataLad Handbook** by @wagner2022 is a comprehensive educational resource 
 - we are currently violating the public's trust = deep ethical problem
 - natural selection: as a researcher, what's good for your career is not necessarily good for science (how to get funding, how to get published, how to get cited)
 - journals are interested in selling us back our data, not improving the quality of science
+:::
+
+# Scientific building blocks are not static
+
+::: {.fragment}
+::: {style="font-size: 250%"}
+**We need version control**
+:::
 :::
 
 ## Why we need version control
@@ -253,8 +263,6 @@ The **DataLad Handbook** by @wagner2022 is a comprehensive educational resource 
 {{< fa code-compare >}} compare commits and go back to any previous state
 
 {{< fa code-pull-request >}} work on parallel "branches" & flexibly "merge" them
-
-
 
 ![by @theturingwaycommunity2024 ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/))](images/turing-way-version-control.svg){width=80% fig-align="center"}
 :::
