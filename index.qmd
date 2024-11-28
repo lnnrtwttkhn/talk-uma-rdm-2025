@@ -8,7 +8,7 @@ subtitle: |
   
   {{< var license-badge >}}
   {{< var doi-badge >}}
-date: 2024-03-20
+date: 2024-11-28
 engine: knitr
 execute:
   eval: false
@@ -36,7 +36,7 @@ execute:
 
 ### About me
 
-{{< fa user-tie >}} I am a **Postdoctoral Research Data Scientist** in Cognitive Neuroscience at the [Institute of Psychology](https://www.psy.uni-hamburg.de/en.html) at the [University of Hamburg](https://www.psy.uni-hamburg.de/en/arbeitsbereiche/lern-und-veraenderungsmechanismen.html) (PI: Nicolas Schuck)
+{{< fa user-tie >}} I am a **Postdoctoral Researcher** in Cognitive Neuroscience at the [Institute of Psychology](https://www.psy.uni-hamburg.de/en.html) at the [University of Hamburg](https://www.psy.uni-hamburg.de/en/arbeitsbereiche/lern-und-veraenderungsmechanismen.html) (PI: Prof. Nicolas Schuck)
 
 {{< fa graduation-cap >}} **BSc Psychology** & **MSc Cognitive Neuroscience** (TU Dresden), **PhD Cognitive Neuroscience** (Max Planck Institute for Human Development)
 
@@ -107,6 +107,8 @@ The **DataLad Handbook** by @wagner2022 is a comprehensive educational resource 
 
 ## Agenda
 
+### 0. Background
+
 ### 1. Scientific workflows with DataLad
     
 1.1 Version Control
@@ -130,6 +132,68 @@ The **DataLad Handbook** by @wagner2022 is a comprehensive educational resource 
 2.5 GitLab
 
 ### 3. Summary & Discussion
+
+# Background
+
+::: {.fragment}
+::: {style="font-size: 250%"}
+**Computational reproducibility**
+:::
+:::
+
+## The issue of computational reproducibility in science
+
+::::: {.columns}
+:::: {.column width="50%"}
+::: {.fragment}
+*"... when the **same analysis** steps performed on the **same dataset** consistently produce the **same answer**."* ^[@turingway2022, see ["Guide on Reproducible Research"](https://the-turing-way.netlify.app/reproducible-research/overview/overview-definitions)]
+
+![by [Scriberia]({{< var links.scriberia >}}) for @turingway2022 ([Link](https://zenodo.org/record/3678226/), [CC BY
+4.0]({{< var links.ccby40 >}}))](images/turing-way-reproducibility.png)
+:::
+::::
+:::: {.column width="50%"}
+::: {.fragment}
+### The problem
+:::
+::: {.incremental}
+- about **more than half** of research is **not reproducible** [^1]
+  - research data, code, software & materials are **often not available** "upon *reasonable* [sic] request"
+  - if resources are shared, they are **often incomplete**
+- 90% of researchers: "reproducibility crisis" (*N* = 1576) ^[see @baker2016, *Nature*]
+
+:::
+::: {.fragment}
+### Why?
+:::
+::: {.incremental}
+- computational reproducibility is hard
+- researchers lack training 
+- incentives are not (yet) aligned ^[see e.g., @poldrack2019]
+- **Scientific workflows are *special*** :sparkles: (see next slides)
+:::
+::::
+:::::
+
+::: {.fragment}
+"*... accumulated evidence indicates [...] **substantial room for improvement** with regard to research practices to maximize the efficiency of the research community's use of the public's financial investment.*" [@munafò2017]
+:::
+::: {.fragment}
+:bulb: We need a **professional toolkit** for digital research!
+:::
+
+[^1]: for example, in Psychology: @crüwell2023; @hardwicke2021; @obels2020; @wicherts2006
+
+::: {.notes}
+- also called "analytical reproducibility"
+- in contrast: "Replication" = same analysis on different data
+- computational reproducibility should be a *minimum* requirement
+- 90% of respondents to a survey in Nature agreed that there is a "reproducibility crisis"
+- non-scientist friends react very surprised at the lack of professionalization in science
+- we are currently violating the public's trust = deep ethical problem
+- natural selection: as a researcher, what's good for your career is not necessarily good for science (how to get funding, how to get published, how to get cited)
+- journals are interested in selling us back our data, not improving the quality of science
+:::
 
 # Scientific building blocks are not static
 
@@ -200,8 +264,6 @@ The **DataLad Handbook** by @wagner2022 is a comprehensive educational resource 
 
 {{< fa code-pull-request >}} work on parallel "branches" & flexibly "merge" them
 
-
-
 ![by @theturingwaycommunity2024 ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/))](images/turing-way-version-control.svg){width=80% fig-align="center"}
 :::
 ::::
@@ -240,7 +302,7 @@ The **DataLad Handbook** by @wagner2022 is a comprehensive educational resource 
 :::
 
 ::: {.fragment}
-Sadly, Git does not handle large files well.
+Sadly, Git does not handle large (binary) files well.
 
 ![](images/git-snapshot.png){fig-align="center" width=100%}
 :::
@@ -929,6 +991,155 @@ When files are dropped, only "metadata" stays behind, and files can be re-obtain
 ::::
 :::::
 
+# Data sharing using DataLad and data infrastructure of the University of Hamburg
+
+## Sharing DataLad datasets via UHHCloud (Nextcloud)
+
+::::: {.columns}
+:::: {.column width="50%"}
+
+![[cloud.uni-hamburg.de](https://cloud.uni-hamburg.de/)](images/nextcloud-logo.svg){fig-align="center"}
+
+[DataLad NEXT](http://docs.datalad.org/projects/next/en/latest/generated/datalad.api.create_sibling_webdav.html) extension allows to push / clone DataLad datasets to / from Nextcloud (via WebDAV)
+
+> **UHHCloud:** "*UHH members have a standard quota of **5 terabytes** each (students have 100 gigabytes).*"
+
+:::: {.fragment}
+
+#### :sparkles: Features of UHHCloud (Nextcloud) :sparkles:
+
+- data privacy compliant alternative to Google Drive, Dropbox, etc. (usually hosted on-site)
+- provided by your institution, so free to use
+- supports private and public repositories
+- can be used together with external collaborators
+- expose datasets for regular download without DataLad
+
+:::
+::::
+:::: {.column width="50%"}
+:::: {.fragment}
+
+1. Create a WebDAV sibling:
+
+```{bash}
+datalad create-sibling-webdav --dataset . \
+  --name uhhcloud --mode filetree \
+  'https://cloud.uni-hamburg.de/remote.php/dav/files/USERNAME/neuro-data'
+```
+
+2. Push dataset to UHHCloud
+
+```{bash}
+datalad push --to uhhcloud
+```
+
+![Access the dataset [on cloud.uni-hamburg.de](https://cloud.uni-hamburg.de/s/KAej7g98A8C4k9R)](images/nextcloud-screenshot.png){fig-align="center" width="100%"}
+
+:::
+::::
+:::::
+
+## Sharing DataLad datasets via UHH Object Storage (~ Amazon S3 Buckets)
+
+::::: {.columns}
+:::: {.column width="50%"}
+
+::: {layout-ncol=2}
+![[UHH Object Storage (Cloudian)](https://www.rrz.uni-hamburg.de/en/services/datenhaltung/objektspeicher.html)](images/cloudian-logo.png){fig-align="center" width="60%"}
+
+![[aws.amazon.com/de/s3](https://aws.amazon.com/de/s3/)](images/amazon-s3-logo.svg){fig-align="center" width="100%"}
+:::
+
+See [Chapter: "Amazon S3 as a special remote"](https://handbook.datalad.org/en/latest/basics/101-139-s3.html) on how to push / clone DataLad datasets to / from an Object Storage
+
+:::: {.fragment}
+
+#### :sparkles: Features of the UHH Object Storage (Cloudian) :sparkles:
+
+- "unlimited" storage for UHH employees
+- multiple backups across devices and locations
+- data privacy compliant alternative to Amazon S3 Buckets (hosted on-site, offering 99% compatibility)
+- provided by your institution, so free to use
+- supports private and public repositories
+- can be used together with external collaborators
+- expose datasets for regular download without DataLad
+
+:::
+::::
+:::: {.column width="50%"}
+:::: {.fragment}
+
+1. Create a Object Storage sibling:
+
+```{bash}
+git annex initremote uhh-object-storage type=S3 encryption=none \
+bucket=neuro-data public=no datacenter=EU \
+host=s3-uhh.lzs.uni-hamburg.de protocol=https port=443 autoenable=true
+```
+
+2. Push dataset to the UHH Object Storage
+
+```{bash}
+datalad push --to uhh-object-storage
+```
+
+![Access the dataset the UHH Object Storage](images/uhh-object-storage-screenshot.png){fig-align="center" width="100%"}
+
+:::
+::::
+:::::
+
+## Sharing DataLad datasets via GitLab
+
+::::: {.columns}
+:::: {.column width="50%"}
+
+::::: {.columns}
+:::: {.column width="30%"}
+![[gitlab.com](https://about.gitlab.com/)](images/gitlab-logo.svg){fig-align="left" width="100%"}
+::::
+:::: {.column width="70%"}
+"*GitLab is open source software to collaborate on code. Manage git repositories with fine-grained access controls that keep your code secure.*"
+::::
+:::::
+
+:::: {.fragment}
+#### GitLab for UHH students and employees
+
+- hosted by UHH: [gitlab.rrz.uni-hamburg.de](https://gitlab.rrz.uni-hamburg.de/users/sign_in)
+::::
+
+:::: {.fragment}
+#### :sparkles: Features of GitLab :sparkles:
+
+- free to use and open-source
+- supports private and public repositories
+- use project management infrastructure (merge requests, issue boards, etc.) for your dataset projects
+
+:::
+::::
+:::: {.column width="50%"}
+::: {.fragment}
+
+1. Create a GitLab sibling
+
+```{bash}
+datalad siblings add --dataset . --name gitlab \
+--url git@gitlab.rrz.uni-hamburg.de:wittkuhn/neuro-data.git
+```
+
+2. Push dataset *metadata* to GitLab
+
+```{bash}
+datalad push --to gitlab
+```
+
+![Access the dataset [on GitLab](https://git.mpib-berlin.mpg.de/wittkuhn/neuro-data)](images/gitlab-screenshot.png){fig-align="center" width="80%"}
+
+:::
+::::
+:::::
+
 # Data sharing using DataLad and data infrastructure of the Max Planck Society
 
 ## Sharing DataLad datasets via Keeper
@@ -1094,6 +1305,61 @@ datalad push --to owncloud-gwdg
 ::::
 :::::
 
+## Sharing DataLad datasets via GitLab
+
+::::: {.columns}
+:::: {.column width="50%"}
+
+::::: {.columns}
+:::: {.column width="30%"}
+![[gitlab.com](https://about.gitlab.com/)](images/gitlab-logo.svg){fig-align="left" width="100%"}
+::::
+:::: {.column width="70%"}
+"*GitLab is open source software to collaborate on code. Manage git repositories with fine-grained access controls that keep your code secure.*"
+::::
+:::::
+
+:::: {.fragment}
+#### GitLab for Max Planck employees
+
+- hosted by GWDG: [gitlab.gwdg.de](https://gitlab.gwdg.de)
+- hosted by your institute, e.g., [git.mpib-berlin.mpg.de](https://git.mpib-berlin.mpg.de)
+::::
+
+:::: {.fragment}
+#### :sparkles: Features of GitLab :sparkles:
+
+- free to use and open-source
+- several MPS instances available (see above)
+- supports private and public repositories
+- use project management infrastructure (merge requests, issue boards, etc.) for your dataset projects
+
+:::
+::::
+:::: {.column width="50%"}
+::: {.fragment}
+
+1. Create a GitLab sibling
+
+```{bash}
+datalad siblings add --dataset . --name gitlab \
+--url git@git.mpib-berlin.mpg.de:wittkuhn/neuro-data.git
+```
+
+2. Push dataset *metadata* to GitLab
+
+```{bash}
+datalad push --to gitlab
+```
+
+![Access the dataset [on GitLab](https://git.mpib-berlin.mpg.de/wittkuhn/neuro-data)](images/gitlab-screenshot.png){fig-align="center" width="80%"}
+
+:::
+::::
+:::::
+
+# Data sharing using DataLad and third-party data infrastructure
+
 ## Sharing DataLad datasets via GIN
 
 ::::: {.columns}
@@ -1148,59 +1414,6 @@ datalad push --to gin
 - We have an *experimental* [in-house GIN instance](http://gin.mpib-berlin.mpg.de/) with 5TB that can also host annexed data
 - DataLad plays perfectly with GIN, since both use git + git-annex (details [here](https://handbook.datalad.org/en/latest/basics/101-139-gin.html))
 :::
-
-## Sharing DataLad datasets via GitLab
-
-::::: {.columns}
-:::: {.column width="50%"}
-
-::::: {.columns}
-:::: {.column width="30%"}
-![[gitlab.com](https://about.gitlab.com/)](images/gitlab-logo.svg){fig-align="left" width="100%"}
-::::
-:::: {.column width="70%"}
-"*GitLab is open source software to collaborate on code. Manage git repositories with fine-grained access controls that keep your code secure.*"
-::::
-:::::
-
-:::: {.fragment}
-#### GitLab for Max Planck employees
-
-- hosted by GWDG: [gitlab.gwdg.de](https://gitlab.gwdg.de)
-- hosted by your institute, e.g., [git.mpib-berlin.mpg.de](https://git.mpib-berlin.mpg.de)
-::::
-
-:::: {.fragment}
-#### :sparkles: Features of GitLab :sparkles:
-
-- free to use and open-source
-- several MPS instances available (see above)
-- supports private and public repositories
-- use project management infrastructure (merge requests, issue boards, etc.) for your dataset projects
-
-:::
-::::
-:::: {.column width="50%"}
-::: {.fragment}
-
-1. Create a GitLab sibling
-
-```{bash}
-datalad siblings add --dataset . --name gitlab \
---url git@git.mpib-berlin.mpg.de:wittkuhn/neuro-data.git
-```
-
-2. Push dataset *metadata* to GitLab
-
-```{bash}
-datalad push --to gitlab
-```
-
-![Access the dataset [on GitLab](https://git.mpib-berlin.mpg.de/wittkuhn/neuro-data)](images/gitlab-screenshot.png){fig-align="center" width="80%"}
-
-:::
-::::
-:::::
 
 ## Publish and consume datasets like source code
 
@@ -1332,7 +1545,7 @@ get(ok): README (file) [from gin-src...]
 ::: {.fragment}
 ### Learn both (disclaimer: shameless plug :see_no_evil:)
 
-Full-semester course on ["Version control of code and data using Git and DataLad"](https://lennartwittkuhn.com/versioncontrol-course-uhh-ws23/) (v2.0!) in summer semester 2024 at University of Hamburg (generously funded by the [Digital and Data Literacy in Teaching Lab](https://www.isa.uni-hamburg.de/en/ddlitlab.html) program) with many open educational resources ([online guide](https://lennartwittkuhn.com/version-control-book/), quizzes and exercises)
+Full-semester course on ["Version control of code and data using Git and DataLad"](https://lennartwittkuhn.com/versioncontrol-course-uhh-ws23/) at University of Hamburg (generously funded by the [Digital and Data Literacy in Teaching Lab](https://www.isa.uni-hamburg.de/en/ddlitlab.html) program) with many open educational resources ([online guide](https://lennartwittkuhn.com/version-control-book/), quizzes and exercises)
 :::
 
 ## References
