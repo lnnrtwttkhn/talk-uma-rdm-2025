@@ -1038,6 +1038,57 @@ datalad push --to uhhcloud
 :::
 ::::
 :::::
+
+## Sharing DataLad datasets via UHH Object Storage (~ Amazon S3 Buckets)
+
+::::: {.columns}
+:::: {.column width="50%"}
+
+::: {layout-ncol=2}
+![[UHH Object Storage (Cloudian)](https://www.rrz.uni-hamburg.de/en/services/datenhaltung/objektspeicher.html)](images/cloudian-logo.png){fig-align="center" width="60%"}
+
+![[aws.amazon.com/de/s3](https://aws.amazon.com/de/s3/)](images/amazon-s3-logo.svg){fig-align="center" width="100%"}
+:::
+
+See [Chapter: "Amazon S3 as a special remote"](https://handbook.datalad.org/en/latest/basics/101-139-s3.html) on how to push / clone DataLad datasets to / from an Object Storage
+
+:::: {.fragment}
+
+#### :sparkles: Features of the UHH Object Storage (Cloudian) :sparkles:
+
+- "unlimited" storage for UHH employees
+- multiple backups across devices and locations
+- data privacy compliant alternative to Amazon S3 Buckets (hosted on-site, offering 99% compatibility)
+- provided by your institution, so free to use
+- supports private and public repositories
+- can be used together with external collaborators
+- expose datasets for regular download without DataLad
+
+:::
+::::
+:::: {.column width="50%"}
+:::: {.fragment}
+
+1. Create a Object Storage sibling:
+
+```{bash}
+git annex initremote uhh-object-storage type=S3 encryption=none \
+bucket=neuro-data public=no datacenter=EU \
+host=s3-uhh.lzs.uni-hamburg.de protocol=https port=443 autoenable=true
+```
+
+2. Push dataset to the UHH Object Storage
+
+```{bash}
+datalad push --to uhh-object-storage
+```
+
+![Access the dataset the UHH Object Storage](images/uhh-object-storage-screenshot.png){fig-align="center" width="100%"}
+
+:::
+::::
+:::::
+
 # Data sharing using DataLad and data infrastructure of the Max Planck Society
 
 ## Sharing DataLad datasets via Keeper
