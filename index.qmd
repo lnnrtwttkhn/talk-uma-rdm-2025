@@ -1025,9 +1025,9 @@ When files are dropped, only "metadata" stays behind, and files can be re-obtain
 ::::
 :::::
 
-# Data sharing using DataLad and data infrastructure of the University of Hamburg
+# Data sharing using DataLad and common data infrastructure
 
-## Sharing DataLad datasets via UHHCloud (Nextcloud)
+## Sharing DataLad datasets via Nextcloud (e.g., UHHCloud)
 
 ::::: {.columns}
 :::: {.column width="50%"}
@@ -1040,7 +1040,7 @@ When files are dropped, only "metadata" stays behind, and files can be re-obtain
 
 :::: {.fragment}
 
-#### :sparkles: Features of UHHCloud (Nextcloud) :sparkles:
+#### :sparkles: Features of Nextcloud :sparkles:
 
 - data privacy compliant alternative to Google Drive, Dropbox, etc. (usually hosted on-site)
 - provided by your institution, so free to use
@@ -1061,7 +1061,7 @@ datalad create-sibling-webdav --dataset . \
   'https://cloud.uni-hamburg.de/remote.php/dav/files/USERNAME/neuro-data'
 ```
 
-2. Push dataset to UHHCloud
+2. Push dataset to Nextcloud (e.g., UHHCloud)
 
 ```{bash}
 datalad push --to uhhcloud
@@ -1295,9 +1295,9 @@ datalad push --to dataverse
 :::: {.column width="50%"}
 
 ::: {layout-ncol=2}
-![[owncloud.gwdg.de](https://owncloud.gwdg.de/)](images/owncloud-logo.svg){fig-align="center" width="20%"}
+![[owncloud.gwdg.de](https://owncloud.gwdg.de/)](images/owncloud-logo.svg){fig-align="center" width="80%"}
 
-![[nextcloud.com](https://nextcloud.com/)](images/nextcloud-logo.svg){fig-align="center" width="30%"}
+![[nextcloud.com](https://nextcloud.com/)](images/nextcloud-logo.svg){fig-align="center" width="60%"}
 :::
 
 [DataLad NEXT](http://docs.datalad.org/projects/next/en/latest/generated/datalad.api.create_sibling_webdav.html) extension allows to push / clone DataLad datasets to / from ownCloud & Nextcloud (via WebDAV)
