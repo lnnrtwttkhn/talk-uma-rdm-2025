@@ -126,13 +126,13 @@ The **DataLad Handbook** by @wagner2022 is a comprehensive educational resource 
 
 1.4 Collaboration & Interoperability
 
-### 2. Integrating DataLad with University of Hamburg infrastructure
+### 2. Integrating DataLad with common data infrastructure
 
-2.1 UHHCloud (NextCloud)
+2.1 NextCloud (UHHCloud)
 
-2.2 UHH Object Storage
+2.2 Object Storage
 
-2.3 UHH GitLab
+2.3 GitLab
 
 :::
 ::: {.column width="50%"}
@@ -151,7 +151,11 @@ The **DataLad Handbook** by @wagner2022 is a comprehensive educational resource 
 
 4.1 GIN
 
-### 5. Summary & Discussion
+### 5. Example
+
+### 6. Live Demonstration
+
+### 7. Summary & Discussion
 
 :::
 ::::
