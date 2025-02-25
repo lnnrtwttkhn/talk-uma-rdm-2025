@@ -105,6 +105,10 @@ The **DataLad Handbook** by @wagner2022 is a comprehensive educational resource 
 :::::
 ::::::
 
+::: {.fragment}
+**Disclaimer:** I'm "only" an enthusiastic user of DataLad!
+:::
+
 ## Agenda
 
 :::: {.columns}
@@ -932,7 +936,7 @@ DataLad is built to **maximize interoperability** and **streamline routines acro
 ::::
 :::::
 
-## Have access to more data than you have disk-space
+## Have access to more data than you have disk-space: `get` and `drop` data
 
 ::::: {.columns}
 :::: {.column width="45%"}
@@ -979,7 +983,7 @@ The file /tmp/README does not exist.
 ::::
 :::: {.column width="55%"}
 ::: {.fragment fragment-index=3}
-File contents can be retrieved on demand:
+File contents can be retrieved on demand with `datalad get`:
 ```{bash}
 #| code-line-numbers: "1"
 datalad get .
@@ -1003,7 +1007,7 @@ du -sh
 :::
 
 ::: {.fragment fragment-index=4}
-Drop file content that is not needed:
+Drop file content that is not needed with `datalad drop`:
 
 ```{bash}
 #| code-line-numbers: "1"
@@ -1511,6 +1515,8 @@ get(ok): README (file) [from gin-src...]
 :::
 ::::
 :::::
+
+# Live Demonstration
 
 # Summary
 
