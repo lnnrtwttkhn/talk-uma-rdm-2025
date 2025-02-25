@@ -8,7 +8,7 @@ subtitle: |
   
   {{< var license-badge >}}
   {{< var doi-badge >}}
-date: 2025-02-27
+date: 2025-02-26
 engine: knitr
 execute:
   eval: false
