@@ -1583,9 +1583,11 @@ get(ok): README (file) [from gin-src...]
 - [Datalad on YouTube](https://www.youtube.com/c/DataLad) | Recorded workshops, tutorials and talks on DataLad
 
 ::: {.fragment}
-### Learn both (disclaimer: shameless plug :see_no_evil:)
+### Learn both *with me* (disclaimer: shameless plug :see_no_evil:)
 
-Full-semester course on ["Version control of code and data using Git and DataLad"](https://lennartwittkuhn.com/versioncontrol-course-uhh-ws23/) at University of Hamburg (generously funded by the [Digital and Data Literacy in Teaching Lab](https://www.isa.uni-hamburg.de/en/ddlitlab.html) program) with many open educational resources ([online guide](https://lennartwittkuhn.com/version-control-book/), quizzes and exercises)
+- Hands-on Git course with many open educational resources ([online guide](https://lennartwittkuhn.com/version-control-book/), quizzes and exercises) in formats from full-semester courses (see [WiSe 24](https://lennartwittkuhn.com/version-control-course-uhh-eur-ws24/), [SoSe 24](https://lennartwittkuhn.com/version-control-course-uhh-ss24/), [WiSe 23](https://lennartwittkuhn.com/version-control-course-uhh-ws23/)), or [1-day](https://lennartwittkuhn.com/version-control-course-uhh-2024/) and [3-day](https://lennartwittkuhn.com/version-control-course-zi-mannheim-2025/) workshops
+- Full-day Data Management Workshop with DataLad  (example [here](https://lennartwittkuhn.com/mpi-datamanagement-ws/))
+- More information at [lennartwittkuhn.com/consulting](https://lennartwittkuhn.com/consulting.html)
 :::
 
 ## References
