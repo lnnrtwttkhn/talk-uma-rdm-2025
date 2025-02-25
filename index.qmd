@@ -305,6 +305,21 @@ The **DataLad Handbook** by @wagner2022 is a comprehensive educational resource 
 
 :::::
 
+## Goal of version control
+
+:::: {.columns}
+::: {.column width="50%"}
+### From this ...
+![](images/phd-git-original.png)
+:::
+::: {.column width="50%"}
+::: {.fragment}
+### To this ...
+![](images/phd-git-solo.png)
+:::
+:::
+::::
+
 ## What are Git and DataLad?
 
 :::: {.columns}
