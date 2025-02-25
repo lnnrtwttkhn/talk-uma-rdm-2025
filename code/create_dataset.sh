@@ -1,6 +1,6 @@
 mkdir neuro-data
-wget https://www.fil.ion.ucl.ac.uk/spm/download/data/MoAEpilot/MoAEpilot.bids.zip \
--O neuro-data.zip
+curl https://www.fil.ion.ucl.ac.uk/spm/download/data/MoAEpilot/MoAEpilot.bids.zip \
+-o neuro-data.zip
 unzip neuro-data.zip -d neuro-data
 rm neuro-data.zip
 cd neuro-data

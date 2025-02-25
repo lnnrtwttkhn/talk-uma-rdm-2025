@@ -3,12 +3,12 @@ title: "{{< var title >}}"
 subtitle: |
   {{< var subtitle >}}
   
-  [{{< fa display >}} Slides](https://lennartwittkuhn.com/talk-uhh-rdm-2024) |
-  [{{< fa brands github >}} Source](https://github.com/lnnrtwttkhn/talk-uhh-rdm-2024)
+  [{{< fa display >}} Slides](https://lennartwittkuhn.com/talk-uma-rdm-2025) |
+  [{{< fa brands github >}} Source](https://github.com/lnnrtwttkhn/talk-uma-rdm-2025)
   
   {{< var license-badge >}}
   {{< var doi-badge >}}
-date: 2024-11-28
+date: 2025-02-26
 engine: knitr
 execute:
   eval: false
@@ -105,6 +105,10 @@ The **DataLad Handbook** by @wagner2022 is a comprehensive educational resource 
 :::::
 ::::::
 
+::: {.fragment}
+**Disclaimer:** I'm "only" an enthusiastic user of DataLad!
+:::
+
 ## Agenda
 
 :::: {.columns}
@@ -122,13 +126,13 @@ The **DataLad Handbook** by @wagner2022 is a comprehensive educational resource 
 
 1.4 Collaboration & Interoperability
 
-### 2. Integrating DataLad with University of Hamburg infrastructure
+### 2. Integrating DataLad with common data infrastructure
 
-2.1 UHHCloud (NextCloud)
+2.1 NextCloud (UHHCloud)
 
-2.2 UHH Object Storage
+2.2 Object Storage
 
-2.3 UHH GitLab
+2.3 GitLab
 
 :::
 ::: {.column width="50%"}
@@ -147,7 +151,11 @@ The **DataLad Handbook** by @wagner2022 is a comprehensive educational resource 
 
 4.1 GIN
 
-### 5. Summary & Discussion
+### 5. Example
+
+### 6. Live Demonstration
+
+### 7. Summary & Discussion
 
 :::
 ::::
@@ -304,6 +312,21 @@ The **DataLad Handbook** by @wagner2022 is a comprehensive educational resource 
 ::::
 
 :::::
+
+## Goal of version control
+
+:::: {.columns}
+::: {.column width="50%"}
+### From this ...
+![](images/phd-git-original.png)
+:::
+::: {.column width="50%"}
+::: {.fragment}
+### To this ...
+![](images/phd-git-solo.png)
+:::
+:::
+::::
 
 ## What are Git and DataLad?
 
@@ -470,7 +493,14 @@ save(ok): . (dataset)                                              action summar
 
 ## Data in DataLad datasets are either stored in Git or git-annex
 
-![from the [DataLad Handbook](https://handbook.datalad.org/en/latest/index.html) by @wagner2022 ([CC BY-SA 4.0](https://handbook.datalad.org/en/latest/licenses.html))](images/datalad-publishing-gitvsannex.svg){fig-align="center" width="70%"}
+::::: {.columns}
+:::: {.column width="55%"}
+![from the [DataLad Handbook](https://handbook.datalad.org/en/latest/index.html) by @wagner2022 ([CC BY-SA 4.0](https://handbook.datalad.org/en/latest/licenses.html))](images/datalad-publishing-gitvsannex.svg){fig-align="center" width="100%"}
+::::
+:::: {.column width="45%"}
+![from the [DataLad Handbook](https://handbook.datalad.org/en/latest/index.html) by @wagner2022 ([CC BY-SA 4.0](https://handbook.datalad.org/en/latest/licenses.html))](images/git-vs-git-annex.svg){fig-align="center" width="100%"}
+::::
+:::::
 
 ::::: {.columns}
 :::: {.column width="50%"}
@@ -917,7 +947,7 @@ DataLad is built to **maximize interoperability** and **streamline routines acro
 ::::
 :::::
 
-## Have access to more data than you have disk-space
+## Have access to more data than you have disk-space: `get` and `drop` data
 
 ::::: {.columns}
 :::: {.column width="45%"}
@@ -964,7 +994,7 @@ The file /tmp/README does not exist.
 ::::
 :::: {.column width="55%"}
 ::: {.fragment fragment-index=3}
-File contents can be retrieved on demand:
+File contents can be retrieved on demand with `datalad get`:
 ```{bash}
 #| code-line-numbers: "1"
 datalad get .
@@ -988,7 +1018,7 @@ du -sh
 :::
 
 ::: {.fragment fragment-index=4}
-Drop file content that is not needed:
+Drop file content that is not needed with `datalad drop`:
 
 ```{bash}
 #| code-line-numbers: "1"
@@ -1010,9 +1040,9 @@ When files are dropped, only "metadata" stays behind, and files can be re-obtain
 ::::
 :::::
 
-# Data sharing using DataLad and data infrastructure of the University of Hamburg
+# Data sharing using DataLad and common data infrastructure
 
-## Sharing DataLad datasets via UHHCloud (Nextcloud)
+## Sharing DataLad datasets via Nextcloud (e.g., UHHCloud)
 
 ::::: {.columns}
 :::: {.column width="50%"}
@@ -1025,7 +1055,7 @@ When files are dropped, only "metadata" stays behind, and files can be re-obtain
 
 :::: {.fragment}
 
-#### :sparkles: Features of UHHCloud (Nextcloud) :sparkles:
+#### :sparkles: Features of Nextcloud :sparkles:
 
 - data privacy compliant alternative to Google Drive, Dropbox, etc. (usually hosted on-site)
 - provided by your institution, so free to use
@@ -1046,7 +1076,7 @@ datalad create-sibling-webdav --dataset . \
   'https://cloud.uni-hamburg.de/remote.php/dav/files/USERNAME/neuro-data'
 ```
 
-2. Push dataset to UHHCloud
+2. Push dataset to Nextcloud (e.g., UHHCloud)
 
 ```{bash}
 datalad push --to uhhcloud
@@ -1280,9 +1310,9 @@ datalad push --to dataverse
 :::: {.column width="50%"}
 
 ::: {layout-ncol=2}
-![[owncloud.gwdg.de](https://owncloud.gwdg.de/)](images/owncloud-logo.svg){fig-align="center" width="20%"}
+![[owncloud.gwdg.de](https://owncloud.gwdg.de/)](images/owncloud-logo.svg){fig-align="center" width="80%"}
 
-![[nextcloud.com](https://nextcloud.com/)](images/nextcloud-logo.svg){fig-align="center" width="30%"}
+![[nextcloud.com](https://nextcloud.com/)](images/nextcloud-logo.svg){fig-align="center" width="60%"}
 :::
 
 [DataLad NEXT](http://docs.datalad.org/projects/next/en/latest/generated/datalad.api.create_sibling_webdav.html) extension allows to push / clone DataLad datasets to / from ownCloud & Nextcloud (via WebDAV)
@@ -1497,6 +1527,109 @@ get(ok): README (file) [from gin-src...]
 ::::
 :::::
 
+# Example: Wittkuhn & Schuck (2021)
+
+## Example: Our paper
+
+::::: {.columns}
+:::: {.column width="50%"}
+::: {.fragment}
+
+![doi: [10.1038/s41467-021-21970-2](https://doi.org/10.1038/s41467-021-21970-2) (accessed 2025-02-25)](images/highspeed-paper.png){fig-align="center" width="100%"}
+
+#### Two-sentence summary:
+
+> "*Non-invasive measurement of fast neural activity with spatial precision in humans is difficult.*
+> *Here, the authors **show how fMRI can be used to detect sub-second neural sequences in a localized fashion** and **report fast replay of images in visual cortex** that occurred independently of the hippocampus.*"
+
+:::
+::::
+:::: {.column width="50%"}
+::: {.fragment}
+
+<blockquote class="twitter-tweet" data-conversation="none" data-lang="en"><p lang="en" dir="ltr">We share all code + data via <a href="https://twitter.com/gnode?ref_src=twsrc%5Etfw">@gnode</a> + <a href="https://twitter.com/hashtag/GitHub?src=hash&amp;ref_src=twsrc%5Etfw">#GitHub</a>, version-controlled with <a href="https://twitter.com/datalad?ref_src=twsrc%5Etfw">@datalad</a> (ca. 1.5 TB): MRI in <a href="https://twitter.com/BIDSstandard?ref_src=twsrc%5Etfw">@BIDSstandard</a>, <a href="https://twitter.com/hashtag/fMRIPrep?src=hash&amp;ref_src=twsrc%5Etfw">#fMRIPrep</a> data, <a href="https://twitter.com/hashtag/MRIQC?src=hash&amp;ref_src=twsrc%5Etfw">#MRIQC</a> metrics, GLMs + anatomical masks, task code, decoding pipeline, statistical analyses: <a href="https://t.co/sv3Vrco7wj">https://t.co/sv3Vrco7wj</a> <a href="https://twitter.com/hashtag/OpenScience?src=hash&amp;ref_src=twsrc%5Etfw">#OpenScience</a> 🧮 [2/n]</p>&mdash; Lennart Wittkuhn (@lnnrtwttkhn) <a href="https://twitter.com/lnnrtwttkhn/status/1372859256777670659?ref_src=twsrc%5Etfw">March 19, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+
+:::
+::::
+:::::
+
+## Example: Data management using DataLad
+
+::: {.fragment}
+
+#### From Wittkuhn & Schuck, 2021, *Nature Communications* (see [Data Availability statement](https://www.nature.com/articles/s41467-021-21970-2#data-availability)):
+
+> *"We publicly share all data used in this study. Data and code management was realized using DataLad.*"
+
+- All individual datasets can be found at: <https://gin.g-node.org/lnnrtwttkhn>
+- Each dataset is associated with a unique URL and a Digital Object Identifier (DOI)
+- Dataset structure shared to GitHub and dataset contents shared to GIN
+
+:::
+
+::: {.fragment}
+
+#### All data?
+
+- `highspeed`: superdataset of all subdatasets, incl. project documentation ([GitLab](https://git.mpib-berlin.mpg.de/wittkuhn/highspeed))
+- `highspeed-bids`: MRI and behavioral data adhering to the [BIDS standard](https://bids.neuroimaging.io/)
+([GitHub](https://github.com/lnnrtwttkhn/highspeed-bids),
+[GIN](https://gin.g-node.org/lnnrtwttkhn/highspeed-bids),
+[DOI](https://doi.org/10.12751/g-node.4ivuv8))
+- `highspeed-mriqc`: MRI quality metrics and reports based on [MRIQC](https://mriqc.readthedocs.io/en/stable/) 
+([GitHub](https://github.com/lnnrtwttkhn/highspeed-mriqc),
+[GIN](https://gin.g-node.org/lnnrtwttkhn/highspeed-mriqc),
+[DOI](https://doi.org/10.12751/g-node.0vmyuh))
+- `highspeed-fmriprep`: preprocessed MRI data using [fMRIPrep](https://fmriprep.org/en/stable/),
+([GitHub](https://github.com/lnnrtwttkhn/highspeed-fmriprep),
+[GIN](https://gin.g-node.org/lnnrtwttkhn/highspeed-fmriprep),
+[DOI](https://doi.org/10.12751/g-node.0ft06t))
+- `highspeed-masks`: binarized anatomical masks used for feature selection ([GitHub](https://github.com/lnnrtwttkhn/highspeed-masks),
+[GIN](https://gin.g-node.org/lnnrtwttkhn/highspeed-masks), [DOI](https://doi.org/10.12751/g-node.omirok))
+- `highspeed-glm`: first-level GLM results used for feature selection ([GitHub](https://github.com/lnnrtwttkhn/highspeed-glm),
+[GIN](https://gin.g-node.org/lnnrtwttkhn/highspeed-glm),
+[DOI](https://doi.org/10.12751/g-node.d21zpv))
+- `highspeed-decoding`: results of the multivariate decoding approach ([GitHub](https://github.com/lnnrtwttkhn/highspeed-decoding), [GIN](https://gin.g-node.org/lnnrtwttkhn/highspeed-decoding), [DOI](https://doi.org/10.12751/g-node.9zft1r))
+- `highspeed-data`: unprocessed data of the behavioral task acquired during MRI acquisition ([GitHub](https://github.com/lnnrtwttkhn/highspeed-data-behavior),
+[GIN](https://gin.g-node.org/lnnrtwttkhn/highspeed-data-behavior),
+[DOI](https://doi.org/10.12751/g-node.p7dabb))
+
+\> 1.5 TB in total, version-controlled using DataLad
+
+:::
+
+## Superdataset to collect all resources of the project
+
+![[https://git.mpib-berlin.mpg.de/wittkuhn/highspeed](https://git.mpib-berlin.mpg.de/wittkuhn/highspeed) (accessed 2025-02-25)](images/highspeed-superdataset.png){fig-align="center" width="100%"}
+
+## Project website with main statistical results
+
+#### From Wittkuhn & Schuck, 2021, *Nature Communications* (see [Code Availability statement](https://www.nature.com/articles/s41467-021-21970-2#code-availability)):
+
+> "*We share all code used in this study. An overview of all the resources is publicly available on our **project website.**"*
+
+Project website publicly available at [https://wittkuhn.mpib.berlin/highspeed/](https://wittkuhn.mpib.berlin/highspeed/)
+
+::: {.fragment}
+
+#### Reproducible reports with [Bookdown](https://bookdown.org/yihui/bookdown/) / [RMarkdown](https://bookdown.org/yihui/rmarkdown/)
+
+> *"R Markdown is a file format for making dynamic documents with R. An R Markdown document is written in markdown (an easy-to-write plain text format) and contains chunks of embedded R code [...]"*
+
+- Project documentation and main statistical analyses are written in RMarkdown (see [here](https://github.com/lnnrtwttkhn/highspeed-analysis/tree/master/code))
+- Documentation pages showcase non-executed code (used in subdatasets) in Python and Bash
+- Statistical analyses executed and website rendered automatically via [Continuous Integration / Deployment (CI/CD)](https://docs.gitlab.com/ee/ci/):
+  1. In the [main project repository](https://git.mpib-berlin.mpg.de/wittkuhn/highspeed), all RMarkdown files are [combined](https://git.mpib-berlin.mpg.de/wittkuhn/highspeed/-/blob/master/_bookdown.yml#L22-36) using [bookdown](https://bookdown.org/) (across subdatasets)
+  1. Input data is [automatically retrieved](https://git.mpib-berlin.mpg.de/wittkuhn/highspeed/-/blob/master/.gitlab-ci.yml#L5-75) from GIN and / or Keeper using DataLad (run in a [Docker container](https://git.mpib-berlin.mpg.de/wittkuhn/highspeed/-/blob/master/.docker/datalad/Dockerfile))
+  1. The RMarkdown files are [run in Docker](https://git.mpib-berlin.mpg.de/wittkuhn/highspeed/-/blob/master/.docker/bookdown/Dockerfile) (executing main statistical analyses) and [rendered](https://git.mpib-berlin.mpg.de/wittkuhn/highspeed/-/blob/master/.gitlab-ci.yml#L99) into a static website
+  1. The static website is [deployed to GitLab pages](https://git.mpib-berlin.mpg.de/wittkuhn/highspeed/-/blob/master/.gitlab-ci.yml#L95-106)
+
+&rarr; This pipeline is automatically triggered on every push (change) to the main repository.
+
+:::
+
+# Live Demonstration
+
 # Summary
 
 ## Summary and discussion
@@ -1562,9 +1695,11 @@ get(ok): README (file) [from gin-src...]
 - [Datalad on YouTube](https://www.youtube.com/c/DataLad) | Recorded workshops, tutorials and talks on DataLad
 
 ::: {.fragment}
-### Learn both (disclaimer: shameless plug :see_no_evil:)
+### Learn both *with me* (disclaimer: shameless plug :see_no_evil:)
 
-Full-semester course on ["Version control of code and data using Git and DataLad"](https://lennartwittkuhn.com/versioncontrol-course-uhh-ws23/) at University of Hamburg (generously funded by the [Digital and Data Literacy in Teaching Lab](https://www.isa.uni-hamburg.de/en/ddlitlab.html) program) with many open educational resources ([online guide](https://lennartwittkuhn.com/version-control-book/), quizzes and exercises)
+- Hands-on Git course with many open educational resources ([online guide](https://lennartwittkuhn.com/version-control-book/), quizzes and exercises) in formats from full-semester courses (see [WiSe 24](https://lennartwittkuhn.com/version-control-course-uhh-eur-ws24/), [SoSe 24](https://lennartwittkuhn.com/version-control-course-uhh-ss24/), [WiSe 23](https://lennartwittkuhn.com/version-control-course-uhh-ws23/)) to [1-day](https://lennartwittkuhn.com/version-control-course-uhh-2024/) or [3-day](https://lennartwittkuhn.com/version-control-course-zi-mannheim-2025/) workshops
+- Full-day Data Management Workshop with DataLad  (example [here](https://lennartwittkuhn.com/mpi-datamanagement-ws/))
+- More information at [lennartwittkuhn.com/consulting](https://lennartwittkuhn.com/consulting.html)
 :::
 
 ## References
