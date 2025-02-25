@@ -1697,7 +1697,7 @@ Project website publicly available at [https://wittkuhn.mpib.berlin/highspeed/](
 ::: {.fragment}
 ### Learn both *with me* (disclaimer: shameless plug :see_no_evil:)
 
-- Hands-on Git course with many open educational resources ([online guide](https://lennartwittkuhn.com/version-control-book/), quizzes and exercises) in formats from full-semester courses (see [WiSe 24](https://lennartwittkuhn.com/version-control-course-uhh-eur-ws24/), [SoSe 24](https://lennartwittkuhn.com/version-control-course-uhh-ss24/), [WiSe 23](https://lennartwittkuhn.com/version-control-course-uhh-ws23/)), or [1-day](https://lennartwittkuhn.com/version-control-course-uhh-2024/) and [3-day](https://lennartwittkuhn.com/version-control-course-zi-mannheim-2025/) workshops
+- Hands-on Git course with many open educational resources ([online guide](https://lennartwittkuhn.com/version-control-book/), quizzes and exercises) in formats from full-semester courses (see [WiSe 24](https://lennartwittkuhn.com/version-control-course-uhh-eur-ws24/), [SoSe 24](https://lennartwittkuhn.com/version-control-course-uhh-ss24/), [WiSe 23](https://lennartwittkuhn.com/version-control-course-uhh-ws23/)) to [1-day](https://lennartwittkuhn.com/version-control-course-uhh-2024/) or [3-day](https://lennartwittkuhn.com/version-control-course-zi-mannheim-2025/) workshops
 - Full-day Data Management Workshop with DataLad  (example [here](https://lennartwittkuhn.com/mpi-datamanagement-ws/))
 - More information at [lennartwittkuhn.com/consulting](https://lennartwittkuhn.com/consulting.html)
 :::
