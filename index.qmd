@@ -489,7 +489,14 @@ save(ok): . (dataset)                                              action summar
 
 ## Data in DataLad datasets are either stored in Git or git-annex
 
-![from the [DataLad Handbook](https://handbook.datalad.org/en/latest/index.html) by @wagner2022 ([CC BY-SA 4.0](https://handbook.datalad.org/en/latest/licenses.html))](images/datalad-publishing-gitvsannex.svg){fig-align="center" width="70%"}
+::::: {.columns}
+:::: {.column width="55%"}
+![from the [DataLad Handbook](https://handbook.datalad.org/en/latest/index.html) by @wagner2022 ([CC BY-SA 4.0](https://handbook.datalad.org/en/latest/licenses.html))](images/datalad-publishing-gitvsannex.svg){fig-align="center" width="100%"}
+::::
+:::: {.column width="45%"}
+![from the [DataLad Handbook](https://handbook.datalad.org/en/latest/index.html) by @wagner2022 ([CC BY-SA 4.0](https://handbook.datalad.org/en/latest/licenses.html))](images/git-vs-git-annex.svg){fig-align="center" width="100%"}
+::::
+:::::
 
 ::::: {.columns}
 :::: {.column width="50%"}
