@@ -12,7 +12,7 @@
   <meta name="generator" content="quarto-1.5.55">
 
   <meta name="author" content="Dr.&nbsp;Lennart Wittkuhn">
-  <meta name="dcterms.date" content="2024-11-28">
+  <meta name="dcterms.date" content="2025-02-26">
   <title>Reproducible Research Data Management with DataLad</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -418,9 +418,9 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">Reproducible Research Data Management with DataLad</h1>
-  <p class="subtitle"></p><p>Joint Lab Meeting (Gluth, Schuck &amp; Schwabe Labs) at University of Hamburg</p>
-<p><a href="https://lennartwittkuhn.com/talk-uhh-rdm-2024"><i class="fa-solid fa-display" aria-label="display"></i> Slides</a> | <a href="https://github.com/lnnrtwttkhn/talk-uhh-rdm-2024"><i class="fa-brands fa-github" aria-label="github"></i> Source</a></p>
-<p><a href="https://creativecommons.org/licenses/by-sa/4.0/"><img data-src="https://img.shields.io/badge/License-CC_BY_SA_4.0-lightgrey.svg" alt="License: CC BY-SA 4.0"></a> <a href="https://doi.org/10.5281/zenodo.14235886"><img data-src="https://zenodo.org/badge/DOI/10.5281/zenodo.14235886.svg" alt="DOI"></a></p><p></p>
+  <p class="subtitle"></p><p>Mannheim Open Science Meetup at University of Mannheim</p>
+<p><a href="https://lennartwittkuhn.com/talk-uma-rdm-2025"><i class="fa-solid fa-display" aria-label="display"></i> Slides</a> | <a href="https://github.com/lnnrtwttkhn/talk-uma-rdm-2025"><i class="fa-brands fa-github" aria-label="github"></i> Source</a></p>
+<p><a href="https://creativecommons.org/licenses/by/4.0/"><img data-src="https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg" alt="License: CC BY 4.0"></a> <a href="https://doi.org/10.5281/zenodo.14235886"><img data-src="https://zenodo.org/badge/DOI/10.5281/zenodo.14235886.svg" alt="DOI"></a></p><p></p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -448,7 +448,7 @@
     </div>
 </div>
 
-  <p class="date">November 28, 2024</p>
+  <p class="date">February 26, 2025</p>
 </section>
 <section id="about" class="slide level2">
 <h2>About</h2>
@@ -470,11 +470,11 @@
 <div class="fragment">
 <!-- -->
 <h3 id="about-this-presentation">About this presentation</h3>
-<p><i class="fa-solid fa-display" aria-label="display"></i> <strong>Slides:</strong> <a href="https://lennartwittkuhn.com/talk-uhh-rdm-2024">https://lennartwittkuhn.com/talk-uhh-rdm-2024</a></p>
-<p><i class="fa-brands fa-github" aria-label="github"></i> <strong>Source:</strong> <a href="https://github.com/lnnrtwttkhn/talk-uhh-rdm-2024">https://github.com/lnnrtwttkhn/talk-uhh-rdm-2024</a></p>
+<p><i class="fa-solid fa-display" aria-label="display"></i> <strong>Slides:</strong> <a href="https://lennartwittkuhn.com/talk-uma-rdm-2025">https://lennartwittkuhn.com/talk-uma-rdm-2025</a></p>
+<p><i class="fa-brands fa-github" aria-label="github"></i> <strong>Source:</strong> <a href="https://github.com/lnnrtwttkhn/talk-uma-rdm-2025">https://github.com/lnnrtwttkhn/talk-uma-rdm-2025</a></p>
 <p><i class="fa-solid fa-laptop-code" aria-label="laptop-code"></i> <strong>Software:</strong> Reproducible slides built with <a href="https://quarto.org/">Quarto</a> and deployed to <a href="https://pages.github.com/">GitHub Pages</a> using <a href="https://github.com/features/actions">GitHub Actions</a> for continuous integration &amp; deployment</p>
-<p><i class="fa-solid fa-file-contract" aria-label="file-contract"></i> <strong>License:</strong> Creative Commons Attribution-ShareAlike 4.0 (<a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>)</p>
-<p><i class="fa-solid fa-comments" aria-label="comments"></i> <strong>Contact:</strong> Feedback or suggestions via <a href="mailto:">email</a> or <a href="https://github.com/lnnrtwttkhn/talk-uhh-rdm-2024/issues">GitHub issues</a>. Thank you!</p>
+<p><i class="fa-solid fa-file-contract" aria-label="file-contract"></i> <strong>License:</strong> Creative Commons Attribution 4.0 International (<a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>)</p>
+<p><i class="fa-solid fa-comments" aria-label="comments"></i> <strong>Contact:</strong> Feedback or suggestions via <a href="mailto:">email</a> or <a href="https://github.com/lnnrtwttkhn/talk-uma-rdm-2025/issues">GitHub issues</a>. Thank you!</p>
 </div>
 </div></div>
 </section>
@@ -518,6 +518,9 @@
 <p>… and many more!</p>
 </div></div>
 </div>
+<div class="fragment">
+<p><strong>Disclaimer:</strong> I’m “only” an enthusiastic user of DataLad!</p>
+</div>
 </section>
 <section id="agenda" class="slide level2">
 <h2>Agenda</h2>
@@ -529,10 +532,10 @@
 <p>1.2 Modularity &amp; Linking</p>
 <p>1.3 Provenance</p>
 <p>1.4 Collaboration &amp; Interoperability</p>
-<h3 id="integrating-datalad-with-university-of-hamburg-infrastructure">2. Integrating DataLad with University of Hamburg infrastructure</h3>
-<p>2.1 UHHCloud (NextCloud)</p>
-<p>2.2 UHH Object Storage</p>
-<p>2.3 UHH GitLab</p>
+<h3 id="integrating-datalad-with-common-data-infrastructure">2. Integrating DataLad with common data infrastructure</h3>
+<p>2.1 NextCloud (UHHCloud)</p>
+<p>2.2 Object Storage</p>
+<p>2.3 GitLab</p>
 </div><div class="column" style="width:50%;">
 <h3 id="integrating-datalad-with-max-planck-society-infrastructure">3. Integrating DataLad with Max Planck Society infrastructure</h3>
 <p>3.1 Keeper</p>
@@ -541,7 +544,9 @@
 <p>3.4 GitLab</p>
 <h3 id="integrating-datalad-with-third-party-infrastructure">4. Integrating DataLad with third-party infrastructure</h3>
 <p>4.1 GIN</p>
-<h3 id="summary-discussion">5. Summary &amp; Discussion</h3>
+<h3 id="example">5. Example</h3>
+<h3 id="live-demonstration">6. Live Demonstration</h3>
+<h3 id="summary-discussion">7. Summary &amp; Discussion</h3>
 </div></div>
 </section>
 <section>
@@ -718,6 +723,20 @@
 </div>
 </div></div>
 </section>
+<section id="goal-of-version-control" class="slide level2">
+<h2>Goal of version control</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<h3 id="from-this">From this …</h3>
+<p><img data-src="images/phd-git-original.png"></p>
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<!-- -->
+<h3 id="to-this">To this …</h3>
+<p><img data-src="images/phd-git-solo.png"></p>
+</div>
+</div></div>
+</section>
 <section id="what-are-git-and-datalad" class="slide level2">
 <h2>What are Git and DataLad?</h2>
 <div class="columns">
@@ -792,8 +811,8 @@
 <div class="fragment fade-in-then-semi-out">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource bash number-lines"><code class="sourceCode bash"><span id="cb1-1"><a></a><span class="fu">mkdir</span> neuro-data</span>
-<span id="cb1-2"><a></a><span class="fu">wget</span> https://www.fil.ion.ucl.ac.uk/spm/download/data/MoAEpilot/MoAEpilot.bids.zip <span class="dt">\</span></span>
-<span id="cb1-3"><a></a>-O neuro-data.zip</span>
+<span id="cb1-2"><a></a><span class="ex">curl</span> https://www.fil.ion.ucl.ac.uk/spm/download/data/MoAEpilot/MoAEpilot.bids.zip <span class="dt">\</span></span>
+<span id="cb1-3"><a></a>-o neuro-data.zip</span>
 <span id="cb1-4"><a></a><span class="fu">unzip</span> neuro-data.zip <span class="at">-d</span> neuro-data</span>
 <span id="cb1-5"><a></a><span class="fu">rm</span> neuro-data.zip</span>
 <span id="cb1-6"><a></a><span class="bu">cd</span> neuro-data</span>
@@ -922,12 +941,22 @@ View output
 </section>
 <section id="data-in-datalad-datasets-are-either-stored-in-git-or-git-annex" class="slide level2">
 <h2>Data in DataLad datasets are either stored in Git or git-annex</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/datalad-publishing-gitvsannex.svg" style="width:70.0%"></p>
+<p><img data-src="images/datalad-publishing-gitvsannex.svg" style="width:100.0%"></p>
 <figcaption>from the <a href="https://handbook.datalad.org/en/latest/index.html">DataLad Handbook</a> by <span class="citation" data-cites="wagner2022">Wagner et al. (<a href="#/references" role="doc-biblioref" onclick="">2022</a>)</span> (<a href="https://handbook.datalad.org/en/latest/licenses.html">CC BY-SA 4.0</a>)</figcaption>
 </figure>
 </div>
+</div><div class="column" style="width:45%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/git-vs-git-annex.svg" style="width:100.0%"></p>
+<figcaption>from the <a href="https://handbook.datalad.org/en/latest/index.html">DataLad Handbook</a> by <span class="citation" data-cites="wagner2022">Wagner et al. (<a href="#/references" role="doc-biblioref" onclick="">2022</a>)</span> (<a href="https://handbook.datalad.org/en/latest/licenses.html">CC BY-SA 4.0</a>)</figcaption>
+</figure>
+</div>
+</div></div>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="fragment">
@@ -1474,8 +1503,8 @@ View output
 </div>
 </div></div>
 </section>
-<section id="have-access-to-more-data-than-you-have-disk-space" class="slide level2">
-<h2>Have access to more data than you have disk-space</h2>
+<section id="have-access-to-more-data-than-you-have-disk-space-get-and-drop-data" class="slide level2">
+<h2>Have access to more data than you have disk-space: <code>get</code> and <code>drop</code> data</h2>
 <div class="columns">
 <div class="column" style="width:45%;">
 <div class="fragment" data-fragment-index="1">
@@ -1513,7 +1542,7 @@ View output
 </div>
 </div><div class="column" style="width:55%;">
 <div class="fragment" data-fragment-index="3">
-<p>File contents can be retrieved on demand:</p>
+<p>File contents can be retrieved on demand with <code>datalad get</code>:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource bash number-lines"><code class="sourceCode bash"><span id="cb19-1"><a></a><span class="ex">datalad</span> get .</span>
 <span id="cb19-2"><a></a><span class="ex">get</span><span class="er">(</span><span class="ex">ok</span><span class="kw">)</span><span class="bu">:</span> CHANGES <span class="er">(</span><span class="fu">file</span><span class="kw">)</span> <span class="ex">[from</span> origin...]</span>
@@ -1532,7 +1561,7 @@ View output
 </div>
 </div>
 <div class="fragment" data-fragment-index="4">
-<p>Drop file content that is not needed:</p>
+<p>Drop file content that is not needed with <code>datalad drop</code>:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource bash number-lines"><code class="sourceCode bash"><span id="cb21-1"><a></a><span class="ex">datalad</span> drop .</span>
 <span id="cb21-2"><a></a><span class="ex">drop</span><span class="er">(</span><span class="ex">ok</span><span class="kw">)</span><span class="bu">:</span> CHANGES <span class="er">(</span><span class="fu">file</span><span class="kw">)</span> <span class="ex">[locking</span> origin...]</span>
@@ -1550,12 +1579,12 @@ View output
 </div></div>
 </section></section>
 <section>
-<section id="data-sharing-using-datalad-and-data-infrastructure-of-the-university-of-hamburg" class="title-slide slide level1 center">
-<h1>Data sharing using DataLad and data infrastructure of the University of Hamburg</h1>
+<section id="data-sharing-using-datalad-and-common-data-infrastructure" class="title-slide slide level1 center">
+<h1>Data sharing using DataLad and common data infrastructure</h1>
 
 </section>
-<section id="sharing-datalad-datasets-via-uhhcloud-nextcloud" class="slide level2 scrollable">
-<h2>Sharing DataLad datasets via UHHCloud (Nextcloud)</h2>
+<section id="sharing-datalad-datasets-via-nextcloud-e.g.-uhhcloud" class="slide level2 scrollable">
+<h2>Sharing DataLad datasets via Nextcloud (e.g., UHHCloud)</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="quarto-figure quarto-figure-center">
@@ -1570,7 +1599,7 @@ View output
 </blockquote>
 <div class="fragment">
 <!-- -->
-<h4 id="features-of-uhhcloud-nextcloud"><span class="emoji" data-emoji="sparkles">✨</span> Features of UHHCloud (Nextcloud) <span class="emoji" data-emoji="sparkles">✨</span></h4>
+<h4 id="features-of-nextcloud"><span class="emoji" data-emoji="sparkles">✨</span> Features of Nextcloud <span class="emoji" data-emoji="sparkles">✨</span></h4>
 <ul>
 <li>data privacy compliant alternative to Google Drive, Dropbox, etc. (usually hosted on-site)</li>
 <li>provided by your institution, so free to use</li>
@@ -1590,7 +1619,7 @@ View output
 <span id="cb22-3"><a></a>  <span class="st">'https://cloud.uni-hamburg.de/remote.php/dav/files/USERNAME/neuro-data'</span></span></code></pre></div>
 </div>
 <ol start="2" type="1">
-<li>Push dataset to UHHCloud</li>
+<li>Push dataset to Nextcloud (e.g., UHHCloud)</li>
 </ol>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource bash number-lines"><code class="sourceCode bash"><span id="cb23-1"><a></a><span class="ex">datalad</span> push <span class="at">--to</span> uhhcloud</span></code></pre></div>
@@ -1872,7 +1901,7 @@ View output
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/owncloud-logo.svg" style="width:20.0%"></p>
+<p><img data-src="images/owncloud-logo.svg" style="width:80.0%"></p>
 <figcaption><a href="https://owncloud.gwdg.de/">owncloud.gwdg.de</a></figcaption>
 </figure>
 </div>
@@ -1880,7 +1909,7 @@ View output
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/nextcloud-logo.svg" style="width:30.0%"></p>
+<p><img data-src="images/nextcloud-logo.svg" style="width:60.0%"></p>
 <figcaption><a href="https://nextcloud.com/">nextcloud.com</a></figcaption>
 </figure>
 </div>
@@ -2113,6 +2142,110 @@ View output
 </div></div>
 </section></section>
 <section>
+<section id="example-wittkuhn-schuck-2021" class="title-slide slide level1 center">
+<h1>Example: Wittkuhn &amp; Schuck (2021)</h1>
+
+</section>
+<section id="example-our-paper" class="slide level2">
+<h2>Example: Our paper</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="fragment">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/highspeed-paper.png" style="width:100.0%"></p>
+<figcaption>doi: <a href="https://doi.org/10.1038/s41467-021-21970-2">10.1038/s41467-021-21970-2</a> (accessed 2025-02-25)</figcaption>
+</figure>
+</div>
+<h4 id="two-sentence-summary">Two-sentence summary:</h4>
+<blockquote>
+<p>“<em>Non-invasive measurement of fast neural activity with spatial precision in humans is difficult.</em> <em>Here, the authors <strong>show how fMRI can be used to detect sub-second neural sequences in a localized fashion</strong> and <strong>report fast replay of images in visual cortex</strong> that occurred independently of the hippocampus.</em>”</p>
+</blockquote>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<blockquote class="twitter-tweet" data-conversation="none" data-lang="en">
+<p lang="en" dir="ltr">
+We share all code + data via <a href="https://twitter.com/gnode?ref_src=twsrc%5Etfw"><span class="citation" data-cites="gnode">(</span></a><a href="#/references" role="doc-biblioref" onclick=""><strong>gnode?</strong></a>) + <a href="https://twitter.com/hashtag/GitHub?src=hash&amp;ref_src=twsrc%5Etfw">#GitHub</a>, version-controlled with <a href="https://twitter.com/datalad?ref_src=twsrc%5Etfw"><span class="citation" data-cites="datalad">(</span></a><a href="#/references" role="doc-biblioref" onclick=""><strong>datalad?</strong></a>) (ca. 1.5 TB): MRI in <a href="https://twitter.com/BIDSstandard?ref_src=twsrc%5Etfw"><span class="citation" data-cites="BIDSstandard">(</span></a><a href="#/references" role="doc-biblioref" onclick=""><strong>BIDSstandard?</strong></a>), <a href="https://twitter.com/hashtag/fMRIPrep?src=hash&amp;ref_src=twsrc%5Etfw">#fMRIPrep</a> data, <a href="https://twitter.com/hashtag/MRIQC?src=hash&amp;ref_src=twsrc%5Etfw">#MRIQC</a> metrics, GLMs + anatomical masks, task code, decoding pipeline, statistical analyses: <a href="https://t.co/sv3Vrco7wj">https://t.co/sv3Vrco7wj</a> <a href="https://twitter.com/hashtag/OpenScience?src=hash&amp;ref_src=twsrc%5Etfw">#OpenScience</a> 🧮 [2/n]
+</p>
+— Lennart Wittkuhn (<span class="citation" data-cites="lnnrtwttkhn">(<a href="#/references" role="doc-biblioref" onclick=""><strong>lnnrtwttkhn?</strong></a>)</span>) <a href="https://twitter.com/lnnrtwttkhn/status/1372859256777670659?ref_src=twsrc%5Etfw">March 19, 2021</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+</div></div>
+</section>
+<section id="example-data-management-using-datalad" class="slide level2">
+<h2>Example: Data management using DataLad</h2>
+<div class="fragment">
+<!-- -->
+<h4 id="from-wittkuhn-schuck-2021-nature-communications-see-data-availability-statement">From Wittkuhn &amp; Schuck, 2021, <em>Nature Communications</em> (see <a href="https://www.nature.com/articles/s41467-021-21970-2#data-availability">Data Availability statement</a>):</h4>
+<blockquote>
+<p><em>“We publicly share all data used in this study. Data and code management was realized using DataLad.</em>”</p>
+</blockquote>
+<ul>
+<li>All individual datasets can be found at: <a href="https://gin.g-node.org/lnnrtwttkhn" class="uri">https://gin.g-node.org/lnnrtwttkhn</a></li>
+<li>Each dataset is associated with a unique URL and a Digital Object Identifier (DOI)</li>
+<li>Dataset structure shared to GitHub and dataset contents shared to GIN</li>
+</ul>
+</div>
+<div class="fragment">
+<!-- -->
+<h4 id="all-data">All data?</h4>
+<ul>
+<li><code>highspeed</code>: superdataset of all subdatasets, incl.&nbsp;project documentation (<a href="https://git.mpib-berlin.mpg.de/wittkuhn/highspeed">GitLab</a>)</li>
+<li><code>highspeed-bids</code>: MRI and behavioral data adhering to the <a href="https://bids.neuroimaging.io/">BIDS standard</a> (<a href="https://github.com/lnnrtwttkhn/highspeed-bids">GitHub</a>, <a href="https://gin.g-node.org/lnnrtwttkhn/highspeed-bids">GIN</a>, <a href="https://doi.org/10.12751/g-node.4ivuv8">DOI</a>)</li>
+<li><code>highspeed-mriqc</code>: MRI quality metrics and reports based on <a href="https://mriqc.readthedocs.io/en/stable/">MRIQC</a> (<a href="https://github.com/lnnrtwttkhn/highspeed-mriqc">GitHub</a>, <a href="https://gin.g-node.org/lnnrtwttkhn/highspeed-mriqc">GIN</a>, <a href="https://doi.org/10.12751/g-node.0vmyuh">DOI</a>)</li>
+<li><code>highspeed-fmriprep</code>: preprocessed MRI data using <a href="https://fmriprep.org/en/stable/">fMRIPrep</a>, (<a href="https://github.com/lnnrtwttkhn/highspeed-fmriprep">GitHub</a>, <a href="https://gin.g-node.org/lnnrtwttkhn/highspeed-fmriprep">GIN</a>, <a href="https://doi.org/10.12751/g-node.0ft06t">DOI</a>)</li>
+<li><code>highspeed-masks</code>: binarized anatomical masks used for feature selection (<a href="https://github.com/lnnrtwttkhn/highspeed-masks">GitHub</a>, <a href="https://gin.g-node.org/lnnrtwttkhn/highspeed-masks">GIN</a>, <a href="https://doi.org/10.12751/g-node.omirok">DOI</a>)</li>
+<li><code>highspeed-glm</code>: first-level GLM results used for feature selection (<a href="https://github.com/lnnrtwttkhn/highspeed-glm">GitHub</a>, <a href="https://gin.g-node.org/lnnrtwttkhn/highspeed-glm">GIN</a>, <a href="https://doi.org/10.12751/g-node.d21zpv">DOI</a>)</li>
+<li><code>highspeed-decoding</code>: results of the multivariate decoding approach (<a href="https://github.com/lnnrtwttkhn/highspeed-decoding">GitHub</a>, <a href="https://gin.g-node.org/lnnrtwttkhn/highspeed-decoding">GIN</a>, <a href="https://doi.org/10.12751/g-node.9zft1r">DOI</a>)</li>
+<li><code>highspeed-data</code>: unprocessed data of the behavioral task acquired during MRI acquisition (<a href="https://github.com/lnnrtwttkhn/highspeed-data-behavior">GitHub</a>, <a href="https://gin.g-node.org/lnnrtwttkhn/highspeed-data-behavior">GIN</a>, <a href="https://doi.org/10.12751/g-node.p7dabb">DOI</a>)</li>
+</ul>
+<p>&gt; 1.5 TB in total, version-controlled using DataLad</p>
+</div>
+</section>
+<section id="superdataset-to-collect-all-resources-of-the-project" class="slide level2">
+<h2>Superdataset to collect all resources of the project</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/highspeed-superdataset.png" style="width:100.0%"></p>
+<figcaption><a href="https://git.mpib-berlin.mpg.de/wittkuhn/highspeed">https://git.mpib-berlin.mpg.de/wittkuhn/highspeed</a> (accessed 2025-02-25)</figcaption>
+</figure>
+</div>
+</section>
+<section id="project-website-with-main-statistical-results" class="slide level2 scrollable">
+<h2>Project website with main statistical results</h2>
+<h4 id="from-wittkuhn-schuck-2021-nature-communications-see-code-availability-statement">From Wittkuhn &amp; Schuck, 2021, <em>Nature Communications</em> (see <a href="https://www.nature.com/articles/s41467-021-21970-2#code-availability">Code Availability statement</a>):</h4>
+<blockquote>
+<p>“<em>We share all code used in this study. An overview of all the resources is publicly available on our <strong>project website.</strong>”</em></p>
+</blockquote>
+<p>Project website publicly available at <a href="https://wittkuhn.mpib.berlin/highspeed/">https://wittkuhn.mpib.berlin/highspeed/</a></p>
+<div class="fragment">
+<!-- -->
+<h4 id="reproducible-reports-with-bookdown-rmarkdown">Reproducible reports with <a href="https://bookdown.org/yihui/bookdown/">Bookdown</a> / <a href="https://bookdown.org/yihui/rmarkdown/">RMarkdown</a></h4>
+<blockquote>
+<p><em>“R Markdown is a file format for making dynamic documents with R. An R Markdown document is written in markdown (an easy-to-write plain text format) and contains chunks of embedded R code […]”</em></p>
+</blockquote>
+<ul>
+<li>Project documentation and main statistical analyses are written in RMarkdown (see <a href="https://github.com/lnnrtwttkhn/highspeed-analysis/tree/master/code">here</a>)</li>
+<li>Documentation pages showcase non-executed code (used in subdatasets) in Python and Bash</li>
+<li>Statistical analyses executed and website rendered automatically via <a href="https://docs.gitlab.com/ee/ci/">Continuous Integration / Deployment (CI/CD)</a>:
+<ol type="1">
+<li>In the <a href="https://git.mpib-berlin.mpg.de/wittkuhn/highspeed">main project repository</a>, all RMarkdown files are <a href="https://git.mpib-berlin.mpg.de/wittkuhn/highspeed/-/blob/master/_bookdown.yml#L22-36">combined</a> using <a href="https://bookdown.org/">bookdown</a> (across subdatasets)</li>
+<li>Input data is <a href="https://git.mpib-berlin.mpg.de/wittkuhn/highspeed/-/blob/master/.gitlab-ci.yml#L5-75">automatically retrieved</a> from GIN and / or Keeper using DataLad (run in a <a href="https://git.mpib-berlin.mpg.de/wittkuhn/highspeed/-/blob/master/.docker/datalad/Dockerfile">Docker container</a>)</li>
+<li>The RMarkdown files are <a href="https://git.mpib-berlin.mpg.de/wittkuhn/highspeed/-/blob/master/.docker/bookdown/Dockerfile">run in Docker</a> (executing main statistical analyses) and <a href="https://git.mpib-berlin.mpg.de/wittkuhn/highspeed/-/blob/master/.gitlab-ci.yml#L99">rendered</a> into a static website</li>
+<li>The static website is <a href="https://git.mpib-berlin.mpg.de/wittkuhn/highspeed/-/blob/master/.gitlab-ci.yml#L95-106">deployed to GitLab pages</a></li>
+</ol></li>
+</ul>
+<p>→ This pipeline is automatically triggered on every push (change) to the main repository.</p>
+</div>
+</section></section>
+<section id="live-demonstration-1" class="title-slide slide level1 center">
+<h1>Live Demonstration</h1>
+
+</section>
+
+<section>
 <section id="summary" class="title-slide slide level1 center">
 <h1>Summary</h1>
 
@@ -2180,8 +2313,12 @@ View output
 </ul>
 <div class="fragment">
 <!-- -->
-<h3 id="learn-both-disclaimer-shameless-plug">Learn both (disclaimer: shameless plug <span class="emoji" data-emoji="see_no_evil">🙈</span>)</h3>
-<p>Full-semester course on <a href="https://lennartwittkuhn.com/versioncontrol-course-uhh-ws23/">“Version control of code and data using Git and DataLad”</a> at University of Hamburg (generously funded by the <a href="https://www.isa.uni-hamburg.de/en/ddlitlab.html">Digital and Data Literacy in Teaching Lab</a> program) with many open educational resources (<a href="https://lennartwittkuhn.com/version-control-book/">online guide</a>, quizzes and exercises)</p>
+<h3 id="learn-both-with-me-disclaimer-shameless-plug">Learn both <em>with me</em> (disclaimer: shameless plug <span class="emoji" data-emoji="see_no_evil">🙈</span>)</h3>
+<ul>
+<li>Hands-on Git course with many open educational resources (<a href="https://lennartwittkuhn.com/version-control-book/">online guide</a>, quizzes and exercises) in formats from full-semester courses (see <a href="https://lennartwittkuhn.com/version-control-course-uhh-eur-ws24/">WiSe 24</a>, <a href="https://lennartwittkuhn.com/version-control-course-uhh-ss24/">SoSe 24</a>, <a href="https://lennartwittkuhn.com/version-control-course-uhh-ws23/">WiSe 23</a>), or <a href="https://lennartwittkuhn.com/version-control-course-uhh-2024/">1-day</a> and <a href="https://lennartwittkuhn.com/version-control-course-zi-mannheim-2025/">3-day</a> workshops</li>
+<li>Full-day Data Management Workshop with DataLad (example <a href="https://lennartwittkuhn.com/mpi-datamanagement-ws/">here</a>)</li>
+<li>More information at <a href="https://lennartwittkuhn.com/consulting.html">lennartwittkuhn.com/consulting</a></li>
+</ul>
 </div>
 </section>
 <section id="references" class="slide level2 smaller scrollable">
@@ -2265,11 +2402,11 @@ Wicherts, Jelte M., Denny Borsboom, Judith Kats, and Dylan Molenaar. 2006. <span
 </div>
 </div>
 </div>
-<p><i class="fa-solid fa-display" aria-label="display"></i> <strong>Slides:</strong> <a href="https://lennartwittkuhn.com/talk-uhh-rdm-2024">https://lennartwittkuhn.com/talk-uhh-rdm-2024</a></p>
-<p><i class="fa-brands fa-github" aria-label="github"></i> <strong>Source:</strong> <a href="https://github.com/lnnrtwttkhn/talk-uhh-rdm-2024">https://github.com/lnnrtwttkhn/talk-uhh-rdm-2024</a></p>
+<p><i class="fa-solid fa-display" aria-label="display"></i> <strong>Slides:</strong> <a href="https://lennartwittkuhn.com/talk-uma-rdm-2025">https://lennartwittkuhn.com/talk-uma-rdm-2025</a></p>
+<p><i class="fa-brands fa-github" aria-label="github"></i> <strong>Source:</strong> <a href="https://github.com/lnnrtwttkhn/talk-uma-rdm-2025">https://github.com/lnnrtwttkhn/talk-uma-rdm-2025</a></p>
 <p><i class="fa-solid fa-laptop-code" aria-label="laptop-code"></i> <strong>Software:</strong> Reproducible slides built with <a href="https://quarto.org/">Quarto</a> and deployed to <a href="https://pages.github.com/">GitHub Pages</a> using <a href="https://github.com/features/actions">GitHub Actions</a> for continuous integration &amp; deployment</p>
-<p><i class="fa-solid fa-file-contract" aria-label="file-contract"></i> <strong>License:</strong> Creative Commons Attribution-ShareAlike 4.0 (<a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>)</p>
-<p><i class="fa-solid fa-comments" aria-label="comments"></i> <strong>Contact:</strong> Feedback or suggestions via <a href="mailto:">email</a> or <a href="https://github.com/lnnrtwttkhn/talk-uhh-rdm-2024/issues">GitHub issues</a>. Thank you!</p>
+<p><i class="fa-solid fa-file-contract" aria-label="file-contract"></i> <strong>License:</strong> Creative Commons Attribution 4.0 International (<a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>)</p>
+<p><i class="fa-solid fa-comments" aria-label="comments"></i> <strong>Contact:</strong> Feedback or suggestions via <a href="mailto:">email</a> or <a href="https://github.com/lnnrtwttkhn/talk-uma-rdm-2025/issues">GitHub issues</a>. Thank you!</p>
 </div></div>
 </section></section>
 <section>
@@ -2910,7 +3047,7 @@ Wicherts, Jelte M., Denny Borsboom, Judith Kats, and Dylan Molenaar. 2006. <span
         ]
       });
     </script>
-    <script defer="" data-domain="lennartwittkuhn.com/talk-uhh-rdm-2024" src="https://plausible.io/js/script.js"></script>
+    <script defer="" data-domain="lennartwittkuhn.com/talk-uma-rdm-2025" src="https://plausible.io/js/script.js"></script>
     
     <script>
       // htmlwidgets need to know to resize themselves when slides are shown/hidden.
@@ -2975,7 +3112,7 @@ Wicherts, Jelte M., Denny Borsboom, Judith Kats, and Dylan Molenaar. 2006. <span
       });
         var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
         var mailtoRegex = new RegExp(/^mailto:/);
-          var filterRegex = new RegExp('/' + window.location.host + '/');
+          var filterRegex = new RegExp("https:\/\/lnnrtwttkhn\.github\.io\/talk-uma-rdm-2025\/");
         var isInternal = (href) => {
             return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }
