@@ -3,12 +3,12 @@ title: "{{< var title >}}"
 subtitle: |
   {{< var subtitle >}}
   
-  [{{< fa display >}} Slides](https://lennartwittkuhn.com/talk-uhh-rdm-2024) |
-  [{{< fa brands github >}} Source](https://github.com/lnnrtwttkhn/talk-uhh-rdm-2024)
+  [{{< fa display >}} Slides](https://lennartwittkuhn.com/talk-uma-rdm-2025) |
+  [{{< fa brands github >}} Source](https://github.com/lnnrtwttkhn/talk-uma-rdm-2025)
   
   {{< var license-badge >}}
   {{< var doi-badge >}}
-date: 2024-11-28
+date: 2025-02-27
 engine: knitr
 execute:
   eval: false
