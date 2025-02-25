@@ -28,7 +28,7 @@ jobs:
       - name: Install additional Ubuntu packages
         run: |
           sudo apt-get update
-          sudo apt -y install libcurl4-openssl-dev unzip wget
+          sudo apt -y install libcurl4-openssl-dev unzip
           
       - name: Install R Dependencies
         uses: r-lib/actions/setup-renv@v2
