@@ -479,6 +479,12 @@ save(ok): . (dataset)                                              action summar
 </details>
 
 :::
+
+::: {.fragment}
+- Save meaningful units of change
+- Attach helpful commit messages
+:::
+
 :::
 ::::
 
@@ -643,7 +649,7 @@ ok
 ![from the [DataLad Handbook](https://handbook.datalad.org/en/latest/index.html) by @wagner2022 ([CC BY-SA 4.0](https://handbook.datalad.org/en/latest/licenses.html))](images/datalad-linkage-subds.svg){fig-align="center" width="90%"}
 
 - seamless nesting of modular datasets in hierarchical super-/sub-dataset relationships
-- based in Git submodules, but mono-repo feel thanks to recursive operations
+- based on Git submodules, but mono-repo feel thanks to recursive operations
 - overcomes scaling issues with large amounts of files (Example: [Human Connectome Project](https://github.com/datalad-datasets/human-connectome-project-openaccess))
 - modularizes research components for transparency, reuse and access management
 
