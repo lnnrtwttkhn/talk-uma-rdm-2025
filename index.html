@@ -2379,6 +2379,62 @@ We share all code + data via <a href="https://twitter.com/gnode?ref_src=twsrc%5E
 </div>
 </div>
 </section>
+<section id="motivation" class="slide level2">
+<h2>Motivation</h2>
+<div class="fragment">
+<p>Research management with tools like Git or DataLad can feel <strong>technical</strong>, <strong>complex</strong> and <strong>overwhelming</strong> <span class="emoji" data-emoji="fearful">😨</span></p>
+</div>
+<div class="fragment">
+<div class="columns">
+<div class="column" style="width:35%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/turing-way-version-control.svg" style="width:85.0%"></p>
+<figcaption>by <span class="citation" data-cites="theturingwaycommunity2024">The Turing Way Community and Scriberia (<a href="#/references" role="doc-biblioref" onclick="">2024</a>)</span></figcaption>
+</figure>
+</div>
+</div><div class="column" style="width:15%;">
+<p>“<em>Your number one collaborator is yourself from 6 months ago and they don’t answer emails.</em>”</p>
+</div><div class="column" style="width:35%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/turing-way-readable-code.svg" style="width:80.0%"></p>
+<figcaption>by <span class="citation" data-cites="theturingwaycommunity2024">The Turing Way Community and Scriberia (<a href="#/references" role="doc-biblioref" onclick="">2024</a>)</span></figcaption>
+</figure>
+</div>
+</div><div class="column" style="width:15%;">
+<p>“<em>Which version of which script produced these outputs from which version of which data?</em>”</p>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="fragment">
+<!-- -->
+<h3 id="effort-pays-off">Effort pays off:</h3>
+<ul>
+<li>Increased transparency</li>
+<li>Better reproducibility</li>
+<li>Easier accessibility</li>
+<li>Efficiency through automation and collaboration</li>
+<li>Streamlined syncing and updating of your work</li>
+</ul>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<!-- -->
+<h3 id="who-benefits-the-most">Who benefits the most?</h3>
+<div>
+<ol type="1">
+<li class="fragment">Yourself</li>
+<li class="fragment">Yourself in 6 months</li>
+<li class="fragment">Science</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</section>
 <section id="overview-of-learning-resources" class="slide level2">
 <h2>Overview of learning resources</h2>
 <h3 id="learn-git">Learn Git</h3>
@@ -2863,7 +2919,7 @@ Wicherts, Jelte M., Denny Borsboom, Judith Kats, and Dylan Molenaar. 2006. <span
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-14" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-lines="5" data-code-cell="annotated-cell-14">Replace <code>&lt;dataset-name&gt;</code> with the name of your dataset, i.e., the name of your dataset folder. In this example, we replace <code>&lt;dataset-name&gt;</code> with <code>neuro-data</code>. The complete command for your example hence looks like this:</span>
+<span data-code-cell="annotated-cell-14" data-code-annotation="1" data-code-lines="5">Replace <code>&lt;dataset-name&gt;</code> with the name of your dataset, i.e., the name of your dataset folder. In this example, we replace <code>&lt;dataset-name&gt;</code> with <code>neuro-data</code>. The complete command for your example hence looks like this:</span>
 </dd>
 </dl>
 </div>
@@ -2884,15 +2940,15 @@ Wicherts, Jelte M., Denny Borsboom, Judith Kats, and Dylan Molenaar. 2006. <span
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-16" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-lines="1" data-code-cell="annotated-cell-16">Enter the email address of your ownCloud account.</span>
+<span data-code-cell="annotated-cell-16" data-code-annotation="1" data-code-lines="1">Enter the email address of your ownCloud account.</span>
 </dd>
 <dt data-target-cell="annotated-cell-16" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-annotation="2" data-code-lines="2" data-code-cell="annotated-cell-16">Enter the password of your ownCloud account.</span>
+<span data-code-cell="annotated-cell-16" data-code-annotation="2" data-code-lines="2">Enter the password of your ownCloud account.</span>
 </dd>
 <dt data-target-cell="annotated-cell-16" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-annotation="3" data-code-lines="3" data-code-cell="annotated-cell-16">Repeat the password of your ownCloud account.</span>
+<span data-code-cell="annotated-cell-16" data-code-annotation="3" data-code-lines="3">Repeat the password of your ownCloud account.</span>
 </dd>
 </dl>
 </div>
@@ -2909,7 +2965,7 @@ Wicherts, Jelte M., Denny Borsboom, Judith Kats, and Dylan Molenaar. 2006. <span
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-18" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-lines="1" data-code-cell="annotated-cell-18">Use <code>datalad push</code> to push the dataset contents to ownCloud. For details on <code>datalad push</code>, see the <a href="http://docs.datalad.org/en/stable/generated/man/datalad-push.html">command line reference</a> and <a href="https://handbook.datalad.org/en/latest/basics/101-141-push.html">this chapter</a> in the DataLad Handbook.</span>
+<span data-code-cell="annotated-cell-18" data-code-annotation="1" data-code-lines="1">Use <code>datalad push</code> to push the dataset contents to ownCloud. For details on <code>datalad push</code>, see the <a href="http://docs.datalad.org/en/stable/generated/man/datalad-push.html">command line reference</a> and <a href="https://handbook.datalad.org/en/latest/basics/101-141-push.html">this chapter</a> in the DataLad Handbook.</span>
 </dd>
 </dl>
 </div>
