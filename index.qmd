@@ -532,6 +532,59 @@ save(ok): . (dataset)                                              action summar
 - By default, everything is annexed, i.e., stored in a dataset annex
 :::
 
+## Version control beyond text files
+
+::: {.fragment}
+
+- Datasets can have an optional **annex** to track large files without storing their content in Git.
+- For annexed files, **Git stores the identity** (hash) and location information **but not the file content**.
+- Annexed files are **symlinks** (if supported by the filesystem).
+
+```{bash}
+#| code-line-numbers: "2"
+ls -l sub-01/anat/sub-01_T1w.nii
+lrwxr-xr-x  1 wittkuhn  staff  134 Mar 22  1996 sub-01/anat/sub-01_T1w.nii -> ../../.git/annex/objects/J6/80/MD5E-s7078240--921fa3f612ffd2c3d720f2d8355a3aab.nii/MD5E-s7078240--921fa3f612ffd2c3d720f2d8355a3aab.nii
+```
+
+:::
+::: {.fragment}
+
+- The (tiny) symlink, instead of the (potentially large) file content, is committed.
+This allows version control of the precise file identity without adding the contents to Git.
+
+```{bash}
+#| code-line-numbers: "7"
+diff --git a/sub-01/anat/sub-01_T1w.nii b/sub-01/anat/sub-01_T1w.nii
+new file mode 120000
+index 0000000..375debb
+--- /dev/null
++++ b/sub-01/anat/sub-01_T1w.nii
+@@ -0,0 +1 @@
++../../.git/annex/objects/J6/80/MD5E-s7078240--921fa3f612ffd2c3d720f2d8355a3aab.nii/MD5E-s7078240--921fa3f612ffd2c3d720f2d8355a3aab.nii
+\ No newline at end of file
+```
+
+:::
+::: {.fragment}
+
+- File availability information is stored to track a **decentralized network of file content**.
+
+```{bash}
+git annex whereis sub-01/anat/sub-01_T1w.nii (4 copies) 
+  	092e1176-5341-4a75-87fb-870d0ab5ec02 -- [keeper]
+  	153b004e-b498-4f45-95a3-1aa542baf1d3 -- [uhh-lsz]
+  	b710c6a1-c971-45fc-b7f5-62e1642d7687 -- gin-src [gin]
+  	e08496d7-4aeb-4ef9-b8a7-a793d5ac6d35 -- wittkuhn@mpib:~/Desktop/neuro-data [here]
+
+  The following untrusted locations may also have copies:
+  	625c654f-972a-4aad-b8d1-63527c37ae08 -- [owncloud-gwdg-storage]
+  	96baea8d-39c5-4b83-aa9f-f7960c81afd0 -- [dataverse-storage]
+ok
+```
+
+- A file can be stored in **multiple locations**.
+
+:::
 
 # Science is build from modular units
 
