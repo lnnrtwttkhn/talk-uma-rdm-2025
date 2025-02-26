@@ -1737,6 +1737,55 @@ Project website publicly available at [https://wittkuhn.mpib.berlin/highspeed/](
 :::
 ::::
 
+## Motivation
+
+::: {.fragment}
+Research management with tools like Git or DataLad can feel **technical**, **complex** and **overwhelming** :fearful:
+:::
+
+::: {.fragment}
+::::: {.columns}
+:::: {.column width="35%"}
+![by @theturingwaycommunity2024](images/turing-way-version-control.svg){fig-align="center" width="85%"}
+::::
+:::: {.column width="15%"}
+"*Your number one collaborator is yourself from 6 months ago and they don't answer emails.*"
+::::
+:::: {.column width="35%"}
+![by @theturingwaycommunity2024](images/turing-way-readable-code.svg){fig-align="center" width="80%"}
+::::
+:::: {.column width="15%"}
+"*Which version of which script produced these outputs from which version of which data?*"
+::::
+:::::
+::::
+
+::::: {.columns}
+:::: {.column width="50%"}
+::: {.fragment}
+### Effort pays off:
+
+- Increased transparency
+- Better reproducibility
+- Easier accessibility
+- Efficiency through automation and collaboration
+- Streamlined syncing and updating of your work
+:::
+::::
+:::: {.column width="50%"}
+::: {.fragment}
+### Who benefits the most?
+
+::: {.incremental}
+1. Yourself
+1. Yourself in 6 months
+1. Science
+:::
+
+:::
+::::
+:::::
+
 ## Overview of learning resources
 
 ### Learn Git
