@@ -325,6 +325,9 @@ The **DataLad Handbook** by @wagner2022 is a comprehensive educational resource 
 ### To this ...
 ![](images/phd-git-solo.png)
 :::
+::: {.fragment}
+Can you spot three hidden "jokes" in this picture?
+:::
 :::
 ::::
 
@@ -1690,6 +1693,22 @@ Project website publicly available at [https://wittkuhn.mpib.berlin/highspeed/](
 # Live Demonstration
 
 # Summary
+
+## Goal of version control
+
+:::: {.columns}
+::: {.column width="60%"}
+![](images/phd-git-solo.png){width="100%"}
+:::
+::: {.column width="40%"}
+### Can you spot three hidden "jokes" in this picture?
+::: {.incremental}
+1. PhD Student works at odd hours, often late into the night.
+1. Prof. Smith always reverts the changes made by the PhD Student.
+1. PhD Student reacts within about 24 hours, while Prof. Smith takes days.
+:::
+:::
+::::
 
 ## Summary and discussion
 
